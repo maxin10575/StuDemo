@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-1.4.3.js"></script>
+<script>
+	$(function() {
+		$("#b1").click(f1);
+	});
+	function f1() {
+		$.ajax({
+			"url" : "order.do",
+			"data" : $("#form1").serialize(),
+			"type" : "post",
+			"dataType" : "text",
+			"success" : function(datas) {
+				//显示保存成功
+				$("#d1").after(datas);
+				//隐藏表单
+				$("#form1").hide();
+			}
+		});
+	}
+</script>
+</head>
+<body style="font-size: 30px;">
+	<h2 id="d1">送货地址</h2>
+	<form id="form1">
+		地址：&nbsp;<input type="text" name="addr" /> <br> 联系人: <input
+			name="uname" /> <br> 电话：&nbsp;<input name="phone" /> <br> <input
+			type="button" value="确定" id="b1" />
+	</form>
+</body>
+</html>

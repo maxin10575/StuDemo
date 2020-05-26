@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+
+	<description>MX library</description>
+	<display-name>MX</display-name>
+	<tlib-version>5.1</tlib-version>
+	<short-name>s</short-name>
+	<uri>/mx-tags</uri>
+
+	<tag>
+		<description>
+ 		这是一个标签，他能给浏览器输出当前服务器的时间，并且时间的
+ 		格式还可以任意指定。
+ 	</description>
+		<name>sysdate</name>
+		<tag-class>web.SysdateTag</tag-class>
+		<!-- 声明标签可以包含的内容 -->
+		<body-content>empty</body-content>
+		<attribute>
+			<description>
+			通过该属性设置时间的格式。
+		</description>
+			<!-- 此处设置的是bean属性，tomcat通过set方法来设置值。 -->
+			<name>format</name>
+			<!-- 该属性是否必须设置 -->
+			<required>false</required>
+			<!-- 是否允许使用EL为该属性赋值 -->
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+</taglib>

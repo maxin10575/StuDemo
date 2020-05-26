@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+.box a:after {
+	content :''; 
+	position:absolute;
+	Z- index: -1;
+	top: 0px;
+	left: 0px;
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	background color: #fff;
+	border radius: 20px;
+	-moz transition: width.3s ease;
+	webkit transition: width.3s ease;
+	o-transition: width.3s ease;
+	transition: width.3s ease;
+}
+.box a:hover {
+	color: #00aeff;
+}
+.box a:hover:after {
+	width: 100%;
+}
+</style>
+</script>
+</head>
+<body>
+	<div class="box">
+		<a href="#">了解详情</a>
+	</div>
+</body>
+</html>

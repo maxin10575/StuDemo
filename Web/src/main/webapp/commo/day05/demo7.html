@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//得到0-99之间的随机整数
+	var ran = parseInt(Math.random()*100);
+	function guess() {
+		var text = document.getElementById("num");
+		var n = text.value;
+		var span = document.getElementById("result");
+		if(isNaN(n)) {
+			span.innerHTML = "请输入数字";
+		} else {
+			if(n > ran) {
+				span.innerHTML = "大了";
+			}else if(n<ran) {
+				span.innerHTML = "小了";
+			} else {
+				span.innerHTML = "猜对了，数字为"+n;
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="num"/>
+	<input type="button" value="猜" onclick="guess();"/>
+	= <span id="result"></span>
+</body>
+</html>

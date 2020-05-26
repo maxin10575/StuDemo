@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	
+	
+		<!-- 配置组件扫描 -->
+		<context:component-scan base-package="control"/>
+		<!-- 配置mvc注解扫描 -->
+		<mvc:annotation-driven />
+	<!-- 配置视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+	<!-- 配置拦截器 注：如果有多个拦截器满足拦截的要求， 则依据配置的先后顺序依次执行。
+    拦截的意思是要走拦截的类（SomeInterceptor），如果排除了，就直接访问，不用走拦截的类-->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截所有的请求，这个必须写在前面，也就是写在【不拦截】的上面 -->
+			<mvc:mapping path="/**" />
+			<!-- 但是排除下面这些，也就是不拦截请求 -->
+			<mvc:exclude-mapping path="/hello.do"/>
+			<bean class="interceptors.SomeInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+</beans>

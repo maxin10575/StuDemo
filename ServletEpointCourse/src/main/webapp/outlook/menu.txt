@@ -1,0 +1,5 @@
+[
+    { id: "user", text: "课程系统", url: "outlook/start.html"},
+    { id: "courselist", pid: "user", text: "课程管理", iconCls: "icon-reload", url: "courselist.html" },
+    { id: "subscribedlist", pid: "user", text: "选课系统", iconCls: "icon-reload", url: "subscribedlist.html" },
+]

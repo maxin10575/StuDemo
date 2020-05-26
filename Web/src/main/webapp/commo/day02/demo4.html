@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/*1.类选择器:根据class选择一组元素*/
+	.yes{
+		color:pink;
+	}
+	.no{
+		color:gray;
+	}
+	/*2.id选择器:根据id选择唯一的元素*/
+	#p4{
+		color:blue;
+	}
+	/*3.选择器组:写出一组选择器，选中其中每个选择器所对应目标的并集。*/
+	.yes,#p4{
+		font-weight:bold;
+	}
+	/*4.派生选择器*/
+	/*4.1选择父元素内满足条件的子孙*/
+	#p5 b {
+		color:red;
+	}
+	/*4.2选择父元素内满足条件的儿子*/
+	#p5>b{
+		font-size:50px;
+	}
+	/*5.伪类选择器:根据状态选择元素。*/
+	/*5.1选择未访问过的超链接*/
+	a:link{
+		color:green;
+	}
+	/*5.2选择访问过的超链接*/
+	a:visited{
+		color:red;
+	}
+	/*5.3选择激活态(正在点)的按钮*/
+	#b1:active{
+		background-color:gray;
+	}
+	/*5.4选择有焦点(光标闪烁)的文本框*/
+	#t1:focus{
+		background-color:green;
+	}
+	/*5.5选择鼠标悬停的图片*/
+	img:hover{
+		width: 250px;
+		height: 250px;
+	}
+</style>
+</head>
+<body>
+	<p class="yes">原来是你</p>
+	<p class="yes">原来是我</p>
+	<p class="no">并不是你</p>
+	<p id="p4">那就是我</p>
+	<p id="p5">安徽市<u><b>芜湖市</b>镜湖区</u><b>万达广场</b>2期-1613室</p>
+	<p>
+		<a href="http://www.tmooc.cn">达内</a>
+		<a href="http://www.sb.com">随便</a>
+	</p>
+	<p><input type="button" value="点我" id="b1"/></p>
+	<p><input type="text" id="t1"/></p>
+	<p><img src="../images/01.jpg"></p>
+</body>
+</html>

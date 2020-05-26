@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/*单个边设置边框*/
+	h1 {
+		border-left:10px solid blue;
+	}
+	/*四个边设置相同的边框*/
+	p {
+		border:1px dashed red;
+	}
+	/*默认块元素宽100%，而高度自适应。
+	  当给它设置固定的宽、高后，它的内容
+	  才有可能产生溢出的现象。*/
+	p {
+		width: 300px;
+		height: 50px;
+		/*溢出时可以这样处理*/
+		overflow: auto;
+	}  
+</style>
+</head>
+<body>
+	<h1>至尊宝</h1>
+	<p>至尊宝，乃孙行者转世。遇到命中注定的紫霞仙子，恢复真身，重获惊天地泣鬼神的法术。陪同唐三藏继续西天取经，获取大道，造福百姓。</p>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<beans>
+	<bean id="goo" class="com.stu.Goo" />
+	<bean id="date" class="java.util.Date" />
+</beans>

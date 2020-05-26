@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.4.3.js">
+</script>
+<script type="text/javascript">
+	$(function(){
+		//异步加载新闻页面
+		$('#d1').load('xw.html');
+		//异步加载军事页面
+		$('#d2').load('js.html');
+	});
+</script>
+</head>
+<body style="font-size:20px;">
+	首页<br/>
+	<h1>新闻</h1>
+	<div id="d1"></div>
+	<p style="height:200px;"></p>
+	<h1>军事</h1>
+	<div id="d2"></div>
+</body>
+</html>

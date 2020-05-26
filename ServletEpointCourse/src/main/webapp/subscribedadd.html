@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="scripts/boot.js"></script>
+<style type="text/css">
+#text {
+	text-align: right;
+}
+</style>
+</head>
+<body>
+    <form id="form2" method="post">
+        <fieldset style="border: solid 1px #aaa; padding: 2px; width: 600px;height:300px">
+            <legend style="text-align: center;">基本信息</legend>
+            <div style="padding: 5px;">
+            <table >
+                <tr>    
+                <!-- 通过下拉选展示可选课程编号 url,textField="" valueField=""  -->           
+                    <td>课程编号：</td>
+                    <td>
+                        <input class="mini-combobox" id="courseid" name="courseid" textField="coursename" valueField="id" url="courselist2">
+                    </td>
+                     <td>开始时间：</td>
+                    <td>
+                        <input  id="starttime" name="starttime" class="mini-datepicker" 
+                        	style="width:200px;" nullValue="null"
+        					format="yyyy-MM-dd H:mm:ss" timeFormat="H:mm:ss" showTime="true" showOkButton="true" showClearButton="false">
+                    </td>
+                </tr>
+                <tr>
+                   	 <td>结束时间：</td>
+                    <td>
+                        <input  id="endtime" name="endtime" class="mini-datepicker" 
+                        	style="width:200px;" nullValue="null"
+        					format="yyyy-MM-dd H:mm:ss" timeFormat="H:mm:ss" showTime="true" showOkButton="true" showClearButton="false" >
+                    </td>
+                    <td>其他说明：</td>
+                    <td>
+                        <input class="mini-textbox" id="note" name="note">
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <div style="text-align: center; padding: 10px;">
+            	<a class="mini-button" onclick="subscribedadd()" style="width: 60px; margin-right: 40px;">确定</a> 
+                <a class="mini-button" onclick="CloseWindow('ok')" style="width: 60px;">取消</a>
+           </div>
+        </fieldset>
+    </form>
+    <script type="text/javascript">
+					mini.parse();
+										
+					function subscribedadd() {						
+						var form = new mini.Form("#form2");	
+						var data = form.getData();
+						form.validate();
+						if (form.isValid() == false)
+							return;
+						var json = mini.encode(data);
+						$.ajax({
+							url : 'scbadd',
+							type : 'post',
+							data : {
+								data : json
+							},
+							success : function(text) {								
+								 mini.alert(text, "提醒", function(){
+									CloseWindow("OK")
+								}); 
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								mini.alert("添加失败");
+							}
+						});
+					
+					}					
+					   function CloseWindow(action) {            
+					       if (action == "close" && form.isChanged()) {
+					           if (confirm("数据被修改了，是否先保存？")) {
+					               return false;
+					           }
+					       }
+					       if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
+					       else window.close();            
+					   } 
+					   
+					
+				</script>
+</body>
+</html>

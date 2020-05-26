@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-1.4.3.js"></script>
+<script>
+    function init() {
+        var obj = new Object();
+        obj.name="lirui";
+        obj.id="110";
+        obj.addr="beijin";
+        var sFeatures = "dialogWidth:430px;dialogHeight:425px;status:no;directories:yes;scrollbars:no;Resizable=yes;help=no;";
+        var re111= window.showModalDialog("http://localhost:7080/ajax02/haha.html", obj, sFeatures);
+    }
+
+</script>
+</head>
+<body onLoad="init()" style="font-size: 30px;">
+	<!--<input type="button" value="确定" id="b1" />-->
+</body>
+</html>

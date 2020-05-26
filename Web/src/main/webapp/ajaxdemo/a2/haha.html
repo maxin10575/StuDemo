@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="js/jquery-1.4.3.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var obj = window.dialogArguments;
+            // var name = obj.name;
+            // var id = obj.id;
+            var name = "zhangsan";
+            var id = "120";
+            // var ACCOUNT = re.document.getElementById("ACCOUNT").value;
+            // var policyId = re.document.getElementById("policyId").value;
+            var url = "http://www.baidu.com?name=" + name + "&id=" + id;
+        document.getElementById("jinku").setAttribute("src",url);
+    });
+     function callBack(param) {
+         window.returnValue=param;
+         window.close();
+     }
+</script>
+<!--onLoad="init()"-->
+<body >
+<iframe id="jinku" name="jinku" src="" height="420px" width="430px" marginheight="0" marginwidth="0" frameborder="no" scrolling="no" >测试</iframe>
+</body>
+</html>

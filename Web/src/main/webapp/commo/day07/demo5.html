@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	span {
+		border: 1px solid red;
+		width: 200px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		font-size: 20px;
+	}
+</style>
+<script>
+	var ms = 0;
+	var n = 0;
+	var id;
+	function start() {
+			if(id){
+				return;
+			}
+			id = setInterval(function(){
+			ms += 10;
+			var minute = document.getElementById("minute");
+			minute.innerHTML = parseInt(ms/1000/60);
+			var second = document.getElementById("second");
+			second.innerHTML = parseInt(ms/1000%60);
+			var msecond = document.getElementById("ms");
+			msecond.innerHTML = parseInt(ms%1000/10);
+		},10);
+	}
+	function stop() {
+		if(id) {
+			clearInterval(id);
+			id = null;
+		}
+	}
+	function re() {
+		ms = 0;
+		clearInterval(id);
+		id = null;
+		var minute = document.getElementById("minute");
+		minute.innerHTML = parseInt(ms/1000/60);
+		var second = document.getElementById("second");
+		second.innerHTML = parseInt(ms/1000%60);
+		var msecond = document.getElementById("ms");
+		msecond.innerHTML = parseInt(ms%1000/10);
+	}
+	function record() {
+		n++;
+		var num = document.getElementById("num");
+		num.innerHTML += n+"次:"+parseInt(ms/1000/60)+":"+parseInt(ms/1000%60)+"."+parseInt(ms%1000/10)+"<br>";
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="启动" onclick="start();"/>
+	<input type="button" value="暂停" onclick="stop();"/>
+	<input type="button" value="复位" onclick="re();"/>
+	<input type="button" value="记次" onclick="record();"/>
+	<p>
+		<span id="minute">00</span>:
+		<span id="second">00</span>.
+		<span id="ms">00</span>
+	</p>
+	<p id="num"></p>
+</body>
+</html>

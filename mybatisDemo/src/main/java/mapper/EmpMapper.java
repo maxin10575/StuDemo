@@ -1,0 +1,26 @@
+package mapper;
+
+import entity.Emp;
+import entity.Emp2;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Mapper映射器
+ *
+ */
+public interface EmpMapper {
+	public void save(Emp emp);
+	public List<Emp> findAll();
+	public Emp findById(int id);
+	public void modify(Emp emp);
+	public void delete(int id);
+	public Map findById2(int id);
+	public Emp2 findById3(int id);
+	
+}
+
+
+
+

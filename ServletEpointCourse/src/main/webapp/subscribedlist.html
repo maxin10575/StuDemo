@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="scripts/boot.js"></script>
+</head>
+<body>
+	 <td style="white-space:nowrap;">
+	 <!--修改emptyText -->
+         <input id="key" class="mini-textbox" emptyText="请输入课程名或实际学习课时" style="width:150px;" onenter="onKeyEnter"/>   
+         <a class="mini-button" onclick="search()">查询</a>
+     </td>
+     <!-- 根据需要  onclik-->
+	<div class="mini-toolbar">
+		 <input class="mini-button" iconCls="icon-add" text="增加记录" onclick="add()" />
+		  <input class="mini-button" iconCls="icon-remove" text="删除选中"  onclick="del()" />
+	</div>
+	
+	<div id="datagrid1" class="mini-datagrid"  
+		style="width: 100%; height: 250px;" url="scblistaction"
+		idField="id" allowResize="true" pageSize="5" multiSelect="true">
+		<div property="columns">
+			<div type="checkcolumn"></div>
+			<div type="indexcolumn">序号</div>
+			<div field="courseid" width="120" headerAlign="center" allowSort="true" >课程名</div>
+			
+			<div field="starttime" width="120" headerAlign="center"
+				allowSort="true" dateFormat="yyyy-MM-dd hh:mm:ss" >开始时间</div>
+				
+			<div field="endtime" width="120" headerAlign="center"
+				allowSort="true" dateFormat="yyyy-MM-dd hh:mm:ss">结束时间</div>
+				
+			<div field="actualhours" align="right" width="100"  >实际学习课时</div>
+			
+			<div name="action" width="80" headerAlign="center" align="center"
+				renderer="onActionRenderer" cellStyle="padding:0;">操作</div>
+		</div>
+	</div>   
+</body>
+  <script type="text/javascript">
+  var json1 = [
+	              {"id":"1","text":"C#"},
+	              {"id":"2","text":"Java"},
+	              {"id":"3","text":"C++"}
+	             ];
+	 mini.parse();
+	  	var grid = mini.get("datagrid1");
+	  	grid.load();
+	
+	 function onsuitablerenderer(e){
+	  		for(var i =0;i<json1.length;i++){
+	  			var j = json1[i];
+	  			if(j.id==e.value){
+	  				return j.text;
+	  			}
+	  		}	
+	  	};
+      //增加  url
+        function add(){
+    		mini.open({
+    		    url: "subscribedadd.html",        //页面地址
+    		    title: "新增课程信息",      //标题
+    		    iconCls: "icon-add",    //标题图标
+    		    width: "650px",      //宽度
+    		    height: "300px",     //高度
+    		    allowResize: true,       //允许尺寸调节
+    		    allowDrag: true,         //允许拖拽位置
+    		    showCloseButton: true,   //显示关闭按钮
+    		    showModal: true,         //显示遮罩
+    		    onload: function () {       //弹出页面加载完成
+    		    },
+    		    ondestroy: function (action) {  //弹出页面关闭前
+    		    	grid.load();                   
+    		    }
+
+    		});
+    	}
+       
+	//在操作后面添加 编辑和删除按钮
+		 function onActionRenderer(e) {
+	            var grid = e.sender;
+	            var record = e.record;
+	            var uid = record._uid;
+	            var rowIndex = e.rowIndex;
+	            var s =  '<a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';	                                        
+	            return s;
+	        }
+		 
+		 function delRow(row_id) {			 	
+	            var row = grid.getRowByUID(row_id);
+	          	var rowid = row.salaryid;	                  
+	                if (confirm("确定删除此记录？")) {
+						//mini.alert(rowid);	                   
+	                    $.ajax({
+	                        url: "scbdelete?data=" + rowid,
+	                        success: function (text) {
+	                            grid.reload();
+	                        },
+	                        error: function () {
+	                        }
+	                    });
+	                }	            
+	        }
+		 
+		 
+		 function search() {
+	            var key = mini.get("key").getValue();
+	            grid.load({ key: key });
+	        }
+	        function onKeyEnter(e) {
+	            search();
+	        }
+	       
+      
+ 	</script>
+</html>

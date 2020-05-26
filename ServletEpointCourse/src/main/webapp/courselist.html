@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="scripts/boot.js"></script>
+</head>
+<body>
+	<td style="white-space: nowrap;">
+		<!-- 修改 emptyText --> <input id="key" class="mini-textbox"
+		emptyText="请输入课程名或类别" style="width: 150px;" onenter="onKeyEnter" /> <a
+		class="mini-button" onclick="search()">查询</a>
+	</td>
+	<div class="mini-toolbar">
+		<!-- 是否有删除选中 -->
+		<input class="mini-button" iconCls="icon-add" text="增加课程信息"
+			onclick="add()" /> <input class="mini-button" iconCls="icon-remove"
+			text="删除选中" onclick="del()" />
+	</div>
+	<!-- 修改url   -->
+	<div id="datagrid1" class="mini-datagrid"
+		style="width: 100%; height: 250px;" url="courselistaction"
+		idField="id" allowResize="true" pageSize="5" multiSelect="true">
+		<!-- 修改 field 下拉选用Id存入数据库的话  用renderer="onsuitablerenderer"-->
+		<div property="columns">
+			<div type="checkcolumn"></div>
+			<div type="indexcolumn">序号</div>
+			<div field="coursename" width="120" headerAlign="center"
+				allowSort="true" align="center">课程名称</div>
+
+			<div field="starttime" width="120" headerAlign="center"
+				align="center" allowSort="true" dateFormat="yyyy-MM-dd hh:mm:ss">开课时间</div>
+
+			<div field="suitable" width="100" renderer="onsuitablerenderer"
+				align="center" headerAlign="center">适合人群</div>
+
+			<div field="type" align="center" width="100" allowSort="true"
+				renderer="ontyperenderer" headerAlign="center">课程类别</div>
+
+			<div field="totalhours" width="100" allowSort="true"
+				headerAlign="center" align="center">总课时</div>
+
+			<div field="selectedcount" width="100" allowSort="true"
+				headerAlign="center" align="center">已选次数</div>
+
+			<div field="hotlevel" width="100" allowSort="true"
+				headerAlign="center" align="center">热门程度</div>
+
+			<div name="action" width="80" headerAlign="center" align="center"
+				renderer="onActionRenderer" cellStyle="padding:0;">操作</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var json1 = [ {
+		"id" : "1",
+		"text" : "初级"
+	}, {
+		"id" : "2",
+		"text" : "中级"
+	}, {
+		"id" : "3",
+		"text" : "高级"
+	} ]
+	var json2 = [ {
+		"id" : "1",
+		"text" : "C#"
+	}, {
+		"id" : "2",
+		"text" : "Java"
+	}, {
+		"id" : "3",
+		"text" : "C++"
+	} ]
+	mini.parse();
+	var grid = mini.get("datagrid1");
+	grid.load();
+
+	function onsuitablerenderer(e) {
+		for (var i = 0; i < json1.length; i++) {
+			var j = json1[i];
+			if (j.id == e.value) {
+				return j.text;
+			}
+		}
+	}
+	function ontyperenderer(e) {
+		for (var i = 0; i < json2.length; i++) {
+			var j = json2[i];
+			if (j.id == e.value) {
+				return j.text;
+			}
+		}
+	}
+
+	//增加 url
+	function add() {
+		mini.open({
+			url : "courseadd.html",
+			title : "新增课程信息",
+			iconCls : "icon-add",
+			width : "650px",
+			height : "300px",
+			allowResize : true,
+			allowDrag : true,
+			showCloseButton : true,
+			showModal : true,
+			onload : function() {
+			},
+			ondestroy : function(action) {
+				grid.load();
+			}
+
+		});
+	}
+	//删除选中的所有记录 url
+	function del() {
+		var ids = grid.getSelecteds();
+		if (ids.length > 0) {
+			mini.confirm("确定删除选中记录？", "", function(action) {
+				if (action == "ok") {
+					var id = [];
+					for (var i = 0; i < ids.length; i++) {
+						id.push(ids[i].id);
+					}
+					var i = id.join("','");
+					$.ajax({
+						url : "coursedelete",
+						type : 'post',
+						data : {
+							data : i
+						},
+						success : function(text) {
+							mini.alert(text, "提示信息", function() {
+								grid.load();
+							});
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							mini.alert(jqXHR.responseText);
+						}
+					});
+				}
+			});
+		}
+	}
+
+	//在操作后面添加 编辑和删除按钮
+	function onActionRenderer(e) {
+		var grid = e.sender;
+		var record = e.record;
+		var uid = record._uid;
+		var rowIndex = e.rowIndex;
+		var s = '<a class="Edit_Button" href="javascript:editRow(\''
+				+ uid
+				+ '\')">编辑</a>'
+				+ '&nbsp;&nbsp;<a class="Delete_Button" href="javascript:delRow(\''
+				+ uid + '\')">删除</a>';
+		return s;
+	}
+
+	//弹出编辑框 url
+	function editRow(id) {
+		var info = grid.getRowByUID(id);
+		var rowid = info.id;
+		mini.open({
+			url : "courseedit.html",
+			title : "编辑课程信息",
+			width : 600,
+			height : 360,
+			onload : function() {
+				var iframe = this.getIFrameEl();
+				var data = {
+					action : "EditRow",
+					id : rowid
+				};
+				iframe.contentWindow.SetData(data);
+			},
+			ondestroy : function(action) {
+				grid.reload();
+			}
+		});
+	}
+	//删除选中行 url
+	function delRow(id) {
+		var row = grid.getRowByUID(id);
+		var rowid = row.id;
+		if (confirm("确定删除此记录？")) {
+
+			$.ajax({
+				url : "coursedelete?data=" + rowid,
+				success : function(text) {
+					grid.reload();
+				},
+				error : function() {
+				}
+			});
+		}
+	}
+
+	//表单搜索 用的url同表单展示
+	function search() {
+		var key = mini.get("key").getValue();
+		grid.load({
+			key : key
+		});
+	}
+	function onKeyEnter(e) {
+		search();
+	}
+</script>
+</html>

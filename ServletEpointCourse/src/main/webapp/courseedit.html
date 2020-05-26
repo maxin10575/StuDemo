@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+table {
+	
+}
+
+td {
+	text-align: right;
+	width: 100px
+}
+</style>
+<script type="text/javascript" src="scripts/boot.js"></script>
+</head>
+<body>
+<!-- form  id -->
+	<form id="edit" method="post">
+		<fieldset style="border: solid 1px #aaa; padding: 3px; width: 600px;">
+			<legend>基本信息</legend>
+			<div style="padding: 5px;">
+				<table>
+					<tr>
+						<td>编号</td>
+						<td><input class="mini-textbox" name="id" id="id" enabled="false"  /></td>
+						<td>课程名称</td>
+						<td><input class="mini-textbox" name="coursename" id="coursename" /></td>
+					</tr>
+					<tr>
+						<td>开课时间</td>
+						<td><input class="mini-datepicker" name="starttime" id="starttime" /></td>
+						<td>适合人群</td>
+						<td><input class="mini-combobox" name="suitable"
+							id="suitable" url="suitable.json" valueField="id"
+							textField="text" /></td>
+					</tr>
+					<tr>
+						<td>课程类别</td>
+						<td><input class="mini-combobox" name="type" id="type"
+							url="coursetype.json" valueField="id" textField="text" /></td>
+						<td>总学时</td>
+						<td><input class="mini-textbox" name="totalhours" id=""totalhours"" /></td>
+					</tr>
+					<tr>
+                    <td>已选次数：</td>
+                    <td>
+                        <input class="mini-textbox" id="selectedcount" name="selectedcount" enabled="false">
+                    </td>
+                    <td>热门程度</td>
+                    <td>
+                        <input class="mini-textbox"  id="hotlevel" name="hotlevel" enabled="false">
+                    </td>
+                </tr>
+					<tr>
+						<td colspan="2"><input class="mini-button" text="修改" onclick="edit"></td>
+						<td colspan="2" style="text-align: left; padding-left: 10px">
+						<input class="mini-button" onclick="CloseWindow('ok')" text="取消">
+						</td>
+					</tr>
+				</table>
+			</div>
+
+		</fieldset>
+	</form>
+</body>
+	<script type="text/javascript">
+	mini.parse();
+	var form = new mini.Form("#edit");
+	
+	function edit() {
+	var data = form.getData(true);
+	var json = mini.encode(data);
+		$.ajax({
+			url : "courseedit?method=save",
+			type : 'post',
+			data : {
+				data : json
+			},
+			success : function(text) {
+				mini.alert(text,"提示信息",function(){
+					CloseWindow("ok");
+				});
+				
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				mini.alert(jqXHR.responseText);
+			}
+		});
+
+	}
+	
+	function SetData(data) {
+            //跨页面传递的数据对象，克隆后才可以安全使用
+            data = mini.clone(data);
+            $.ajax({
+                url: "courseedit?method=queryById",
+                data: {"data":data.id},
+           		type: "post",
+                success: function (text) {
+                    var o = mini.decode(text);
+                    form.setData(o);
+                    form.setChanged(false);
+                }
+            });
+    }
+	
+	function CloseWindow(action) {            
+        if (action == "close" && form.isChanged()) {
+            if (confirm("数据被修改了，是否先保存？")) {
+                return false;
+            }
+        }
+        if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
+        else window.close();            
+    }
+		  
+</script>
+</html>
