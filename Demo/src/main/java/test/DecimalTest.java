@@ -24,7 +24,7 @@ public class DecimalTest {
         System.out.println(a1);// 0.100000024
         System.out.println(b1);// 0.099999964
         System.out.println(a1 == b1);// false*/
- 
+
 
    int diagnoseNum = 0;
    int nointactNum = 0;
