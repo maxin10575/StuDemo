@@ -2,7 +2,7 @@ package com.mx.operations;
 import com.mx.model.User;
 import com.mx.utils.EsUtils;
 import com.mx.utils.JsonUtils;
-import es.utils.RandomName;
+import com.mx.utils.RandomName;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.delete.DeleteRequestBuilder;

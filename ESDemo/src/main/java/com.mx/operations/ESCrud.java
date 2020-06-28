@@ -62,10 +62,8 @@ public class ESCrud {
         //2。使用XContentBuilder存储
         XContentBuilder contentBuilder = XContentFactory.jsonBuilder()
                 .startObject()
-                .field("catid", "6")
-                .field("author", "mx")
-                .field("id", "6")
-                .field("title", "菜鸟")
+                .field("author", "m3")
+                .field("title", "菜鸟3")
                 .endObject();
         //1。第一种写法
 //        IndexResponse indexResponse = client.prepareIndex("java_demo_index", "java_demo_type","6")
@@ -73,13 +71,13 @@ public class ESCrud {
 //                .get();
         //2.第二种写法
         IndexResponse indexResponse = client.prepareIndex()
-                .setIndex("java_demo_index")
+                .setIndex("623index")
                 .setType("Object")
-                //.setId("2")   //设置id，id重复，便是update id那条值  //不设置，则自动设置id
+                 .setId("3")   //设置id，id重复，便是update id那条值  //不设置，则自动设置id
                 //.setSource("{\"prodId\":1,\"prodName\":\"ipad5\",\"prodDesc\":\"比你想的更强大\",\"catId\":1}")
                 .setSource(contentBuilder)
                 .get();
-
+        // CREATED-CREATED   ok-updated
         System.out.println(indexResponse.status());
         System.out.println("插入成功, isCreated=" + indexResponse.getResult().toString());
         EsUtils.closeClient();
@@ -114,10 +112,6 @@ public class ESCrud {
         for (SearchHit hit : hits) {
             System.out.println(hit.getSourceAsString());
         }
-
-
-
-
         EsUtils.closeClient();
     }
 

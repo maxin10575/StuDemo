@@ -1,4 +1,4 @@
-package es.utils;
+package com.mx.utils;
 
 import java.util.Random;
 

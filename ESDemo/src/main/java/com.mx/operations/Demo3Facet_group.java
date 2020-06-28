@@ -1,7 +1,6 @@
-/*
-package es.operation;
+package com.mx.operations;
 
-import es.utils.EsUtils;
+import com.mx.utils.EsUtils;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
@@ -19,7 +18,7 @@ import java.util.Map;
 public class Demo3Facet_group {
 	
 	//分组统计, 按married分组，统计出结婚和未婚的各多少
-	@Test
+/*	@Test
 	public void facet(){
 		Client client = EsUtils.getEsClient();
 		//请求
@@ -42,11 +41,8 @@ public class Demo3Facet_group {
 		for( TermsFacet.Entry entry : mFacet.getEntries() ){
 			System.out.println("key:"+entry.getTerm().toString()+" count:"+entry.getCount());
 		}
-	
-		
 		EsUtils.closeClient();
 	}
-	
+	*/
 	
 }
-*/

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sort.html</title>
+    <script type="text/javascript">
+        var flag=true;
+        function sortAge(){
+
+            var ageimg=document.getElementById("ageid");
+
+            if (flag) {
+                ageimg.innerHTML="年龄▲";//设置上面的图标
+
+            }else{
+
+                ageimg.innerHTML="年龄▼"
+            }
+            flag=!flag;
+        }
+
+    </script>
+
+</head>
+
+<body>
+<table id="tabid">
+    <tr><th>姓名</th>
+
+        <!--        <th><a href="javascript:void(0)" οnclick="sortAge()" onclick="sortAge() id="ageid">年龄</a></th>-->
+        <th><a href="javascript:sortAge()" id="ageid">年龄</a></th>
+        <th>出生地</th>
+    </tr>
+    <tr>
+        <td>张三</td>
+        <td>13</td>
+        <td>湖南长沙</td>
+    </tr>
+    <tr>
+        <td>李四</td>
+        <td>15</td>
+        <td>湖南常德</td>
+    </tr>
+    <tr>
+        <td>jack</td>
+        <td>45</td>
+        <td>湖南临澧</td>
+    </tr>
+    <tr>
+        <td>王华</td>
+        <td>23</td>
+        <td>浙江杭州</td>
+    </tr>
+    <tr>
+        <td>张进</td>
+        <td>30</td>
+        <td>安微合肥</td>
+    </tr>
+    <tr>
+        <td>周全</td>
+        <td>23</td>
+        <td>湖南益阳</td>
+    </tr>
+    <tr>
+        <td>杨哥</td>
+        <td>42</td>
+        <td>湖南常德</td>
+    </tr>
+
+</table>
+</body>
+</html>

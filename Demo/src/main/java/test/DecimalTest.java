@@ -6,11 +6,11 @@ import java.math.RoundingMode;
 
 /**
  * @program: StuDemo
- * @description:    我们在使用BigDecimal时，为了防止精度丢失，推荐使用它的 BigDecimal(String) 构造方法来创建对象。
- *                  禁止使用构造方法BigDecimal（double)
- *                  正例：
- *                        BigDecimal a = new BigDecimal("1.0");
- *                          BigDecimal a = BigDecimal.valueOf(1.0);
+ * @description: 我们在使用BigDecimal时，为了防止精度丢失，推荐使用它的 BigDecimal(String) 构造方法来创建对象。
+ * 禁止使用构造方法BigDecimal（double)
+ * 正例：
+ * BigDecimal a = new BigDecimal("1.0");
+ * BigDecimal a = BigDecimal.valueOf(1.0);
  * @author: maxin
  * @create: 2020-05-26 17:31
  * @Modified By:
@@ -25,12 +25,13 @@ public class DecimalTest {
         System.out.println(b1);// 0.099999964
         System.out.println(a1 == b1);// false*/
 
-
-   int diagnoseNum = 0;
+        String a = "1123456789abcd";
+        a = a.substring(0,11);
+/*   int diagnoseNum = 0;
    int nointactNum = 0;
         BigDecimal  intactNump = BigDecimal.valueOf(diagnoseNum - nointactNum).multiply(BigDecimal.valueOf(100))
-                .divide(BigDecimal.valueOf(diagnoseNum), 2, RoundingMode.HALF_UP);
-        System.out.println(intactNump);
+                .divide(BigDecimal.valueOf(diagnoseNum), 2, RoundingMode.HALF_UP);*/
+        System.out.println(a);
 /*        BigDecimal a = new BigDecimal("1.0");
         BigDecimal b = new BigDecimal("0.9");
         BigDecimal c = new BigDecimal("0.8");
