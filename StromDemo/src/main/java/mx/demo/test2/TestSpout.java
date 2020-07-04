@@ -57,7 +57,7 @@ public class TestSpout extends BaseRichSpout{
 			this.collector.emit(new Values(message[1]));
 			count++;
 			try {
-				Thread.sleep(3000);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

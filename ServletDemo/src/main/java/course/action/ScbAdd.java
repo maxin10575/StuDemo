@@ -1,8 +1,9 @@
 package course.action;
 
-import com.epoint.dao.ScbDao;
-import com.epoint.entity.SubscribedInfo;
-import com.epoint.utils.JsonUtil;
+
+import course.dao.ScbDao;
+import course.entity.SubscribedInfo;
+import course.utils.JsonUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

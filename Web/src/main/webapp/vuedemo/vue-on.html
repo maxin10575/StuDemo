@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 事件处理</title>
+    <script src = "vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <!-- `greet` 是在下面定义的方法名 -->
+    <button v-on:click="greet">Greet</button>
+</div>
+
+<div id="app1">
+    <p>除了直接绑定到一个方法，也可以用内联 JavaScript 语句</p>
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+</div>
+<script>
+    new Vue({
+        el: '#app1',
+        methods: {
+            say: function (message) {
+                alert(message)
+            }
+        }
+    })
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: 'Vue.js'
+        },
+        // 在 `methods` 对象中定义方法
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    })
+    // 也可以用 JavaScript 直接调用方法
+    // -> 'Hello Vue.js!'
+    app.greet()
+</script>
+</body>
+</html>

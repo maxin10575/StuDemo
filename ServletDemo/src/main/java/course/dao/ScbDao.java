@@ -1,9 +1,10 @@
 package course.dao;
 
-import com.epoint.entity.CourseInfo;
-import com.epoint.entity.SubscribedInfo;
-import com.epoint.utils.FlowNumber;
-import com.epoint.utils.TestDB;
+
+import course.entity.CourseInfo;
+import course.entity.SubscribedInfo;
+import course.utils.FlowNumber;
+import course.utils.TestDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -260,7 +261,7 @@ public class ScbDao {
 						ps = conn.prepareStatement(sql);
 						rs = ps.executeQuery();
 						while(rs.next()){
-							CourseInfo c = new CourseInfo();	
+							CourseInfo c = new CourseInfo();
 							c.setId(rs.getString("id"));
 							c.setCoursename(rs.getString("coursename"));	
 							list.add(c);

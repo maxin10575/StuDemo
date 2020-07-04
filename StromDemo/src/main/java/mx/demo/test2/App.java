@@ -27,13 +27,17 @@ public class App {
 		//设置1个Executeor(线程)，默认一个
 		builder.setSpout(test_spout, new TestSpout(),1);
 		//shuffleGrouping:表示是随机分组
-		//设置1个Executeor(线程)，和两个task
+		//设置Executeor(线程)，和两个task
 		builder.setBolt(test_bolt, new TestBolt(),1).setNumTasks(3).shuffleGrouping(test_spout);
 		//fieldsGrouping:表示是按字段分组
-		//设置1个Executeor(线程)，和1个task
+		//设置Executeor(线程)，和1个task
 		builder.setBolt(test2_bolt, new Test2Bolt(),1).setNumTasks(3).fieldsGrouping(test_bolt, new Fields("count"));
 		Config conf = new Config();
+		//设置启动4个Worker
 		conf.setNumWorkers(3);
+		// 设置一个ack线程
+		conf.setNumAckers(1);
+		conf.setDebug(true); // 设置打印所有发送的消息及系统消息
 		conf.put("test", "test");
 		try{
 		  //运行拓扑

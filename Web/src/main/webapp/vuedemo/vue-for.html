@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 循环语句</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <ol>
+        <li v-for="site in sites">
+            {{ site.name }}
+        </li>
+    </ol>
+
+    <ul>
+        <template v-for="site in sites">
+            <li>{{ site.name }}</li>
+            <li>--------------</li>
+        </template>
+    </ul>
+
+    <ul>
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="(value, key) in object">
+            {{ key }} : {{ value }}
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="(value, key, index) in object">
+            {{ index }}. {{ key }} : {{ value }}
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="n in 10">
+            {{ n }}
+        </li>
+    </ul>
+
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            sites: [
+                { name: 'Baidu' },
+                { name: 'Google' },
+                { name: 'Taobao' }
+            ],
+            object: {
+                name: 'Vue教程',
+                url: 'http://www.vue.com',
+                slogan: '你好！'
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 监听属性</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p style="font-size:25px;">计数器: {{ counter }}</p>
+    <button @click="counter++" style="font-size:25px;">+1</button>
+<!--    <button v-on:click="counter += 1">增加 1</button>-->
+</div>
+<p id="flag">计数器值的变化：</p>
+
+<div id="app1">
+    千米 : <input type="text" v-model="kilometers">
+    米 : <input type="text" v-model="meters">
+</div>
+<p id="info"></p>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            counter: 1
+            // flag:0
+        }
+    });
+    vm.$watch('counter', function (nval, oval) {
+        // alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        var flag1 = '计数器值的变化：' + oval + ' 变为 ' + nval + '!'
+        document.getElementById('flag').innerHTML = flag1;
+    });
+</script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app1',
+        data: {
+            kilometers: 0,
+            meters: 0
+        },
+        methods: {},
+        computed: {},
+        watch: {
+            kilometers: function (val) {
+                this.kilometers = val;
+                this.meters = this.kilometers * 1000
+            },
+            meters: function (val) {
+                this.kilometers = val / 1000;
+                this.meters = val;
+            }
+        }
+    });
+    // $watch 是一个实例方法  或者 vm.$watch('kilometers'
+    vm.$watch('meters', function (newValue, oldValue) {
+        // 这个回调将在 vm.kilometers 改变后调用
+        document.getElementById("info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;
+    })
+
+</script>
+</body>
+</html>

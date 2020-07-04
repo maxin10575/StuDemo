@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 计算属性</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message.split(',').reverse().join('-') }}
+</div>
+<div id="app1">
+    {{ message }}
+    <input v-model="message">
+    <!--    <button @click="reverseMessageClick()">反转字符串</button>-->
+    <p>使用方法后反转字符串:{{ reverseMessageClick() }}</p>
+    <p>computed计算后反转字符串: {{ reversedMessage }}</p>
+    <p>我们可以使用 methods 来替代 computed，效果上两个都是一样的，<br>
+        但是 computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。<br>
+        而使用 methods ，在重新渲染的时候，函数总会重新调用执行。</p>
+</div>
+<div id="app2">
+    <p>{{ site }}</p>
+</div>
+</body>
+<script>
+    new Vue({
+        el: '#app1',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessageClick: function () {
+                return this.message.split('').reverse().join('')
+            }
+        },
+        computed: {
+            // 计算属性的 getter
+            reversedMessage: function () {
+                // `this` 指向 vm 实例
+                return this.message.split('').reverse().join('')
+            }
+        }
+    })
+</script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Nihao,Word !'
+        }
+    })
+</script>
+<script>
+    var vm = new Vue({
+        el: '#app2',
+        data: {
+            name: 'Google',
+            url: 'http://www.google.com'
+        },
+        computed: {
+            site: {
+                // getter
+                get: function () {
+                    return this.name + ' ' + this.url
+                },
+                // setter
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.name = names[0]
+                    this.url = names[names.length - 1]
+                }
+            }
+        }
+    })
+    // 调用 setter， vm.name 和 vm.url 也会被对应更新
+    vm.site = 'Vue更新内容 http://www.vue.com';
+    document.write('name: ' + vm.name);
+    document.write('<br>');
+    document.write('url: ' + vm.url);
+</script>
+</html>

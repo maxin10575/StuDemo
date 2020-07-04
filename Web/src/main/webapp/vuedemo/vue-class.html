@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 样式绑定</title>
+    <script src="vue.js"></script>
+</head>
+<style>
+    .base {
+        width: 100px;
+        height: 100px;
+        background: yellowgreen;
+    }
+    .active {
+        width: 100px;
+        height: 100px;
+        background: green;
+    }
+    .text-danger {
+        background: red;
+    }
+</style>
+<body>
+<div id="app">
+    <!--    <label for="r1">修改颜色</label><input type="checkbox" v-model="isActive" id="r1">-->
+    <br>
+    <div v-bind:class="{ active: isActive ,'text-danger': hasError}">变色1</div>
+    <p>class="active"</p>
+    <br>
+    <div class="static" v-bind:class="{ active: isActive ,'text-danger': hasError}">变色2</div>
+    <p>class="static active text-danger"</p>
+</div>
+
+<div id="app1">
+    <div v-bind:class="classObject"></div>
+</div>
+
+<div id="app2">
+    <div v-bind:class="classObject"></div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app2',
+        data: {
+            isActive: true,
+            error: {
+                value: true,
+                type: 'fatal'
+            }
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    base: true,
+                    active: this.isActive && !this.error.value,
+                    'text-danger': this.error.value && this.error.type === 'fatal',
+                }
+            }
+        }
+    })
+</script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            hasError: true
+        }
+    })
+</script>
+<script>
+    new Vue({
+        el: '#app1',
+        data: {
+            classObject: {
+                active: true,
+                'text-danger': true
+            }
+        }
+    })
+</script>
+</body>
+</html>

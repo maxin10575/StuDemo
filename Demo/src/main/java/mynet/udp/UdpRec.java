@@ -1,8 +1,13 @@
 package mynet.udp;
 
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
+@RestController
 public class UdpRec {
 	public static void main(String[] args) {
 		try {
@@ -18,6 +23,7 @@ public class UdpRec {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
+
+

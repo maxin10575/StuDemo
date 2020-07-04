@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 模板</title>
+    <!--    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script src="vue.js"></script>
+</head>
+<style>
+    .class1 {
+        background: #444;
+        color: #eee;
+    }
+</style>
+<body>
+<div id="app3">
+    <h1>site : {{site}}</h1>
+    <h1>url : {{url}}</h1>
+    <h1>Alexa : {{alexa}}</h1>
+    <h1>{{details()}}</h1>
+</div>
+
+<div id="app2">
+    {{ message | filterA | filterB}}
+    <input v-model="message">
+    <pre><a v-bind:href="url">Vue地址</a></pre>
+    <pre><a :href="url">Vue地址</a></pre>
+</div>
+
+<script>
+    new Vue({
+        el: '#app2',
+        data: {
+            url: 'https://cn.vuejs.org/',
+            message: 'vue.js'
+        },
+        filters: {
+            filterA: function (value) {
+                if (!value) return ''
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            },
+            filterB: function (value) {
+                console.log(value)
+                if (!value) return ''
+                value = value.toString()
+                return value.concat("xixi")
+            }
+        }
+    })
+</script>
+
+
+<script type="text/javascript">
+    // 我们的数据对象
+    var data = {site: "教程", url: "www.vue.com", alexa: 10000}
+    var vm = new Vue({
+        el: '#app3',
+        data: data,
+        methods: {
+            details: function () {
+                return this.site + " - 示例！";
+            }
+        }
+    })
+    // 它们引用相同的对象！
+    document.write(vm.site === data.site) // true
+    document.write("<br>")
+    // 设置属性也会影响到原始数据
+    vm.site = "haha"
+    document.write(data.site + "<br>") // haha
+    data.alexa = 1234
+    document.write(data.site + "<br>")
+    document.write(vm.alexa) // 1234
+    document.write(data.site + "<br>")
+    document.write(vm.$data === data) // true
+    document.write("<br>")
+    document.write(vm.$el === document.getElementById('vue_det')) // true
+</script>
+</body>
+</html>
