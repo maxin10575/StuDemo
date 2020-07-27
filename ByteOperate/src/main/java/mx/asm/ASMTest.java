@@ -1,4 +1,4 @@
-package mx;
+package mx.asm;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
@@ -26,7 +26,7 @@ public class ASMTest {
 
     public static void redefineHelloWorldClass() {
         try {
-            InputStream inputStream = new FileInputStream("/Users/maxin/Documents/GitHub/StuDemo/AsmDemo/target/classes/mx/HelloWorld.class");
+            InputStream inputStream = new FileInputStream("/Users/maxin/Documents/GitHub/StuDemo/ByteOperate/target/classes/mx/asm/HelloWorld.class");
             // 1. 创建 ClassReader 读入 .class 文件到内存中
             ClassReader reader = new ClassReader(inputStream);
             // 2. 创建 ClassWriter 对象，将操作之后的字节码的字节数组回写
@@ -41,7 +41,7 @@ public class ASMTest {
             byte[] code = writer.toByteArray();
             try {
                 // 将二进制流写到本地磁盘上
-                FileOutputStream fos = new FileOutputStream("/Users/maxin/Documents/GitHub/StuDemo/AsmDemo/target/classes/mx/HelloWorld.class");
+                FileOutputStream fos = new FileOutputStream("/Users/maxin/Documents/GitHub/StuDemo/ByteOperate/target/classes/mx/asm/HelloWorld.class");
                 fos.write(code);
                 fos.close();
             } catch (IOException e) {

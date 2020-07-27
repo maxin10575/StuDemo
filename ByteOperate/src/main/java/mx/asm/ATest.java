@@ -1,4 +1,4 @@
-package mx;
+package mx.asm;
 
 import org.junit.jupiter.api.Test;
 

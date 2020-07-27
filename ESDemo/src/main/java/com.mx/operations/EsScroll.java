@@ -8,7 +8,7 @@ import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.search.SearchHit;
 import org.junit.Test;
 
-public class Demo5Scroll_游标 {
+public class EsScroll {
 	
 //	 * http://blog.csdn.net/xj626852095/article/details/50708213
 //	A scanning scroll 查询与 a standard scroll 查询有几点不同：

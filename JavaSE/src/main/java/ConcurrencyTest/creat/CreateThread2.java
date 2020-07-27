@@ -35,7 +35,7 @@ public class CreateThread2 {
         }
         public static void main(String[] args) {
             Thread previousThread=Thread.currentThread();
-            for(int i=0;i<20;i++){
+            for(int i=0;i<5;i++){
                 JoinDemo joinDemo=new JoinDemo(previousThread,i);
                 joinDemo.start();
                 previousThread=joinDemo;

@@ -1,4 +1,4 @@
-package mx;
+package mx.asm;
 
 public class HelloWorld {
     public static void sayHello() {

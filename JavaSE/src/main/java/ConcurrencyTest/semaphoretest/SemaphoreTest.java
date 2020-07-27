@@ -36,7 +36,7 @@ public class SemaphoreTest {
 
         final CountDownLatch countDownLatch = new CountDownLatch(clientTotal);
         /**
-         * 在 semaphore.acquire() 和 semaphore.release()之间的代码，同一时刻只允许制定个数的线程进入，
+         * 在 semaphore.acquire() 和 semaphore.release()之间的代码，同一时刻只允许指定个数的线程进入，
          * 因为semaphore的构造方法是1，则同一时刻只允许一个线程进入，其他线程只能等待。
          * */
 
@@ -55,11 +55,13 @@ public class SemaphoreTest {
                     e.printStackTrace();
                 }
                 countDownLatch.countDown();
+
             });
             count++;
         }
         System.out.println("count ======"+count);
         countDownLatch.await();
+        System.out.println("线程执行完毕，开始执行主线程");
         executorService.shutdown();
 
     }

@@ -12,12 +12,17 @@ import org.elasticsearch.xpack.client.PreBuiltXPackTransportClient;
 
 public class EsUtils {
 
-    public static final String INDEX_NAME = "java_demo_index";
-    public static final String TYPE_NAME = "java_demo_type";
+    public static final String INDEX_NAME = "esindex1";
+    public static final String TYPE_NAME = "usertype1";
 
     private static TransportClient client;
 
     public static TransportClient getEsClient() {
+/*        TransportClient client = new PreBuiltTransportClient(Settings.EMPTY)
+                .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300))
+                .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));*/
+
+        //Note that you have to set the cluster name if you use one different than "elasticsearch":
         Settings settings = Settings.builder().put("cluster.name", "mxcluster")//指定集群名称
 //                .put("client.transport.sniff", false)//探测集群中机器状态
 //                .put("xpack.security.user", "elastic:changeme")

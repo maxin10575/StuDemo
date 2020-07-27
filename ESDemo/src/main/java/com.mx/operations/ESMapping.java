@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-public class Demo4Mapping {
+public class ESMapping {
 
     private String indexName = "test_mapping_index";
     private String typeName = "test_mapping_type";
