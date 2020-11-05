@@ -1,4 +1,4 @@
-package algorithm;
+package com.mx;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package algorithm;
+package com.mx;
 
 import java.util.HashMap;
 import java.util.Map;

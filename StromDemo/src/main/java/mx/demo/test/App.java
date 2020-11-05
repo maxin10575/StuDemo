@@ -11,7 +11,7 @@ import org.apache.storm.topology.TopologyBuilder;
 * Description:
 * storm测试
 * Version:1.0.0
-* @author caohm
+* @author
 * @date 2018年3月6日
  */
 public class App {
@@ -20,7 +20,6 @@ public class App {
 	private static final String str2="test2";
 
 	public static void main(String[] args)  {
-		// TODO Auto-generated method stub
 		//定义一个拓扑
 		TopologyBuilder builder=new TopologyBuilder();
 		builder.setSpout(str1, new TestSpout());

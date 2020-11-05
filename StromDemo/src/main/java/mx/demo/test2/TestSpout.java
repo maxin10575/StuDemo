@@ -15,7 +15,7 @@ import java.util.Map;
 * Description:
 * 发送信息
 * Version:1.0.0
-* @author caohm
+* @author
 * @date 2018年3月6日
  */
 public class TestSpout extends BaseRichSpout{

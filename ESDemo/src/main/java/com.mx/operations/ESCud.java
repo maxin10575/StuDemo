@@ -96,9 +96,9 @@ public class ESCud {
 //        client = EsUtils.getEsClient();
 //        DeleteResponse deleteResponse = client.prepareDelete("index3", "user3", "10").get();
         DeleteResponse deleteResponse = client.prepareDelete()
-                .setIndex("esindex2")
-                .setType("usertype2")
-                .setId("AXN0Hq0x-41f2ecMs0wf")
+                .setIndex("user_index")
+                .setType("user")
+                .setId("AXN0gZku-41f2ecMs0wj")
                 .execute()
                 .actionGet();
         System.out.println(deleteResponse.status());

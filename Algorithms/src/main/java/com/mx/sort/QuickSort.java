@@ -1,4 +1,4 @@
-package algorithm;
+package com.mx.sort;
 
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class QuickSort {
         int n = nums.length;
         int low = 0;
         int high = n - 1;
-        QuickSort1(nums,low,high);
+        QuickSort(nums,low,high);
 
         for(int i=0;i<n;i++){
             System.out.print(nums[i]+",");
@@ -48,23 +48,4 @@ public class QuickSort {
             return low;
         }
 
-    int[] QuickSort1(int[] nums,int low,int high){
-        if(low<high) {
-            int pivotpos = partition(nums,low,high);
-            QuickSort1(nums,low,pivotpos-1);
-            QuickSort1(nums,pivotpos+1,high);
-        }
-        return nums;
-    }
-    int partition1(int[] nums,int low,int high){
-        int pivot = nums[low];
-        while(low<high) {
-            while(low<high && nums[high]>=pivot)--high;
-            nums[low] = nums[high];
-            while(low<high && nums[low]<=pivot) ++low;
-            nums[high] = nums[low];
-        }
-        nums[low] = pivot;
-        return low;
-    }
     }

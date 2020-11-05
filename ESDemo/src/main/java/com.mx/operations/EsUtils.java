@@ -17,7 +17,7 @@ public class EsUtils {
     private static TransportClient client;
 
     public static TransportClient getEsClient() {
-        Settings settings = Settings.builder().put("cluster.name", "mxcluster")//指定集群名称
+        Settings settings = Settings.builder().put("cluster.name", "mx")//指定集群名称
                 .build();
         client = new PreBuiltXPackTransportClient(settings);
         try {
