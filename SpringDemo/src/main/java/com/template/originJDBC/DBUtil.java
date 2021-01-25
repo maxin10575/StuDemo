@@ -1,7 +1,5 @@
 package com.template.originJDBC;
 
-
-
 import org.apache.commons.dbcp.BasicDataSource;
 
 import java.io.FileInputStream;

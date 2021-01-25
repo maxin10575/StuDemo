@@ -1,9 +1,10 @@
 package course.utils;
 
-import com.epoint.dao.CourseDao;
-import com.epoint.dao.ScbDao;
-import com.epoint.entity.CourseInfo;
-import com.epoint.entity.SubscribedInfo;
+
+import course.dao.CourseDao;
+import course.dao.ScbDao;
+import course.entity.CourseInfo;
+import course.entity.SubscribedInfo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

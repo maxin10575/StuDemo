@@ -1,9 +1,9 @@
 package springmybatis.dao;
 
-import annotations.MyRepository;
 import entity.Emp;
 import entity.Emp2;
 import org.springframework.stereotype.Repository;
+import springmybatis.annotations.MyRepository;
 
 import java.util.List;
 import java.util.Map;

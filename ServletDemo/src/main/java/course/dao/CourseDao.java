@@ -1,9 +1,9 @@
 package course.dao;
 
 
-import com.epoint.entity.CourseInfo;
-import com.epoint.utils.FlowNumber;
-import com.epoint.utils.TestDB;
+import course.entity.CourseInfo;
+import course.utils.FlowNumber;
+import course.utils.TestDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +22,7 @@ public class CourseDao {
 		   String sql="insert into courseInfo(coursename,starttime,suitable,type,totalhours,hotlevel,selectedcount,id,note)"
 		   		+ " values(?,?,?,?,?,?,?,?,?)";
 		   try{
-		    conn=TestDB.getConn();
+		    conn= TestDB.getConn();
 		    PreparedStatement ps=conn.prepareStatement(sql);
 		    ps.setString(1, c.getCoursename());
 			ps.setString(2, c.getStarttime());

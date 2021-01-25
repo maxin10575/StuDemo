@@ -1,6 +1,6 @@
 package jspdemo.dao;
 
-import entity.Emp;
+
 import jspdemo.entity.Emp;
 
 import java.io.Serializable;
@@ -18,28 +18,28 @@ public class EmpDao implements Serializable {
 		List<Emp> list = new ArrayList<Emp>();
 		Emp e1 = new Emp();
 		e1.setEmpno(1);
-		e1.setEname("ÌÆÉ®");
-		e1.setJob("Áìµ¼");
+		e1.setEname("ï¿½ï¿½É®");
+		e1.setJob("ï¿½ìµ¼");
 		e1.setSal(9000.0);
 		list.add(e1);
 		
 		Emp e2 = new Emp();
 		e2.setEmpno(2);
-		e2.setEname("ËïÎò¿Õ");
-		e2.setJob("Í½µÜ");
+		e2.setEname("ï¿½ï¿½ï¿½ï¿½ï¿½");
+		e2.setJob("Í½ï¿½ï¿½");
 		e2.setSal(5000.0);
 		list.add(e2);
 		
 		Emp e3 = new Emp();
 		e3.setEmpno(3);
-		e3.setEname("Öí°Ë½ä");
-		e3.setJob("Í½µÜ");
+		e3.setEname("ï¿½ï¿½Ë½ï¿½");
+		e3.setJob("Í½ï¿½ï¿½");
 		e3.setSal(6000.0);
 		list.add(e3);
 		return list;
 	}
 	
 	public void save(Emp e){
-		System.out.println("Ôö¼ÓÔ±¹¤"+e);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½"+e);
 	}
 }

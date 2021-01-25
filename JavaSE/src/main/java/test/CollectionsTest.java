@@ -1,8 +1,10 @@
 package test;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @program: StuDemo
@@ -14,6 +16,51 @@ import java.util.Comparator;
  **/
 public class CollectionsTest {
     public static void main(String[] args) {
+        List<PersonData> list = new ArrayList<PersonData>();
+
+        PersonData p0 = new PersonData();
+        p0.setId("0");
+        p0.setName("小明");
+        p0.setType("管理员");
+        p0.setAge(20);
+        list.add(p0);
+
+        PersonData p1 = new PersonData();
+        p1.setId("1");
+        p1.setName("张三");
+        p1.setType("管理员");
+        p1.setAge(40);
+        list.add(p1);
+
+        PersonData p2 = new PersonData();
+        p2.setId("2");
+        p2.setName("李四");
+        p2.setType("管理员");
+        p2.setAge(30);
+        list.add(p2);
+
+        PersonData p3 = new PersonData();
+        p3.setId("1");
+        p3.setName("王五");
+        p3.setType("用户");
+        p3.setAge(40);
+        list.add(p3);
+
+//按照多个属性分组，key为多个属性合
+//        Map<String,List<E>> result=list.stream.collect(Collectors.groupingBy(e -> e.getName() + e.getAge()));
+//按照多个属性分组，key为单个属性合
+//        Map<String,Map<String,List<Student>>> result=
+//                list.stream.collect(Collectors.groupingBy(Student::getName, Collectors.groupingBy(Student::getAge)));
+
+        Object collect1 =
+//        Map<String, List<PersonData>> collect1 =
+                list.stream().collect(Collectors.groupingBy(PersonData::getId,
+                        Collectors.groupingBy(PersonData::getAge)));
+
+        Iterator<Map.Entry<String, List<PersonData>>> entries = ((Map<String, List<PersonData>>) collect1).entrySet().iterator();
+
+        System.out.println(collect1);
+
 
 
 /*    ArrayList<Integer> arrayList = new ArrayList<Integer>();
@@ -101,14 +148,65 @@ public class CollectionsTest {
         System.out.println("sort:"+arrayList);
         System.out.println(Collections.binarySearch(arrayList, 7));*/
 
-        Integer x = 3;
+   /*     Integer x = 3;
         Integer y = 3;
         System.out.println(x == y);// true
         Integer a = new Integer(129);
         Integer b = new Integer(129);
         System.out.println(a == b);//false
-        System.out.println(a.equals(b));//true
+        System.out.println(a.equals(b));//true*/
 
+
+    }
+}
+
+class PersonData {
+    private String id;
+    private String type;
+    private String name;
+    private int age;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public PersonData(String id, String type, String name, int age) {
+        super();
+        this.id = id;
+        this.type = type;
+        this.name = name;
+        this.age = age;
+    }
+
+    public PersonData() {
 
     }
 }

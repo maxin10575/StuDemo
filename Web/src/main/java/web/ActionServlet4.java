@@ -1,7 +1,7 @@
 package web;
 
-import bean.Stock;
-import net.sf.json.JSONArray;
+
+import com.alibaba.fastjson.JSON;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,20 +28,16 @@ public class ActionServlet4 extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		if ("/quoto".equals(action)) {
-			// ģ�����ɼ�ֻ��Ʊ����Ϣ.
 			List<Stock> stocks = new ArrayList<Stock>();
 			Random r = new Random();
 			for (int i = 0; i < 8; i++) {
 				Stock s = new Stock();
 				s.setCode("000410" + r.nextInt(10));
-				s.setName("������" + r.nextInt(10));
+				s.setName("1111" + r.nextInt(10));
 				s.setPrice(r.nextInt(1000));
 				stocks.add(s);
 			}
-			// fromObject����Ҳ����ʹ��������Ϊ����.
-			JSONArray jsonArr = JSONArray.fromObject(stocks);
-			String jsonStr = jsonArr.toString();
-			System.out.println(jsonStr);
+			String jsonStr= JSON.toJSONString(stocks);//关键
 			out.println(jsonStr);
 		}
 	}

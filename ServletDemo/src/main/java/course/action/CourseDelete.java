@@ -1,6 +1,7 @@
 package course.action;
 
-import com.epoint.dao.CourseDao;
+
+import course.dao.CourseDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

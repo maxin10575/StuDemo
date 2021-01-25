@@ -1,9 +1,10 @@
 package course.action;
 
-import com.epoint.dao.CourseDao;
-import com.epoint.entity.CourseInfo;
-import com.epoint.utils.JsonUtil;
-import com.epoint.utils.Transform;
+
+import course.dao.CourseDao;
+import course.entity.CourseInfo;
+import course.utils.JsonUtil;
+import course.utils.Transform;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

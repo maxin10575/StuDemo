@@ -1,4 +1,4 @@
-package com.template.c3p0.jdbc;
+package com.template.jdbc;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -55,7 +55,7 @@ public class JdbcTemplateDemo1 {
 				//得到返回结果值
 				String adminid = rs.getString("adminid");
 				String admincode = rs.getString("admincode");
-				Admin admin = new Admin();
+				com.template.c3p0.jdbc.Admin admin = new com.template.c3p0.jdbc.Admin();
 				admin.setAdminCode(admincode);
 				admin.setAdminId(adminid);
 				System.out.println(admin);
@@ -96,13 +96,13 @@ public class JdbcTemplateDemo1 {
 //				JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		String sql = "select *  from admin_info";
 		
-		List<Admin> list = jdbcTemplate.query(sql,new RowMapper<Admin>(){
-			public Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
+		List<com.template.c3p0.jdbc.Admin> list = jdbcTemplate.query(sql,new RowMapper<com.template.c3p0.jdbc.Admin>(){
+			public com.template.c3p0.jdbc.Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
 				//1 从结果集里面吧数据得到
 				String adminid = rs.getString("adminid");
 				String admincode = rs.getString("admincode");
 				//2把得到数据封装到对象里面
-				Admin admin = new Admin();
+				com.template.c3p0.jdbc.Admin admin = new com.template.c3p0.jdbc.Admin();
 				admin.setAdminCode(admincode);
 				admin.setAdminId(adminid);
 				return admin;
@@ -126,13 +126,13 @@ public class JdbcTemplateDemo1 {
 		//第二个参数是接口ROwMapper,需要自己写类实现接口，值做数据封装
 		//Admin admin = jdbcTemplate.queryForObject(sql,new MyRowMapper(),'3');
 		//内部类方式
-		Admin admin = jdbcTemplate.queryForObject(sql,new RowMapper<Admin>(){
-			public Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
+		com.template.c3p0.jdbc.Admin admin = jdbcTemplate.queryForObject(sql,new RowMapper<com.template.c3p0.jdbc.Admin>(){
+			public com.template.c3p0.jdbc.Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
 				//1 从结果集里面吧数据得到
 				String adminid = rs.getString("adminid");
 				String admincode = rs.getString("admincode");
 				//2把得到数据封装到对象里面
-				Admin admin = new Admin();
+				com.template.c3p0.jdbc.Admin admin = new com.template.c3p0.jdbc.Admin();
 				admin.setAdminCode(admincode);
 				admin.setAdminId(adminid);
 				return admin;
@@ -143,13 +143,13 @@ public class JdbcTemplateDemo1 {
 }
 
 //写@Override报错 无法运行，只有写内部类
-class MyRowMapper implements RowMapper<Admin> {
-    public Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
+class MyRowMapper implements RowMapper<com.template.c3p0.jdbc.Admin> {
+    public com.template.c3p0.jdbc.Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
         //1 从结果集里面吧数据得到
         String adminid = rs.getString("adminid");
         String admincode = rs.getString("admincode");
         //2把得到数据封装到对象里面
-        Admin admin = new Admin();
+        com.template.c3p0.jdbc.Admin admin = new com.template.c3p0.jdbc.Admin();
         admin.setAdminCode(admincode);
         admin.setAdminId(adminid);
         System.out.println("admin111==="+admin);

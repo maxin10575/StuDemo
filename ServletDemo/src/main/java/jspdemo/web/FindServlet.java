@@ -1,7 +1,8 @@
 package jspdemo.web;
 
-import entity.Course;
-import entity.Student;
+
+import jspdemo.entity.Course;
+import jspdemo.entity.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,19 +20,19 @@ public class FindServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-			//Ä£Äâ²éÑ¯Ñ§Éú
+			//Ä£ï¿½ï¿½ï¿½Ñ¯Ñ§ï¿½ï¿½
 			Student stu =new Student();
 			stu.setName("zhangsan");
 			stu.setAge(23);
 			stu.setSex("M");
-			stu.setInterests(new String[]{"ÀºÇò","×ãÇò","ÅÅÇò"});
+			stu.setInterests(new String[]{"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½"});
 			Course c = new Course();
 			c.setId(1);
 			c.setName("java");
 			c.setDays(80);
 			stu.setCourse(c);
 			System.out.println("111");
-			//×ª·¢
+			//×ªï¿½ï¿½
 			req.setAttribute("stu",stu);
 			req.getRequestDispatcher("find.jsp").forward(req, res);
 	}

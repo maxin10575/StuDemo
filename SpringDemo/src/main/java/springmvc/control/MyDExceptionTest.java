@@ -1,6 +1,6 @@
 package springmvc.control;
 
-import exceptionhandler.PasswordException;
+import springmvc.exceptionhandler.PasswordException;
 
 /**
  * @program: jsp

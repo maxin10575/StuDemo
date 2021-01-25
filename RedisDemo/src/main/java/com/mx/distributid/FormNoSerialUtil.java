@@ -41,7 +41,7 @@ public class FormNoSerialUtil {
      *
      * @param serialPrefix      单号前缀
      * @param incrementalSerial 当天自增流水号
-     * @author mengqiang
+     * @author mx
      * @date 2019/1/1
      */
     public static String completionSerial(String serialPrefix, Long incrementalSerial,
@@ -65,7 +65,7 @@ public class FormNoSerialUtil {
      *
      * @param serialWithPrefix 当前单号
      * @param formNoTypeEnum   单号生成枚举
-     * @author mengqiang
+     * @author mx
      * @date 2019/1/1
      */
     public static String completionRandom(String serialWithPrefix, FormNoTypeEnum formNoTypeEnum) {

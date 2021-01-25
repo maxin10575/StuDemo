@@ -1,8 +1,5 @@
 package com.mx.sort;
 
-import java.util.Arrays;
-import static com.mx.sort.utils.exch;
-import static com.mx.sort.utils.greater;
 
 /**
  * @program: StuDemo
@@ -16,7 +13,7 @@ import static com.mx.sort.utils.greater;
  * @Version: 1.0
  **/
 public class BubbleSort {
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         Integer[]  a = {9,4,5,2,3,6,8};
         sort(a);
         System.out.println(Arrays.toString(a));
@@ -31,5 +28,5 @@ public class BubbleSort {
             }
 
         }
-    }
+    }*/
 }

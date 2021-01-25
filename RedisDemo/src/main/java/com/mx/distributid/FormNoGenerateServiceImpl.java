@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class FormNoGenerateServiceImpl implements FormNoGenerateService{
     /**
      * redis 服务
-     * demo 项目没有加redis相关，若有需要请参考，redis的博客
+     * demo 项目没有加redis相关
      */
 
     Jedis redisCache = JedisUtil.getJedis();
