@@ -10,99 +10,91 @@ import org.apache.storm.tuple.Values;
 import java.util.Map;
 
 /**
- *
-* Title: TestSpout
-* Description:
-* 发送信息
-* Version:1.0.0
-* @author
-* @date 2018年3月6日
+ * Title: TestSpout
+ * Description:
+ * 发送信息
+ * Version:1.0.0
+ * @date 2018年3月6日
  */
-public class TestSpout extends BaseRichSpout{
+public class TestSpout extends BaseRichSpout {
 
-	private static final long serialVersionUID = 225243592780939490L;
+    private static final long serialVersionUID = 225243592780939490L;
 
-	private SpoutOutputCollector collector;
-	private static final String field="word";
-	private int count=1;
-	private String[] message =  {
-            "My nickname is xuwujing",
-            "My blog address is http://www.panchengming.com/",
-            "My interest is playing games"
-    };
+    private SpoutOutputCollector collector;
+    private int count1 = 1;
 
-	/**
+
+    /**
      * open()方法中是在ISpout接口中定义，在Spout组件初始化时被调用。
      * 有三个参数:
      * 1.Storm配置的Map;
      * 2.topology中组件的信息;
      * 3.发射tuple的方法;
      */
-	@SuppressWarnings("rawtypes")
-	@Override
-	public void open(Map map, TopologyContext arg1, SpoutOutputCollector collector) {
-		System.out.println("TestSpout-open:"+map.get("test"));
-		this.collector = collector;
-	}
+    @SuppressWarnings("rawtypes")
+    @Override
+    public void open(Map map, TopologyContext arg1, SpoutOutputCollector collector) {
+        System.out.println("TestSpout-open初始化:" + map.get("test"));
+        this.collector = collector;
+    }
 
-	/**
+    /**
      * nextTuple()方法是Spout实现的核心。
      * 也就是主要执行方法，用于输出信息,通过collector.emit方法发射。
      */
-	@Override
-	public void nextTuple() {
-
-		while(true){
-			System.out.println("TestSpout-第"+count +"次开始发送数据...");
-			this.collector.emit(new Values(message[1]));
-			count++;
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-
+    @Override
+    public void nextTuple() {
+        String message = "a,b,c,d";
+        while (true) {
+            this.collector.emit(new Values(message));
+            System.out.println("TestSpout发送第" + count1 + "数据：" + message);
+            count1++;
+            try {
+                Thread.sleep(1000 * 60 * 3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 /*		if(count<=message.length){
 			System.out.println("TestSpout-第"+count +"次开始发送数据...");
 			this.collector.emit(new Values(message[count-1]));
 		}
 		count++;*/
-	}
+    }
 
 
-	/**
+    /**
      * declareOutputFields是在IComponent接口中定义，用于声明数据格式。
      * 即输出的一个Tuple中，包含几个字段。
      */
-	@Override
-	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		System.out.println("TestSpout-定义格式...");
-		declarer.declare(new Fields(field));
-	}
+    @Override
+    public void declareOutputFields(OutputFieldsDeclarer declarer) {
+        System.out.println("TestSpout-定义格式...");
+        declarer.declare(new Fields("origin"));
+    }
 
-	/**
-	 * 当一个Tuple处理成功时，会调用这个方法
-	 */
-	@Override
-	public void ack(Object obj) {
-		System.out.println("ack:"+obj);
-	}
+    /**
+     * 当一个Tuple处理成功时，会调用这个方法
+     */
+    @Override
+    public void ack(Object obj) {
+        System.out.println("TestSpout-的ack:" + obj);
+    }
 
-	/**
-	 * 当Topology停止时，会调用这个方法
-	 */
-	@Override
-	public void close() {
-		System.out.println("TestSpout-关闭...");
-	}
+    /**
+     * 当Topology停止时，会调用这个方法
+     */
+    @Override
+    public void close() {
+        System.out.println("TestSpout-关闭...");
+    }
 
-	/**
-	 * 当一个Tuple处理失败时，会调用这个方法
-	 */
-	@Override
-	public void fail(Object obj) {
-		System.out.println("失败:"+obj);
-	}
+    /**
+     * 当一个Tuple处理失败时，会调用这个方法
+     */
+    @Override
+    public void fail(Object obj) {
+        System.out.println("TestSpout-失败:" + obj);
+    }
 
 }

@@ -6,7 +6,7 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseRichBolt;
 import org.apache.storm.tuple.Tuple;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,10 +15,9 @@ import java.util.Map;
 * Description:
 * 统计单词出现的次数
 * Version:1.0.0
-* @author caohm
 * @date 2018年3月16日
  */
-public class Test2Bolt extends BaseRichBolt{
+public class TestBolt2 extends BaseRichBolt{
 
 	/**
 	 *
@@ -29,9 +28,11 @@ public class Test2Bolt extends BaseRichBolt{
 	/**
 	 * 保存单词和对应的计数
 	 */
-	private HashMap<String, Integer> counts = null;
+//	private HashMap<String, Integer> counts = null;
+	private List<String> wordList = null;
 
-	private long count=1;
+	private static final String world_stream_id = "WORLD_STREAM_ID";
+	private static final String nihao_stream_id = "NIHAO_STREAM_ID";
 	/**
     * 在Bolt启动前执行，提供Bolt启动环境配置的入口
     * 一般对于不可序列化的对象进行实例化。
@@ -40,8 +41,9 @@ public class Test2Bolt extends BaseRichBolt{
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void prepare(Map map, TopologyContext arg1, OutputCollector collector) {
-		System.out.println("TestBolt2-prepare:"+map.get("test"));
-		this.counts=new HashMap<String, Integer>();
+		System.out.println("TestBolt2-prepare初始化:"+map.get("test"));
+//		this.counts=new HashMap<>();
+//		this.wordList = new ArrayList<>();
 	}
 
 	/**
@@ -51,18 +53,19 @@ public class Test2Bolt extends BaseRichBolt{
 	 */
 	@Override
 	public void execute(Tuple tuple) {
-		String msg=tuple.getStringByField("count");
-		System.out.println("TestBolt2-第"+count+"次统计单词出现的次数");
-		/**
-		 * 如果不包含该单词，说明在该map是第一次出现
-		 * 否则进行加1
-		 */
-		if (!counts.containsKey(msg)) {
-			counts.put(msg, 1);
-		} else {
-			counts.put(msg, counts.get(msg)+1);
+		String msg0 = tuple.getString(0);
+		String msg1 = tuple.getStringByField("haha");
+		String msg2 = tuple.getStringByField("world");
+		System.out.println("TestBolt2接收到数据为00000："+msg0);
+		System.out.println("TestBolt2接收到数据为11111："+msg1);
+		System.out.println("TestBolt2接收到数据22222为："+msg2);
+		if (tuple.getSourceStreamId().equals(world_stream_id)) {
+			System.out.println("TestBolt22222aaaa--tuple.getSourceStreamId()===" + tuple.getSourceStreamId());
 		}
-		count++;
+		if (tuple.getSourceStreamId().equals(nihao_stream_id)) {
+			System.out.println("TestBolt22222bbbbb--tuple.getSourceStreamId()===" + tuple.getSourceStreamId());
+		}
+//		System.out.println("TestBolt2存储的单词有："+wordList.toString());
 	}
 
 
@@ -72,11 +75,10 @@ public class Test2Bolt extends BaseRichBolt{
 	 */
 	@Override
 	public void cleanup() {
-		System.out.println("TestBolt2 ===========开始显示单词数量============");
-		for (Map.Entry<String, Integer> entry : counts.entrySet()) {
+//		System.out.println("TestBolt2===========开始显示单词============"+wordList.toString());
+	/*	for (Map.Entry<String, Integer> entry : counts.entrySet()) {
 			System.out.println(entry.getKey() + ": " + entry.getValue());
-		}
-		System.out.println("TestBolt2 ===========结束============");
+		}*/
 	    System.out.println("TestBolt2的资源释放");
 	}
 

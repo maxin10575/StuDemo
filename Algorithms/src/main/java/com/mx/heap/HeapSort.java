@@ -27,8 +27,6 @@ public class HeapSort {
 
     }
 
-
-
     //对source数组中的数据从小到大排序
     public static  void sort(Comparable[] source) {
         //构建堆

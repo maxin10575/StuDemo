@@ -7,7 +7,7 @@
 	<!-- 对对象创建 -->
 	<!-- ioc -->
 	<!-- 使用类的无参构造创建 -->
-	<bean id="user" class="com.epoint.ioc.User"></bean>
+	<bean id="user" class="com.epo.iocdi.ioc.User"></bean>
 	<!-- 使用静态工厂创建对象 -->
 	<bean id="bean2" class="com.epoint.ioc.Bean2factory" factory-method="getBean2"></bean>
 	<!-- 使用实例工厂创建对象 -->

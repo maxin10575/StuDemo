@@ -1,16 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>1.0.0</groupId>
-    <artifactId>StromDemo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
+    <parent>
+        <groupId>com.mx</groupId>
+        <artifactId>stuDemo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>StromDemo</artifactId>
     <name>StromDemo</name>
-    <url>http://maven.apache.org</url>
+
     <properties>
         <storm.version>1.2.3</storm.version>
     </properties>
+
     <dependencies>
         <!--storm相关jar  -->
         <dependency>
@@ -57,11 +61,11 @@
                 <artifactId> maven-assembly-plugin</artifactId>
                 <configuration>
                     <descriptorRefs>
-                        <descriptorRef> jar-with-dependencies</descriptorRef >
+                        <descriptorRef>jar-with-dependencies</descriptorRef >
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass> mx.demo.test2.App</mainClass >
+                            <mainClass>mx.demo.test2.App</mainClass >
                         </manifest>
                     </archive>
                 </configuration>
@@ -94,21 +98,6 @@
         </plugins>
     </build>
 
-    <repositories>
-        <!--阿里云镜像站，一般的依赖从这里下载-->
-        <repository>
-            <id>aliyun</id>
-            <name>aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
 
-        <!--springboot的依赖从这里下载-->
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-
-    </repositories>
 
 </project>

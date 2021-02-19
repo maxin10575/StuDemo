@@ -1,3 +1,4 @@
+/*
 package mx.demo.test;
 
 import org.apache.storm.Config;
@@ -5,6 +6,7 @@ import org.apache.storm.LocalCluster;
 import org.apache.storm.StormSubmitter;
 import org.apache.storm.topology.TopologyBuilder;
 
+*/
 /**
  *
 * Title: App
@@ -13,7 +15,8 @@ import org.apache.storm.topology.TopologyBuilder;
 * Version:1.0.0
 * @author
 * @date 2018年3月6日
- */
+ *//*
+
 public class App {
 
 	private static final String str1="test1";
@@ -47,3 +50,4 @@ public class App {
 	}
 
 }
+*/
