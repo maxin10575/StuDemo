@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * TODO:多叉树,并以json格式输出多叉树
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/10/14:00
  */
 public class MultiTree {

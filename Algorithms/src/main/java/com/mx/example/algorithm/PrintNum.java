@@ -3,7 +3,7 @@ package com.mx.example.algorithm;
 /**
  * TODO:
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/2/25/15:00
  */
 public class PrintNum

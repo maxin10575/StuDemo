@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * TODO:数组全排列
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2018/10/19/11:07
  */
 public class ArrayPermutation {

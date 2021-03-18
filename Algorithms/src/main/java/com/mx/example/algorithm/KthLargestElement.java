@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 /**
  * TODO:流式数据获取第K大元素
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/11/18:14
  */
 public class KthLargestElement {

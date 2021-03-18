@@ -3,7 +3,7 @@ package com.mx.example.algorithm;//package com.example.algorithm;
 ///**
 // * TODO:
 // *
-// * @author dangzw
+// * @author mx
 // * @version 1.0, 2018/11/9/18:13
 // */
 //public class RedisHash {

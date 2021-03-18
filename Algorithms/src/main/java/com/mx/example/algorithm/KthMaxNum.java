@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 /**
  * TODO:
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/3/12/14:04
  */
 public class KthMaxNum {

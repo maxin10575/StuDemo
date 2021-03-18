@@ -18,7 +18,7 @@ import java.util.Properties;
 * kafka消费者 demo
 * 手动提交测试
 * Version:1.0.0
-* @author caohm
+* @author mx
 * @date 2018年1月26日
  */
 public class KafkaConsumerTest implements Runnable {

@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * TODO:求两个数组的交集
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/3/10/17:07
  */
 public class ArrayIntersection {

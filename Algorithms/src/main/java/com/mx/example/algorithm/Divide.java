@@ -3,7 +3,7 @@ package com.mx.example.algorithm;
 /**
  * TODO:分治算法计算x的n次方
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/11/10:40
  */
 public class Divide {

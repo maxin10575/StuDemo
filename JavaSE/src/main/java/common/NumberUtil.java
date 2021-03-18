@@ -3,7 +3,7 @@ package common;
 import java.text.DecimalFormat;
 
 /**
- * @author: fangtinghua
+ * @author: mx
  * @date: 2013-07-23
  * @description: 日期工具类，处理日期和字符串之间相互转换
  */

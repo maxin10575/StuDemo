@@ -9,7 +9,7 @@ import java.util.Properties;
 
 
 /**
- * @author caohm
+ * @author mx
  * @Title: KafkaProducerUtil
  * @Description: kafka消息生产者
  * @Version:1.0.0

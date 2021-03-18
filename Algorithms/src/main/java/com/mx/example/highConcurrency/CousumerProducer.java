@@ -6,7 +6,7 @@ import java.util.concurrent.BlockingQueue;
 /**
  * TODO:消费者生产者
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/22/11:47
  */
 public class CousumerProducer {

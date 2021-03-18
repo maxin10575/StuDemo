@@ -6,7 +6,7 @@ import java.util.concurrent.BlockingQueue;
 /**
  * TODO:BlockQueue构造栈
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/22/15:18
  */
 public class QueueToStack {

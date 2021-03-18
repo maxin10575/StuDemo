@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * redisTemplate封装
  * </p>
  *
- * @author：陈栓
+ * @author：mx
  * @date: 2020-08-09 16:59:39
  */
 @Component
@@ -29,7 +29,7 @@ public class RedisUtil {
 
     /**
      * @description: 指定缓存失效时间
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:03:52
      * @param: key 指定缓存失效时间
      * @param: time 时间(秒)
@@ -50,7 +50,7 @@ public class RedisUtil {
 
     /**
      * @description: 根据key 获取过期时间
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:04:29
      * @param: key 键 不能为null
      * @return: long 时间(秒) 返回0代表为永久有效
@@ -62,7 +62,7 @@ public class RedisUtil {
 
     /**
      * @description: 判断key是否存在
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:05:07
      * @param: key 键
      * @return: boolean true 存在 false不存在
@@ -79,7 +79,7 @@ public class RedisUtil {
 
     /**
      * @description:  删除缓存
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:05:46
      * @param: key 可以传一个值 或多个
      * @return: void
@@ -98,7 +98,7 @@ public class RedisUtil {
 
     /**
      * @description: 普通缓存获取
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:06:30
      * @param: key 键
      * @return: java.lang.Object
@@ -110,7 +110,7 @@ public class RedisUtil {
 
     /**
      * @description: 普通缓存放入
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:06:55
      * @param: key 键
      * @param: value 值
@@ -129,7 +129,7 @@ public class RedisUtil {
 
     /**
      * @description: 普通缓存放入并设置时间
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:07:41
      * @param: key 键
      * @param: value 值
@@ -153,7 +153,7 @@ public class RedisUtil {
 
     /**
      * @description: 递增
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:08:20
      * @param: key 键
      * @param: delta 要增加几(大于0)
@@ -169,7 +169,7 @@ public class RedisUtil {
 
     /**
      * @description: 递减
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:08:49
      * @param: key 键
      * @param: delta 要减少几(小于0)
@@ -185,7 +185,7 @@ public class RedisUtil {
 
     /**
      * @description:
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:09:27
      * @param: key 键 不能为null
      * @param: item 项 不能为null
@@ -198,7 +198,7 @@ public class RedisUtil {
 
     /**
      * @description: 获取hashKey对应的所有键值
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:10:21
      * @param: key 键
      * @return: 对应的多个键值
@@ -210,7 +210,7 @@ public class RedisUtil {
 
     /**
      * @description: HashSet
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:10:51
      * @param: key 键
      * @param: map 对应多个键值
@@ -229,7 +229,7 @@ public class RedisUtil {
 
     /**
      * @description: HashSet 并设置时间
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:11:23
      * @param: key 键
      * @param: map 对应多个键值
@@ -252,7 +252,7 @@ public class RedisUtil {
 
     /**
      * @description: 向一张hash表中放入数据,如果不存在将创建
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:12:12
      * @param: key 键
      * @param: item 项
@@ -272,7 +272,7 @@ public class RedisUtil {
 
     /**
      * @description: 向一张hash表中放入数据,如果不存在将创建
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:12:43
      * @param: key 键
      * @param: item 项
@@ -296,7 +296,7 @@ public class RedisUtil {
 
     /**
      * @description: 删除hash表中的值
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:13:29
      * @param: key 键 不能为null
      * @param: item 项 可以使多个 不能为null
@@ -309,7 +309,7 @@ public class RedisUtil {
 
     /**
      * @description: 判断hash表中是否有该项的值
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:13:53
      * @param: key 键 不能为null
      * @param: item 项 不能为null
@@ -322,7 +322,7 @@ public class RedisUtil {
 
     /**
      * @description: hash递增 如果不存在,就会创建一个 并把新增后的值返回
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:14:34
      * @param: key 键
      * @param: item 项
@@ -336,7 +336,7 @@ public class RedisUtil {
 
     /**
      * @description: hash递减
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:15:05
      * @param: key 键
      * @param: item 项
@@ -350,7 +350,7 @@ public class RedisUtil {
 
     /**
      * @description: 根据key获取Set中的所有值
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:15:34
      * @param: key 键
      * @return: java.util.Set<java.lang.Object>
@@ -367,7 +367,7 @@ public class RedisUtil {
 
     /**
      * @description: 根据value从一个set中查询,是否存在
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:15:55
      * @param: key 键
      * @param: value 值
@@ -385,7 +385,7 @@ public class RedisUtil {
 
     /**
      * @description: 将数据放入set缓存
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:16:29
      * @param: key 键
      * @param: values 值 可以是多个
@@ -403,7 +403,7 @@ public class RedisUtil {
 
     /**
      * @description: 将set数据放入缓存
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:17:13
      * @param: key 键
      * @param: time 值
@@ -426,7 +426,7 @@ public class RedisUtil {
 
     /**
      * @description: 获取set缓存的长度
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:17:52
      * @param: key 键
      * @return: long
@@ -443,7 +443,7 @@ public class RedisUtil {
 
     /**
      * @description:  移除值为value的
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:18:20
      * @param: key 键
      * @param: values 值 可以是多个
@@ -462,7 +462,7 @@ public class RedisUtil {
 
     /**
      * @description: 获取list缓存的内容
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:19:00
      * @param: key 键
      * @param: start 开始
@@ -481,7 +481,7 @@ public class RedisUtil {
 
     /**
      * @description: 获取list缓存的长度
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:19:32
      * @param: key 键
      * @return: long
@@ -498,7 +498,7 @@ public class RedisUtil {
 
     /**
      * @description: 通过索引 获取list中的值
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:19:53
      * @param: key 键
      * @param: index 索引  index>=0时， 0 表头，1 第二个元素，依次类推；index<0时，-1，表尾，-2倒数第二个元素，依次类推
@@ -516,7 +516,7 @@ public class RedisUtil {
 
     /**
      * @description: 将list放入缓存
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:20:27
      * @param: key 键
      * @param: value 值
@@ -535,7 +535,7 @@ public class RedisUtil {
 
     /**
      * @description: 将list放入缓存
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:20:52
      * @param: key 键
      * @param: value 值
@@ -558,7 +558,7 @@ public class RedisUtil {
 
     /**
      * @description: 将list放入缓存
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:21:26
      * @param: key 键
      * @param: value 值
@@ -577,7 +577,7 @@ public class RedisUtil {
 
     /**
      * @description: 将list放入缓存
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:21:48
      * @param: key 键
      * @param: value 值
@@ -600,7 +600,7 @@ public class RedisUtil {
 
     /**
      * @description:
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:23:37
      * @param: key 键
      * @param: index 索引
@@ -620,7 +620,7 @@ public class RedisUtil {
 
     /**
      * @description: 移除N个值为value
-     * @author：陈栓
+     * @author：mx
      * @date：2020-08-12 13:24:11
      * @param: key 键
      * @param: count 移除多少个

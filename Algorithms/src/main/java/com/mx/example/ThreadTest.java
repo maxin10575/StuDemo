@@ -3,7 +3,7 @@ package com.mx.example;
 /**
  * TODO:
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/2/26/14:31
  */
 public class ThreadTest {

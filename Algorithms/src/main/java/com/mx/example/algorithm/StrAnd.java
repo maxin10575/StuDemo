@@ -3,7 +3,7 @@ package com.mx.example.algorithm;
 /**
  * TODO:两个字符串大树相加
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/2/21/9:47
  */
 public class StrAnd {

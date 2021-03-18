@@ -8,7 +8,7 @@ import java.util.TreeSet;
  * TODO:
  * 单链表的反转
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/2/24/14:59
  */
 public class LinkedListReverse {

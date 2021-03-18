@@ -14,7 +14,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * 34
  * huangr,12348,7,1377537895,192.168.1.38|huangr,12348,8,1377541495,192.168.1.38
  *
- * @author Xiloer
+ * @author mx
  *
  */
 public class Part1 {

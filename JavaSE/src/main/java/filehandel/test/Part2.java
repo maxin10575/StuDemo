@@ -21,7 +21,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * 完成后替换DMSServer同名内部类即可
  * 
  * 
- * @author Xiloer
+ * @author mx
  *
  */
 public class Part2 {

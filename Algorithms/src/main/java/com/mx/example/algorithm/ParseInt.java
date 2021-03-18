@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * TODO: 实现Integer的parseInt方法
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/15/15:55
  */
 public class ParseInt {

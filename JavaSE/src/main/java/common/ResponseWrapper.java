@@ -3,7 +3,7 @@ package common;
 /**
  * Description:接口统一返回格式
  *
- * @author: yeweilin@supcon.com
+ * @author: mx
  * @date: 2019年01月10日 09:54
  */
 public class ResponseWrapper<T> {

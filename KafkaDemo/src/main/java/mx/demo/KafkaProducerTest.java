@@ -17,7 +17,7 @@ import java.util.UUID;
 * Description:
 * kafka 生产者demo
 * Version:1.0.0
-* @author caohm
+* @author mx
 * @date 2018年1月26日
  */
 public class KafkaProducerTest implements Runnable {

@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * TODO:堆排序
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2018/9/20/9:49
  */
 public class HeapSort {

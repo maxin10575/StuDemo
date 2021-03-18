@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * TODO:
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/11/11:45
  */
 public class MajorityElement {

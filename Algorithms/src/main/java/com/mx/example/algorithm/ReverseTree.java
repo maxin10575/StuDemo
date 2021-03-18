@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * TODO:树的反转
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2018/10/19/10:49
  */
 public class ReverseTree {

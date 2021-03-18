@@ -3,7 +3,7 @@ package common;
 import java.math.BigDecimal;
 
 /**
- * @author wangyz
+ * @author mx
  * @create 2019/2/12 9:27
  * @description 精确的浮点数运算
  */

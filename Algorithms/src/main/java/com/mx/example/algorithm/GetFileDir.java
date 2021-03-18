@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * TODO:给定一个文件夹，获取文件夹路径和包含关键字的文件夹名和文件名
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/2/21/11:38
  */
 public class GetFileDir {

@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * @description：日期工具类
- * @author：陈栓
+ * @author：mx
  * @date：2020-07-09 10:23
  */
 public class TimeUtil {
@@ -27,7 +27,7 @@ public class TimeUtil {
 
     /**
      * @description:获取当前日期，日期格式yyyy-MM-dd
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-09 10:25
      * @param
      * @exception/throws 无
@@ -41,7 +41,7 @@ public class TimeUtil {
 
     /**
      * @description:获取当前时间，日期格式yyyy-MM-dd HH:mm:ss
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-09 10:38
      * @param
      * @exception/throws 无
@@ -56,7 +56,7 @@ public class TimeUtil {
 
     /**
      * @description:获取当天凌晨时间，日期格式yyyy-MM-dd HH:mm:ss
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-14 16:18
      * @param
      * @exception/throws 无
@@ -69,7 +69,7 @@ public class TimeUtil {
 
     /**
      * @description:获取明天凌晨时间，日期格式yyyy-MM-dd HH:mm:ss
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-14 16:21
      * @param
      * @exception/throws 无
@@ -83,7 +83,7 @@ public class TimeUtil {
 
     /**
      * @description:获取昨天凌晨时间，日期格式yyyy-MM-dd HH:mm:ss
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-14 16:39
      * @param
      * @exception/throws 无
@@ -101,7 +101,7 @@ public class TimeUtil {
 
     /**
      * @description:获取上周当天凌晨时间，日期格式yyyy-MM-dd HH:mm:ss
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-14 16:39
      * @param
      * @exception/throws 无
@@ -115,7 +115,7 @@ public class TimeUtil {
 
     /**
      * @description:获取上周当天之后的一天凌晨时间，日期格式yyyy-MM-dd HH:mm:ss
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-14 16:39
      * @param
      * @exception/throws 无
@@ -129,7 +129,7 @@ public class TimeUtil {
 
     /**
      * @description: 获取一个Calendar对象
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-14 16:21
      * @param
      * @exception/throws 无
@@ -147,7 +147,7 @@ public class TimeUtil {
 
     /**
      * @description: 获取一个Calendar对象,根据类型来生成不同的对象
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-16 15:19
      * @param type 时间点
      * @exception/throws 无
@@ -170,7 +170,7 @@ public class TimeUtil {
 
     /**
      * @description: 获取今日其他时间点的时间戳
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-16 15:31
      * @param
      * @exception/throws 无
@@ -184,7 +184,7 @@ public class TimeUtil {
 
     /**
      * @description: 获取一个Calendar对象,根据传入不同的整型值
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-17 05:24
      * @param type 时间点
      * @exception/throws 无
@@ -202,7 +202,7 @@ public class TimeUtil {
 
     /**
      * @description: 获取一个Calendar对象,根据传入不同的高峰时间点
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-17 05:24
      * @param peakTime 高峰时间点
      * @exception/throws 无
@@ -222,7 +222,7 @@ public class TimeUtil {
 
     /**
      * @description: 根据传入的num参数获取今日时间戳,num值范围小于等于23
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-17 05:24
      * @param num 时间点
      * @exception/throws 无
@@ -236,7 +236,7 @@ public class TimeUtil {
 
     /**
      * @description: 根据传入的时间高峰区间和num参数，算时间戳
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-19 22:55
      * @param peakTime 时间点 dateNum日期天数
      * @exception/throws 无
@@ -254,7 +254,7 @@ public class TimeUtil {
 
     /**
      * @description: 根据传入的时间高峰区间和num参数，算时间戳
-     * @author：陈栓
+     * @author：mx
      * @date：2020-07-30 06:57
      * @param peakTime 时间点，格式HH:mm dateNum日期天数
      * @exception/throws 无

@@ -5,7 +5,7 @@ import java.util.concurrent.locks.StampedLock;
 /**
  * TODO:spin Lock 自旋锁实现
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/21/11:31
  */
 public class StampedSample {

@@ -3,7 +3,7 @@ package com.mx.example.mod;
 /**
  * TODO:单例懒汉模式
  *
- * @author dangzw
+ * @author mx
  * @version 1.0, 2019/1/15/15:31
  */
 public class Singleton {
