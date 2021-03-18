@@ -1,15 +1,12 @@
 package test;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
-import org.apache.ibatis.jdbc.Null;
-import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @program: StuDemo
@@ -35,10 +32,13 @@ public class Hashtest {
     }*/
 
     public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList();
+        list.add("1");
 //        Hashtest hashtest = new Hashtest();
 //        hashtest.setId(1).setName("Zhangsan");
 //        System.out.println("name：" + hashtest.getName() +"  id:"+ hashtest.getId());
-
+        HashMap hashMap = new HashMap();
+        hashMap.put("1",1);
 //        @RequiredArgsConstructor(staticName = "of")
         Hashtest hashtest = Hashtest.of("name","id").setId(1).setName("ha").setSex("man");
 

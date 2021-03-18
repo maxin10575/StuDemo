@@ -1,9 +1,7 @@
 package test;
-/*package com.cmcc.baseportal.Util;
+/*=
 
 import com.ai.aif.csf.common.utils.StringUtils;
-import com.cmcc.baseportal.dao.entity.PortalMenu;
-import com.cmcc.baseportal.service.MenuService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 

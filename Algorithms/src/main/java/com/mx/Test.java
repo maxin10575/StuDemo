@@ -1,6 +1,8 @@
 package com.mx;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @program: StuDemo
@@ -12,6 +14,11 @@ import java.text.ParseException;
  **/
 public class Test {
     public static void main(String[] args) throws ParseException {
+
+        List list = new ArrayList();
+        List list2 = new ArrayList();
+        list.remove(1);
+        System.arraycopy(list,0,list2,0,list2.size());
  /*       String a = " a b  c   d";
         String s = a.replaceAll("\\s*", "");
         System.out.println(s);*/

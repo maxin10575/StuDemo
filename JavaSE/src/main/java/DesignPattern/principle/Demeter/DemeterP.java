@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @Author maxin
  * @Date 2019-11-15 17:45
- * @ClassName DemeterP （又叫 最少知道原则）
+ * @ClassName DemeterP  迪米特法则（又叫 最少知道原则）
  * @Description 1。一个对象应该对其他对象保持最少的了解
  * 2. 对于被依赖的类不管多么复杂，都尽量将逻辑封装在类的内部，对外除了提供public方法，
  * 不对外泄露任何信息

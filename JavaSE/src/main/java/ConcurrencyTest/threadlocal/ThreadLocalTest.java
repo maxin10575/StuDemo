@@ -1,9 +1,6 @@
 package ConcurrencyTest.threadlocal;
 
 import com.alibaba.fastjson.JSONObject;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Collections;
 import java.util.List;
@@ -53,6 +50,7 @@ public class ThreadLocalTest {
         return Collections.singletonList(UserSessionContext.getUserSessionContext().getUserId() + " 的Java并发基础课程");
     }
 
+       
     public static class UserSessionContext {
         private static ThreadLocal<UserSessionContext> threadLocal =  ThreadLocal.withInitial(UserSessionContext::new);
 
