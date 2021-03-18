@@ -15,12 +15,32 @@ import java.util.List;
  **/
 public class Test {
     public static void main(String[] args) throws ParseException {
-
         Integer i1=10;
         Integer i2=20;
         swap2(i1,i2);
         System.out.println("i1="+i1+" i2="+i2);
+
+        String str = "|bc";
+        String[] str1 = str.split("\\|");
+//        String resString = "<?xml aaa/>";
+//        String resString2 ="{'aaa':'111'}";
+//        String str1 =resString.substring(0,5);
+//        String str2 = resString2.substring(0,1);
+//        System.out.println(str1);
+        System.out.println(str.length());
+//        System.out.println(str[0]+"=="+str[1]);
+        List list = new ArrayList();
+        List list2 = new ArrayList();
+        list.remove(1);
+        System.arraycopy(list,0,list2,0,list2.size());
+ /*       String a = " a b  c   d";
+        String s = a.replaceAll("\\s*", "");
+        System.out.println(s);*/
+//        System.out.println(String.valueOf(reverse1(-123)));
+        System.out.println(isPalindrome(88888));
     }
+
+
     public static void swap2(Integer i1,Integer i2){
         Integer temp = i1;
         i1 = i2;
@@ -38,28 +58,6 @@ public class Test {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-        String str = "|bc";
-        String[] str1 = str.split("\\|");
-//        String resString = "<?xml aaa/>";
-//        String resString2 ="{'aaa':'111'}";
-//        String str1 =resString.substring(0,5);
-//        String str2 = resString2.substring(0,1);
-//        System.out.println(str1);
-        System.out.println(str.length);
-//        System.out.println(str[0]+"=="+str[1]);
-    }
-
-        List list = new ArrayList();
-        List list2 = new ArrayList();
-        list.remove(1);
-        System.arraycopy(list,0,list2,0,list2.size());
- /*       String a = " a b  c   d";
-        String s = a.replaceAll("\\s*", "");
-        System.out.println(s);*/
-//        System.out.println(String.valueOf(reverse1(-123)));
-        System.out.println(isPalindrome(88888));
     }
 
     public static boolean isPalindrome(int x) {
