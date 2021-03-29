@@ -1,5 +1,5 @@
-/*
-package com.ai.aif.zk;
+/**
+package test;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,14 +66,15 @@ public class ChannelSftpSingleton {
 		}
 	}
 
-	//
+
 	*/
-/**
+/*
 	 * 获得SFTP Channel
 	 * 
 	 * @return ChannelSftp Instance
 	 * @throws JSchException
 	 *//*
+
 
 	public static ChannelSftp getChannel(String usrname,String ip,int portzk,String usrpwd,int timeout) throws JSchException {
 		// 创建JSch对象
@@ -103,11 +104,14 @@ public class ChannelSftpSingleton {
 	}
 
 	*/
-/**
+/*
 	 * 断开SFTP Channel、Session连接
 	 * 
 	 * @throws Exception
+
 	 *//*
+
+
 
 	public static void closeChannel(ChannelSftp channel,Session session) throws Exception {
 		if (channel != null) {

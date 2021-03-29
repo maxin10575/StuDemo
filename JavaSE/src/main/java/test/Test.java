@@ -1,8 +1,5 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @program: StuDemo
  * @description:
@@ -13,9 +10,12 @@ import java.util.List;
  **/
 public class Test {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("a");
-        list.add("b");
-        System.out.println(list.toString());
+      int a = 2;
+      while (true){
+          if(a == 2){
+              break;
+          }
+          System.out.println("111");
+      }
     }
 }
