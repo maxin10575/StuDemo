@@ -58,7 +58,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * 5. CountDownLatch 闭锁实现
  *
  * head
- * 等待队列的头结点，初始值为 null，延迟初始化；除了初始化，后续只能通过setHead()方法来设置；如果head节点存在，它的waitStatus不能为 CANCELLED；
+ * 等待队列的头结点，初始值为 null，延迟初始化；除了初始化，后续只能通过setHead()方法来设置；
+ * 如果head节点存在，它的waitStatus不能为 CANCELLED；
  * tair
  * 等待队列的尾节点，初始值为null，延迟初始化；只能通过添加新节点的enq()方法来更新tair节点。
  * state

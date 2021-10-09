@@ -30,7 +30,7 @@
     </bean>
 
     <!-- 配置处理器 -->
-    <bean id="handlerid" class="origin.controller.HelloController"/>
+    <bean id="handlerid" class="springmvc.control.HelloController"/>
 
     <!-- 配置视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

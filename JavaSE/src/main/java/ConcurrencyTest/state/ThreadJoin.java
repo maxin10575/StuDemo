@@ -28,8 +28,8 @@ public class ThreadJoin {
         threadA.start();
         threadB.start();
 
-        threadA.join();
-        System.out.println("等待ThreadA执行完毕/终止");
+   /*     threadA.join();
+        System.out.println("等待ThreadA执行完毕/终止");*/
 
         threadB.join();
         System.out.println("等待ThreadB执行完毕/终止");

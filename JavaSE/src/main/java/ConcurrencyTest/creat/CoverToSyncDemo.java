@@ -15,14 +15,14 @@ import java.util.*;
  */
 public class CoverToSyncDemo {
 	public static void main(String[] args) {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		list.add("one");
 		list.add("two");
 		list.add("three");
 		list.add("four");
 		System.out.println(list);
 
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Integer> map = new HashMap<>();
 		map.put("ss", 12);
 		map.put("dd", 45);
 		map.put("zz", 99);
@@ -34,10 +34,10 @@ public class CoverToSyncDemo {
 		/*
 		 * 将给定的集合转换为一个线程安全的集合
 		 */
-		list = (List<String>) Collections.synchronizedList(list);
+		list = Collections.synchronizedList(list);
 		System.out.println(list);
 
-		Set<String> set = new HashSet<String>(list);
+		Set<String> set = new HashSet<>(list);
 		set = Collections.synchronizedSet(set);
 		System.out.println(set);
 

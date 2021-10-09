@@ -1,9 +1,13 @@
 package com.mx;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * @program: StuDemo
@@ -14,11 +18,61 @@ import java.util.List;
  * @Version: 1.0
  **/
 public class Test {
+
+
+    @org.junit.jupiter.api.Test
+    public void testaList(){
+
+        System.out.println(Arrays.asList(1,"haha",true));
+
+    }
+
+    @org.junit.jupiter.api.Test
+    public void test111(){
+//        System.out.println(com.mx.AttributeTypeEnum.getDesc(1));
+//        System.out.println(com.mx.AttributeTypeEnum.getAllPhoneCreditType());
+        String a = "c=d";
+        String arr[] = a.split("=");
+        System.out.println(arr[arr.length-1]);
+//        System.out.println(com.mx.VirtualTypeEnum.getDesc(1));
+    }
+
+    @org.junit.jupiter.api.Test
+    public void phone() {
+        String tel = "13312341234";
+        String ct = "^1((33|49|53|73|77|80|81|89|99)[0-9])\\d{7}$";
+        String cu = "^1(30|31|32|45|55|56|66|71|75|76|85|86)\\d{8}$";
+//          String REGEX_MOBILE = "((\\+86|0086)?\\s*)((134[0-8]\\d{7})|(((13([0-3]|[5-9]))|(14[5-9])|15([0-3]|[5-9])|(16(2|[5-7]))|17([0-3]|[5-8])|18[0-9]|19(1|[8-9]))\\d{8})|(14(0|1|4)0\\d{7})|(1740([0-5]|[6-9]|[10-12])\\d{7}))";
+        if (StringUtils.isNotEmpty(tel)) {
+            System.out.println(Pattern.matches(ct, tel));
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    public void findMedianSortedArrays() {
+        int[] nums1 = {1,5};
+        int[] nums2 = {3, 4};
+        int len = nums1.length + nums2.length;
+        int[] a = new int[len];
+        System.arraycopy(nums1,0,a,0,nums1.length);
+        System.arraycopy(nums2,0,a,nums1.length,nums2.length);
+        Arrays.sort(a);
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + "，");
+        }
+        if (len % 2 != 0) {
+            System.out.println("===="+a[(int) (len / 2 + 0.5)]);
+        } else {
+            System.out.println("===="+(double)(a[len / 2 -1 ] + a[len / 2]) / 2);
+        }
+    }
+
+
     public static void main(String[] args) throws ParseException {
-        Integer i1=10;
-        Integer i2=20;
-        swap2(i1,i2);
-        System.out.println("i1="+i1+" i2="+i2);
+        Integer i1 = 10;
+        Integer i2 = 20;
+        swap2(i1, i2);
+        System.out.println("i1=" + i1 + " i2=" + i2);
 
         String str = "|bc";
         String[] str1 = str.split("\\|");
@@ -32,7 +86,7 @@ public class Test {
         List list = new ArrayList();
         List list2 = new ArrayList();
         list.remove(1);
-        System.arraycopy(list,0,list2,0,list2.size());
+        System.arraycopy(list, 0, list2, 0, list2.size());
  /*       String a = " a b  c   d";
         String s = a.replaceAll("\\s*", "");
         System.out.println(s);*/
@@ -41,32 +95,33 @@ public class Test {
     }
 
 
-    public static void swap2(Integer i1,Integer i2){
+    public static void swap2(Integer i1, Integer i2) {
         Integer temp = i1;
         i1 = i2;
         i2 = temp;
-        System.out.println(i1+""+i2);
+        System.out.println(i1 + "" + i2);
     }
-    public static void swap(Integer i1, Integer i2)  {
+
+    public static void swap(Integer i1, Integer i2) {
         try {
             Field field = Integer.class.getDeclaredField("value");
             field.setAccessible(true);
             //int temp = i1.intvalue();  //指向同一份内存地址
             Integer temp = new Integer(i1.intValue());
-            field.set(i1,i2.intValue());
-            field.set(i2,temp);
+            field.set(i1, i2.intValue());
+            field.set(i2, temp);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static boolean isPalindrome(int x) {
-        if(x<10 && x >=0){
+        if (x < 10 && x >= 0) {
             return true;
         }
         String str = String.valueOf(x);
-        for(int i=0;i<str.length()/2;i++){
-            if((str.charAt(i)) != (str.charAt(str.length()-i-1))){
+        for (int i = 0; i < str.length() / 2; i++) {
+            if ((str.charAt(i)) != (str.charAt(str.length() - i - 1))) {
                 return false;
             }
         }
@@ -100,11 +155,11 @@ public class Test {
         String str = String.valueOf(x);
         StringBuilder sb = new StringBuilder(str);
         String result = sb.reverse().toString();
-        if(result.contains("-")){
-            result = "-" + result.substring(0,result.length()-1);
+        if (result.contains("-")) {
+            result = "-" + result.substring(0, result.length() - 1);
         }
 
-        if(Long.parseLong(result) >  Integer.MAX_VALUE  || Long.parseLong(result) <  Integer.MIN_VALUE){
+        if (Long.parseLong(result) > Integer.MAX_VALUE || Long.parseLong(result) < Integer.MIN_VALUE) {
             return 0;
         }
         return Integer.parseInt(result);
@@ -116,8 +171,8 @@ public class Test {
         while (x != 0) {
             int pop = x % 10;
             x /= 10;
-            if (rev > Integer.MAX_VALUE/10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;
-            if (rev < Integer.MIN_VALUE/10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0;
+            if (rev > Integer.MAX_VALUE / 10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;
+            if (rev < Integer.MIN_VALUE / 10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0;
             rev = rev * 10 + pop;
         }
         return rev;
@@ -173,7 +228,7 @@ public class Test {
         origin.add("9");
         origin.add("18");
         origin.add("1");*//*
-       *//* originList.forEach(System.out::println);
+     *//* originList.forEach(System.out::println);
         System.out.println("=====");*//*
         originList.sort(((o1, o2) ->
            Integer.valueOf(o1.getAge()).compareTo(Integer.valueOf(o2.getAge())
@@ -276,8 +331,8 @@ public class Test {
         Date endDate = sdf.parse(endTimeStr);
         long endtime = endDate.getTime();
         System.out.println(sdf.format(endtime));*/
-
-/* List<User> list = new ArrayList<>();
+/*
+        List<User> list = new ArrayList<>();
         User user1 = new User();
         user1.setAge("1");
         user1.setName("小明");
@@ -306,18 +361,19 @@ public class Test {
         list.add(user2);
         list.add(user3);
         list.add(user4);
-        list.add(user5);
+        list.add(user5);*/
 
-           double a = list.stream().mapToDouble(User::getAge).average();
-      *//*  List<String> lageList = list.stream().map(User :: getAge).distinct().collect(Collectors.toList());
-        lageList.forEach(System.out::println);
-        lageList.stream().forEach(age ->{
-            double passEfficIndex = list.stream().filter(user -> age.equals(user.getAge())).mapToDouble(User::getAge).average();
-        });*//*
+//    List<String> lageList = list.stream().filter(dto -> dto.getIndex()>2 && dto.getIndex()<6).collect(Collectors.toList());
+//           double a = list.stream().mapToDouble(User::getAge).average();
+      /*  List<String> lageList = list.stream().map(User :: getAge).distinct().collect(Collectors.toList());
+//        lageList.forEach(System.out::println);
+//        list.stream().forEach(age ->{
+//            double passEfficIndex = list.stream().filter(user -> age.equals(user.getAge())).mapToDouble(User::getAge).average();
+//        });*//*
         Map<String, List<User>> map =  list.stream().filter(dto -> dto.getIndex()>2 && dto.getIndex()<6).collect(Collectors.groupingBy(User::getAge));
 
 //        List map =  list.stream().filter(dto -> dto.getIndex()>2 && dto.getIndex()<6).collect(Collectors.toList());
-        System.out.println(map.size());*/
+//        System.out.println(map.size());
 
 }
 
@@ -330,5 +386,5 @@ public class Test {
         return n * fun1(n - 1);
     }
 */
-
+}
 

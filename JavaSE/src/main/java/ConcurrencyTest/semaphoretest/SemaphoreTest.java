@@ -2,16 +2,12 @@ package ConcurrencyTest.semaphoretest;
 
 //import Concurrency.annoations.NotThreadSafe;
 
-import org.testng.annotations.Test;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-
-import static ConcurrencyTest.semaphoretest.SemaphoreTest.clientTotal;
 
 /**
  * @Author maxin
@@ -22,7 +18,7 @@ import static ConcurrencyTest.semaphoretest.SemaphoreTest.clientTotal;
  **/
 
 //@NotThreadSafe
-public class SemaphoreTest {
+    public class SemaphoreTest {
 
     //请求总数
     public static int clientTotal = 10;

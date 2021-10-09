@@ -19,9 +19,9 @@ public class WeakReferenceTest {
 
         testSoftReferenceNoDirectReference();   // 有  有
 
-        testWeakReferenceNoDirectReference();  //有     null
+//        testWeakReferenceNoDirectReference();  //有     null
 
-        testWeakReferenceWithDirectReference(); //有    有
+//        testWeakReferenceWithDirectReference(); //有    有
     }
 
     /**
@@ -32,12 +32,9 @@ public class WeakReferenceTest {
         Object obj = new Object();
         SoftReference<Object> softRef = new SoftReference<>(obj);
         System.out.println(softRef.get());
-
         obj = null;
-
         System.gc();
         Thread.sleep(3000L);
-
         System.out.println(softRef.get());
     }
 
@@ -50,12 +47,9 @@ public class WeakReferenceTest {
         Object obj = new Object();
         WeakReference<Object> weakRef = new WeakReference<>(obj);
         System.out.println(weakRef.get());
-
         obj = null;
-
         System.gc();
         Thread.sleep(3000L);
-
         System.out.println(weakRef.get());
     }
 
@@ -67,15 +61,11 @@ public class WeakReferenceTest {
         Object obj = new Object();
         WeakReference<Object> weakRef = new WeakReference<>(obj);
         System.out.println(weakRef.get());
-
         List<Object> objectList = new ArrayList<>();
         objectList.add(obj);
-
         obj = null;
-
         System.gc();
         Thread.sleep(3000L);
-
         System.out.println(weakRef.get());
     }
 }

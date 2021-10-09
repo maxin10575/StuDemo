@@ -1,5 +1,7 @@
 package ConcurrencyTest.creat;
 
+import org.junit.Test;
+
 /**
  * @program: StuDemo
  * @description: 匿名内部类
@@ -14,7 +16,7 @@ public class CT4 {
         //方式一的匿名内部类形式创建
         new Thread() {
             public void run() {
-                for (int i = 0; i < 100; i++) {
+                for (int i = 0; i < 10; i++) {
                     System.out.println("你好");
                 }
             }
@@ -22,7 +24,7 @@ public class CT4 {
         //方式二的匿名内部类形式创建
         new Thread(new Runnable() {
             public void run() {
-                for (int j = 0; j < 100; j++) {
+                for (int j = 0; j < 10; j++) {
                     System.out.println("哈哈");
                 }
             }
@@ -117,7 +119,8 @@ public class CT4 {
      * @author maxin
      */
 
-    public static void test3() {
+    @Test
+    public  void test3() {
         Thread rose = new Thread() {
             public void run() {
                 for (int i = 0; i < 5; i++) {

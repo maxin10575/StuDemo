@@ -1,7 +1,7 @@
 package ConcurrencyTest.state;
 
 /**
-* @Description: 线程休眠，主动让出但当前CPU时间，在指定时间过后，CPU会继续执行该线程
+* @Description: 线程休眠，主动让出当前CPU时间，在指定时间过后，CPU会继续执行该线程
  *                  sleep方法不会释放当前所持有的锁。
 * @Author: maxin
 * @Date: 2020/3/10
@@ -24,7 +24,7 @@ public class ThreadSleep {
     private static Thread newThread(String threadName) {
         return new Thread(() -> {
             synchronized (object) {
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < 10; i++) {
                     System.out.println(Thread.currentThread().getName() + ":" + i);
                     if (i == 10) {
                         try {

@@ -12,13 +12,13 @@ import java.util.Map;
  */
 
 public interface EmpDAO {
-	public void save(Emp emp);
-	public List<Emp> findAll();
-	public Emp findById(int id);
-	public void modify(Emp emp);
-	public void delete(int id);
-	public Map<?, ?> findById2(int id);
-	public Emp2 findById3(int id);
+	void save(Emp emp);
+	List<Emp> findAll();
+	Emp findById(int id);
+	void modify(Emp emp);
+	void delete(int id);
+	Map<?, ?> findById2(int id);
+	Emp2 findById3(int id);
 	
 }
 

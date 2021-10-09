@@ -19,15 +19,15 @@ import java.io.IOException;
 
 public class ESMapping {
 
-    private String indexName = "test_mapping_index";
-    private String typeName = "test_mapping_type";
+    private String indexName = "mx";
+    private String typeName = "mx_type";
 
     private TransportClient client = EsUtils.getEsClient();
 
     //获得mapping
     @Test
     public void getMapping() throws IOException {
-        indexName = "testmapping";
+        indexName = "mxmapping";
         ClusterState cs = client.admin().cluster().prepareState().setIndices(indexName).execute().actionGet().getState();
         IndexMetaData imd = cs.getMetaData().index(indexName);
         MappingMetaData mdd = imd.mapping(typeName);
@@ -42,7 +42,7 @@ public class ESMapping {
      */
     @Test
     public void CreateIndexAndMapping() throws Exception {
-        indexName = "testm22";
+        indexName = "mx";
         CreateIndexRequestBuilder cib = client.admin().indices().prepareCreate(indexName);
         XContentBuilder mapping = XContentFactory.jsonBuilder()
                 .startObject()
@@ -90,7 +90,7 @@ public class ESMapping {
     @Test
     public void createMapping() throws Exception {
         Client client = EsUtils.getEsClient();
-        indexName = "testmapping";
+        indexName = "mxmapping";
         //首先创建index
         CreateIndexResponse createIndexResponse = client.admin().indices()
                 .prepareCreate(indexName).execute().actionGet();
