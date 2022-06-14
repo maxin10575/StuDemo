@@ -30,33 +30,35 @@ public enum AttributeTypeEnum {
         return desc;
     }
 
-    public static String getDesc(Integer type) {
+    public static String getDescByType(Integer type) {
 //        return Arrays.stream(values()).filter(value -> Objects.equals(type + "", value.getType())).map(AttributeTypeEnum::getDesc).findFirst().orElse("undefined");
         return Arrays.stream(values()).filter(value -> Objects.equals(type + "", value.getType().toString())).map(AttributeTypeEnum::getDesc).findFirst().orElse("undefined");
 
     }
 
 
-    public static Integer getByDesc(String desc) {
+    public static Integer getTypeByDesc(String desc) {
         Objects.requireNonNull(desc);
-        AttributeTypeEnum[] enums = AttributeTypeEnum.values();
+        return Arrays.stream(values()).filter(value -> Objects.equals(desc + "", value.getDesc())).map(AttributeTypeEnum::getType).findFirst().orElse(null);
+       /* AttributeTypeEnum[] enums = AttributeTypeEnum.values();
         for (AttributeTypeEnum attributeTypeEnum : enums) {
             if (desc.equals(attributeTypeEnum.getDesc())) {
                 return attributeTypeEnum.getType();
             }
         }
-        return null;
+        return null;*/
     }
 
     public static AttributeTypeEnum getByType(Integer type) {
         Objects.requireNonNull(type);
-        AttributeTypeEnum[] enums = AttributeTypeEnum.values();
+        return Arrays.stream(values()).filter(value -> Objects.equals(type + "", value.getType().toString())).findFirst().orElse(null);
+/*        AttributeTypeEnum[] enums = AttributeTypeEnum.values();
         for (AttributeTypeEnum phoneCreditTypeEnum : enums) {
             if (phoneCreditTypeEnum.getType().equals(type)) {
                 return phoneCreditTypeEnum;
             }
         }
-        return null;
+        return null;*/
     }
 
     public static List<AttributeTypeVo> getAllPhoneCreditType() {

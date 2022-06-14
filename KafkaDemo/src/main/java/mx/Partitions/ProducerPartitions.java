@@ -21,7 +21,8 @@ import java.util.concurrent.ExecutionException;
  **/
 
 
-public class ProducerPartitions {
+public class
+ProducerPartitions {
 
     public static void main(String[] args) {
         // 构造一个java.util.Properties对象

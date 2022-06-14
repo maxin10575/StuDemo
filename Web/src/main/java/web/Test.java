@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Test extends HttpServlet{
-	
-	private static final long serialVersionUID = -8820057675394655493L;
 
 	@Override
 	public void service(HttpServletRequest request , HttpServletResponse response) throws IOException{

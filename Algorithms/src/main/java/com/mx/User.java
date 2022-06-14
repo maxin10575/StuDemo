@@ -1,5 +1,6 @@
 package com.mx;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -11,9 +12,10 @@ import lombok.Data;
  * @Version: 1.0
  **/
 @Data
+@Builder
 public class User {
         String name;
-        String age;
+        Integer age;
         Double index;
-    }
+}
 

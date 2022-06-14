@@ -4,6 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +21,65 @@ import java.util.regex.Pattern;
  * @Version: 1.0
  **/
 public class Test {
+
+
+    @org.junit.jupiter.api.Test
+    public void getDate() throws ParseException {
+    //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        Date d2=sdf.parse("2021-11-12 17:30:30");//将String to Date类型
+//        System.out.println(d2.getTime());
+        System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
+        System.out.println("abcd".substring(0,"abcd".length()-1));
+
+//        System.out.println(8L/3L);
+//        System.out.println(new BigDecimal(2.4234).setScale(0,RoundingMode.HALF_UP).longValue());
+
+//        System.out.println(testEnmu.getDescByCode(1));
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testGroup(){
+        User user = User.builder().age(11).name("a").index(0.1).build();
+        User user2 = User.builder().age(22).name("a").index(0.4).build();
+        User user3 = User.builder().age(3).name("b").index(0.3).build();
+        List<User> userList = new ArrayList();
+        userList.add(user);
+        userList.add(user2);
+        userList.add(user3);
+        List<User> settlementOrderIdList = new ArrayList<>();
+        settlementOrderIdList.addAll(userList);
+        System.out.println(settlementOrderIdList);
+
+
+
+//        double currentLevel = userList.stream().filter(category -> category.getAge().equals(22)).map(User::getIndex).findAny().get();
+//System.out.println(currentLevel);
+
+
+/*        List<User> newuserList = new ArrayList<User>();
+
+        userList.parallelStream().collect(Collectors.groupingBy(o -> o.getName(), Collectors.toList())).forEach(
+                (id, transfer) -> {
+                    transfer.stream().reduce((a, b) -> new User(a.getName(),a.getAge() + b.getAge(),a.getIndex()+b.getIndex())).ifPresent(newuserList:: add);
+                });
+        System.out.println("处理过的List:--");
+        newuserList.forEach(item->{
+            System.out.println(item.toString());
+        });*/
+
+        //        Map<String,User> aaa = list.stream().collect(Collectors.groupingBy(User::getName));
+        //a
+//        Map<Long,List<Long>> exhibitionPitemMap = list.stream().collect(Collectors.groupingBy(TestDTO1::getLevle1CategoryId, Collectors.mapping(TestDTO1::getPitemId, Collectors.toList())));
+//b
+//        Map<Long, List<TestDTO2>> categoryPitemMap = list.stream().collect(Collectors.groupingBy(TestDTO2::getLevle1CategoryId));
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testEnum(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        System.out.println(simpleDateFormat.format(1638251244828L));
+        System.out.println(simpleDateFormat.format(1637999292459L));
+    }
 
 
     @org.junit.jupiter.api.Test

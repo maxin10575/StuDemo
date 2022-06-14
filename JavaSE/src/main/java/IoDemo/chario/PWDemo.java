@@ -1,14 +1,14 @@
 package IoDemo.chario;
 /**
- * »º³å×Ö·ûÁ÷
- * ÄÚ²¿Î¬»¤»º³åÇø£¨×Ö·ûÊı×é£©£¬¶ÁĞ´×Ö·ûĞ§ÂÊ¸ß
- * ²¢ÇÒ¿ÉÒÔ°´ĞĞ¶ÁĞ´×Ö·û´®
+ * ç¼“å†²å­—ç¬¦æµ
+ * å†…éƒ¨ç»´æŠ¤ç¼“å†²åŒºï¼ˆå­—ç¬¦æ•°ç»„ï¼‰ï¼Œè¯»å†™å­—ç¬¦æ•ˆç‡é«˜
+ * å¹¶ä¸”å¯ä»¥æŒ‰è¡Œè¯»å†™å­—ç¬¦ä¸²
  * Bufferedwriter , BufferedReader
  * 
  * java.io.PrintWriter
- * ³£ÓÃµÄ»º³å×Ö·ûÁ÷£¬ÄÚ²¿×Ô¶¯´¦ÀíBufferedWriter
- * À´Íê³É»º³å²Ù×÷£¬²¢ÇÒPrintWtiter¾ßÓĞ×Ô¶¯ĞĞË¢ĞÂ
- * ¹¦ÄÜ¡£
+ * å¸¸ç”¨çš„ç¼“å†²å­—ç¬¦æµï¼Œå†…éƒ¨è‡ªåŠ¨å¤„ç†BufferedWriter
+ * æ¥å®Œæˆç¼“å†²æ“ä½œï¼Œå¹¶ä¸”PrintWtiterå…·æœ‰è‡ªåŠ¨è¡Œåˆ·æ–°
+ * åŠŸèƒ½ã€‚
  * @author maxin
  *
  */
@@ -22,19 +22,19 @@ public  class PWDemo{
 		
 	
 /**
-		 * Printwriter Ìá¹©ÁË·á¸»µÄ¹¹Ôì·½·¨
-		 * ÆäÖĞÌá¹©ÁË¿ÉÒÔÕë¶ÔÎÄ¼şĞ´³ö²Ù×÷µÄ
-		 * ¹¹Ôì·½·¨£º
+		 * Printwriter æä¾›äº†ä¸°å¯Œçš„æ„é€ æ–¹æ³•
+		 * å…¶ä¸­æä¾›äº†å¯ä»¥é’ˆå¯¹æ–‡ä»¶å†™å‡ºæ“ä½œçš„
+		 * æ„é€ æ–¹æ³•ï¼š
 		 * PrintWriter(String path)
 		 * PrintWriter(File file)
 		 */
 		PrintWriter  pw = new PrintWriter("pw.txt","UTF-8");
 		
-		pw.println("one");  //»»ĞĞ·û/nÕ¼Á½¸ö×Ö½Ú¡£
+		pw.println("one");  //æ¢è¡Œç¬¦/nå ä¸¤ä¸ªå­—èŠ‚ã€‚
 		pw.println("two");
 		pw.println("three");
 		pw.println("four");
-		System.out.println("Ğ´³öÍê±Ï");
+		System.out.println("å†™å‡ºå®Œæ¯•");
 		pw.close();
 			
 }

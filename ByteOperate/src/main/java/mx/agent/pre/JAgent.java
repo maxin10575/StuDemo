@@ -10,9 +10,6 @@ import java.security.ProtectionDomain;
 
 
 public class JAgent {
-/*    public static void main(String[] args) {
-        System.out.println("main");
-    }*/
     /**
      * 在这个 premain 函数中，开发者可以进行对类的各种操作。
      * @param agentOps
