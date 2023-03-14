@@ -1,9 +1,5 @@
 package test;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-
 public class Fuimlp {
     public static void main(String[] args) {
 //		Map<String, Object> map = new HashMap<>();
@@ -19,12 +15,19 @@ public class Fuimlp {
 
 
 //		Ha ha	= new Ha();
+//        Qw ha	= new Qw();
 //		He he = new He();
 //        System.out.println(new zi());
 
 
-		Heimp heimp = new Heimp();
-		heimp.test1();
+		Heimp heimp = new Heimp(1);
+        heimp.testHa3();
+        He.testHe1();
+		heimp.testHe2();
+		heimp.testHa1();
+
+
+//		heimp.testHeimp();
     }
 }
 
@@ -36,6 +39,7 @@ class zi extends Fu {
         System.out.println("子类有参构造器" + b);
     }
 
+
     public zi() {
         super(1);
         System.out.println("子类无参构造器");
@@ -45,43 +49,89 @@ class zi extends Fu {
 
 abstract class Ha {
     private String a;
-    Ha() { };
+    static{
+        System.out.println("Ha===父类静态代码块");
+    };
+    Ha() {
+        System.out.println("Ha===抽象父类 无参构造器");
+    };
     Ha(String a) {
+        System.out.println("Ha===抽象父类 有参构造器");
         this.a = a;
     }
-	public abstract void test2();
-    public abstract void test();
-    public void test1(){
-	}
+	public abstract void testHa2();
+    public abstract void testHa1();
+    public static void testHa3() {
+        System.out.println("Ha===抽象父类 test3");
+    }
+    public void testHa4(){
+        System.out.println("Ha===抽象父类 test1");
+    }
 }
 
-abstract class Qw extends Ha {
-	@Override
-	public void test() {
+class Qw extends Ha {
+    Qw(){
+        super();
+        testHa3();
+        System.out.println("Qw===子类无参构造器");
+    }
+
+    @Override
+	public void testHa2() {
 	}
+
+    @Override
+    public void testHa1() {
+
+    }
+
 }
 
 interface He {
-	public static void test1(){System.out.println("1111");}
-	public abstract void test3();
-	public  void test2();
+    public static void testHe1(){System.out.println("父类He==test1");}
+	public abstract void testHe3();
+	public  void testHe2();
 }
 
-class Heimp implements He{
+class Heimp extends  Ha implements He{
+    Heimp(){
+        super("1");
+    }
+    Heimp(int a){
+        super("2");
+        System.out.println("Heiimp  有参构造器");
+    }
 
-	public static void test1(){
-				He.test1();
-	}
 
+    public static void testHeimp(){
+        He.testHe1();
+    }
 
+    @Override
+    public void testHa2() {
+
+    }
+
+    @Override
+    public void testHa1() {
+
+    }
+
+    @Override
+    public void testHa4() {
+
+    }
 
 	@Override
-	public void test3() {
+	public void testHe3() {
 	}
 
-	@Override
-	public void test2() {
-	}
+    @Override
+    public void testHe2() {
+
+    }
+
+
 }
 
 

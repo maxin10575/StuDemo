@@ -26,6 +26,6 @@ public class AioClient {
 
 	public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
 		AioClient client = new AioClient("localhost", 7080);
-		client.write((byte) 22);
+		client.write((byte) 22222);
 	}
 }

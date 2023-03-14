@@ -1,6 +1,7 @@
 package mx.asm;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 /**
  * @program: StuDemo
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
  * @Version: 1.0
  **/
 public class ATest{
+
     @Test
     public void testASM() {
         ASMTest.redefineHelloWorldClass();

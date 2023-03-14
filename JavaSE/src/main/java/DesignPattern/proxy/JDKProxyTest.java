@@ -8,35 +8,44 @@ import java.lang.reflect.Proxy;
  * @Author maxin
  * @Date 2019-12-10 15:45
  * @ClassName Test
- * @Description  JDK自带动态代理
+ * @Description JDK自带动态代理
  * @Version 1.0
  **/
-public class Test {
+public class JDKProxyTest {
     public static void main(String[] args) {
-    //创建目标对象
+        //1. 静态代理
+//        ITeacherDao  iTeacherDao = new TeacherDao();
+//        TeacherDaoProxy teacherDaoProxy = new TeacherDaoProxy(iTeacherDao);
+//        teacherDaoProxy.teach();
+        //2.JDK
+        //创建目标对象
         ITeacherDao target = new TeacherDao();
-    //给目标对象，创建代理对象, 可以转成 ITeacherDao
+        //给目标对象，创建代理对象, 可以转成 ITeacherDao
         ITeacherDao proxyInstance = (ITeacherDao) new ProxyFactory(target).getProxyInstance();
-// proxyInstance=class com.sun.proxy.$Proxy0 内存中动态生成了代理对象
-         System.out.println("proxyInstance=" + proxyInstance.getClass());
-//通过代理对象，调用目标对象的方法 //proxyInstance.teach();
+        // proxyInstance=class com.sun.proxy.$Proxy0 内存中动态生成了代理对象
+        System.out.println("proxyInstance=" + proxyInstance.getClass());
+        //通过代理对象，调用目标对象的方法 //proxyInstance.teach();
         proxyInstance.sayHello(" tom ");
+        System.out.println("proxyInstance2222=" + proxyInstance.getClass());
         proxyInstance.teach();
     }
 }
 
 interface ITeacherDao {
     void teach(); // 授课方法
+
     void sayHello(String name);
 }
 
 class ProxyFactory {
     //维护一个目标对象 , Object
     private Object target;
+
     //构造器 ， 对 target 进行初始化
     public ProxyFactory(Object target) {
         this.target = target;
     }
+
     //给目标对象 生成一个代理对象
     public Object getProxyInstance() {
         //1. ClassLoader loader : 指定当前目标对象使用的类加载器, 获取加载器的方法固定
@@ -56,13 +65,36 @@ class ProxyFactory {
     }
 }
 
+//1. 静态代理
+class TeacherDaoProxy implements ITeacherDao {
+    private ITeacherDao iTeacherDao;
+
+    TeacherDaoProxy(ITeacherDao iTeacherDao) {
+        this.iTeacherDao = iTeacherDao;
+    }
+
+    @Override
+    public void teach() {
+        System.out.println("开始静态代理，完成一些操作");
+        iTeacherDao.teach();
+        System.out.println("代理对象，完成后续一些操作");
+    }
+
+    @Override
+    public void sayHello(String name) {
+    }
+}
+
 class TeacherDao implements ITeacherDao {
     @Override
     public void teach() {
-        System.out.println(" 老师授课中.... ");
+        System.out.println("被代理对象运行teach.... ");
+
+        return;
     }
+
     @Override
     public void sayHello(String name) {
-        System.out.println("hello " + name);
+        System.out.println("被代理对象运行hello ：" + name);
     }
 }

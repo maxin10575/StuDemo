@@ -126,7 +126,7 @@ public class CT4 {
                 for (int i = 0; i < 5; i++) {
                     System.out.println("rose:" + i + "啊啊啊啊");
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(1);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -135,10 +135,10 @@ public class CT4 {
         };
         Thread jack = new Thread() {
             public void run() {
-                for (int i = 0; i < 8; i++) {
+                for (int i = 0; i < 10; i++) {
                     System.out.println("jack" + i + "hahah");
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(1);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

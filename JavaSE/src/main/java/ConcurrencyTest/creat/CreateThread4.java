@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 * @Date: 2020/3/12
 * @Modified By:
 * @Version: 1.0.0
-*/
+ */
 
 public class CreateThread4 {
 
@@ -26,7 +26,6 @@ public class CreateThread4 {
             }
         };
         executorService.execute(runnable);
-
         //2 submit Runnable
         Future runnableFuture = executorService.submit(runnable);
         Object futureObject = runnableFuture.get();

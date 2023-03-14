@@ -1,5 +1,7 @@
 package test;
 
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -28,6 +30,18 @@ public class iotest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-}
+
+    @Test
+    public void test(){
+        String cmdStr = "5E010903";
+            Long cmdLong = 0L;
+            int cmdStrLen = cmdStr.length() / 2;
+            for (int i = 0; i < cmdStrLen; i++) {
+                String sCmd = cmdStr.substring(2 * i, 2 * i + 2);
+                cmdLong += Long.parseLong(sCmd, 16);
+            }
+           System.out.println(Long.toHexString(cmdLong));
+        }
+    }
+

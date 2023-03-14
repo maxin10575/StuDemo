@@ -1,5 +1,7 @@
 package com.mx;
 
+import com.mx.uf.Base64Utils;
+import com.mx.uf.MD5;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;
@@ -9,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -23,7 +26,148 @@ import java.util.regex.Pattern;
 public class Test {
 
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
+    public void testToString() {
+        List<User> userList = new ArrayList<>();
+        System.out.println(userList);
+    }
+
+    @org.junit.Test
+    public void longToTime() {
+            try {
+                Long time = 1641828603L;
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String format = sdf.format(time*1000);
+                System.out.println( sdf.parse(format));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+    }
+
+    @org.junit.Test
+    public  void testBase64() {
+        String a = "maxin1111";
+        String a1 = Base64Utils.encodeBase64ToStr(a);
+        System.out.println(a1);
+        System.out.println(Base64Utils.decodeBase64ToStr(a1));
+
+        String b = "fasdddddddddddddddddddddddd3wefshgrshfghsfghfghfghfghfdghdfghfdh";
+        String b1 = Base64Utils.encodeBase64ToStr(b);
+        System.out.println(b1);
+        System.out.println(Base64Utils.decodeBase64ToStr(b1));
+
+    }
+
+    @org.junit.Test
+    public void testW(){
+        int a = 10;
+        int b = 0;
+        while (a>1){
+            b++;
+            if(a<8){
+                return;
+            }
+            System.out.println("第"+b+"次");
+            a--;
+        }
+        System.out.println("结束");
+    }
+
+    @org.junit.Test
+    public void testMd5() {
+        String a = "WANGLI@BED" + "0x0050C25904D6" + "9" + "8W2uShJN^Tb0fX15deSPaywB3JFH&Rv2ef^V" + "1658730990"+ "WANGLI";
+        System.out.println(MD5.encode(a));
+    }
+
+    /*16进制求和  适合任何16进制数*/
+//    @org.junit.Test
+//    public void makeChecksum2(String num, int count) {
+//        //拆分每个16进制字符串
+//        String[] split = num.trim().split("");
+//  /*  for (int i = split.length - 1; i > -1; i--) {
+//        int size = hexToInteger(split[i]) + count;
+//        int valuen = size % 16;
+//        split[i] = encodeHEX(valuen);
+//        count = size / 16;
+//    }*/
+//        int i = split.length - 1;
+//        StringBuilder builder = new StringBuilder();
+//        while(count != 0){
+//            if (i >= 0){
+//                int size = hexToInteger(split[i]) + count;
+//                int valuen = size % 16;
+//                split[i] = encodeHEX(valuen);
+//                count = size / 16;
+//            }else {
+//                int valuen = count % 16;
+//                if (valuen > 0){
+//                    builder.append(encodeHEX(valuen));
+//                }
+//                count = count / 16;
+//            }
+//            i--;
+//        }
+//        StringBuilder str = new StringBuilder();
+//        if(builder.length() > 0){
+//            String[] bsplit = builder.toString().split("");
+//            for (int s = bsplit.length - 1; s > -1; s--) {
+//                str.append(bsplit[s]);
+//            }
+//        }
+//        for (int n = 0; n < split.length; n++) {
+//            str.append(split[n]);
+//        }
+////        return str.toString();
+//    }
+
+    //10进制转成16进制数
+    public static String encodeHEX(Integer numb) {
+        String hex = Integer.toHexString(numb);
+        return hex;
+    }
+
+    //16进制数转成10进制
+    public static Integer hexToInteger(String hex) {
+        Integer num = Integer.parseInt(hex, 16);
+        return num;
+    }
+
+    @org.junit.Test
+    public void testG() {
+//        System.out.println(String.format("%02X", 20));
+        System.out.println(Integer.parseInt("00", 16));
+    }
+
+
+    @org.junit.Test
+    public void testF(){
+        String cmdStr = "5E010403";
+            Long cmdLong = 0L;
+            int cmdStrLen = cmdStr.length() / 2;
+            for (int i = 0; i < cmdStrLen ; i++) {
+                String sCmd = cmdStr.substring(2*i,2*i+2);
+                cmdLong += Long.parseLong(sCmd, 16);
+            }
+             System.out.println(Long.toHexString(cmdLong));
+    }
+
+    @org.junit.Test
+    public void testE(){
+        Boolean flag = true;
+        String[] StringArr = new String[1];
+        try {
+            String a = StringArr[2];
+        } catch (Exception e) {
+            flag = false;
+            throw new RuntimeException(e);
+//            e.printStackTrace();
+        }
+        System.out.println(flag);
+    }
+
+
+    @org.junit.Test
     public void getDate() throws ParseException {
     //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        Date d2=sdf.parse("2021-11-12 17:30:30");//将String to Date类型
@@ -37,18 +181,20 @@ public class Test {
 //        System.out.println(testEnmu.getDescByCode(1));
     }
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     public void testGroup(){
-        User user = User.builder().age(11).name("a").index(0.1).build();
-        User user2 = User.builder().age(22).name("a").index(0.4).build();
-        User user3 = User.builder().age(3).name("b").index(0.3).build();
+        User user1 = User.builder().age(11).name("mark").index(0.1).brithday("2022-06-20 08:20:12").build();
+        User user2 = User.builder().age(22).name("tony").index(0.4).brithday("2022-06-19 12:20:12").build();
+        User user3 = User.builder().age(3).name("tom").index(0.3).brithday("2022-06-20 07:20:12").build();
         List<User> userList = new ArrayList();
-        userList.add(user);
+        userList.add(user1);
         userList.add(user2);
         userList.add(user3);
-        List<User> settlementOrderIdList = new ArrayList<>();
-        settlementOrderIdList.addAll(userList);
-        System.out.println(settlementOrderIdList);
+        List<User> userNewList = new ArrayList<>();
+        userNewList.addAll(userList);
+        System.out.println(userNewList);
+        User userLast = userNewList.stream().min(Comparator.comparing(User::getBrithday)).get();
+        System.out.println(userLast.getBrithday());
 
 
 
@@ -74,7 +220,7 @@ public class Test {
 //        Map<Long, List<TestDTO2>> categoryPitemMap = list.stream().collect(Collectors.groupingBy(TestDTO2::getLevle1CategoryId));
     }
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     public void testEnum(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         System.out.println(simpleDateFormat.format(1638251244828L));
@@ -82,14 +228,14 @@ public class Test {
     }
 
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     public void testaList(){
 
         System.out.println(Arrays.asList(1,"haha",true));
 
     }
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     public void test111(){
 //        System.out.println(com.mx.AttributeTypeEnum.getDesc(1));
 //        System.out.println(com.mx.AttributeTypeEnum.getAllPhoneCreditType());
@@ -99,7 +245,7 @@ public class Test {
 //        System.out.println(com.mx.VirtualTypeEnum.getDesc(1));
     }
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     public void phone() {
         String tel = "13312341234";
         String ct = "^1((33|49|53|73|77|80|81|89|99)[0-9])\\d{7}$";
@@ -110,7 +256,7 @@ public class Test {
         }
     }
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     public void findMedianSortedArrays() {
         int[] nums1 = {1,5};
         int[] nums2 = {3, 4};

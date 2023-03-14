@@ -26,7 +26,7 @@ public class AioServer {
 			@Override
 			public void failed(Throwable exc, Void attachment) {
 				//ʧ��ʱ��ķ���
-				System.out.println("�첽IOʧ��");
+				System.out.println("失败");
 			}});
 	}
 	
@@ -34,14 +34,14 @@ public class AioServer {
 		ByteBuffer bytebuffer = ByteBuffer.allocate(32);
 		ch.read(bytebuffer).get();
 		bytebuffer.flip();
-		System.out.println("����˽��գ�===="+bytebuffer.get());
+		System.out.println("handler===="+bytebuffer.get());
 		
 	}
 	
 	public static void main(String[] args) throws Exception {
 		int port = 7080;
 		AioServer server = new AioServer(port);
-		System.out.println("����˼����˿ڣ�"+port);
+		System.out.println("启动"+port);
 		Thread.sleep(1000000);
 	}
 	

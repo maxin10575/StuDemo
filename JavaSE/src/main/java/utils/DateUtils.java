@@ -1,6 +1,7 @@
 package utils;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.joda.time.DateTime;
 
 import java.lang.management.ManagementFactory;
 import java.text.DateFormat;
@@ -27,7 +28,9 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     public static String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
 
     public static String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
-    
+
+    public static String HH_MM_SS = "HH:mm:ss";
+
     private static String[] parsePatterns = {
             "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM", 
             "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM",
@@ -69,6 +72,11 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     public static final String parseDateToStr(final String format, final Date date) {
         return new SimpleDateFormat(format).format(date);
+    }
+
+
+    public static String formatDate(Date date, String dateFormat) {
+        return new DateTime(date).toString(dateFormat);
     }
 
     /**
@@ -151,6 +159,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         }
         return false;
     }
+
 
 /*    public static void main(String[] args) {
         long nd = 1000 * 24 * 60 * 60;

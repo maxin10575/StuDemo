@@ -1,12 +1,15 @@
 package ConcurrencyTest;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @program: StuDemo
@@ -67,4 +70,111 @@ public class Test {
         long et = System.currentTimeMillis();
         log.error("=======同步数据结束=========耗时[{}]毫秒", (et - st));
     }
+
+
+    /**
+     * @param omHealthReportPoList
+     * @param userIdMap
+     * @desc: 分批保存奥美报告数据到本地
+     * @author: maxin
+     * @since: 2022/11/14
+     */
+    public Boolean saveReportData2iBed2(List<String> omHealthReportPoList, Map<String, Integer> userIdMap) {
+        log.info("=====开始使用多线程同步奥美报告数据到本地=====");
+        //200步长分组
+        final int perSize = 1;
+        final int taskNum = omHealthReportPoList.size() / perSize + 1;
+        AtomicReference<Boolean> saveFlag = new AtomicReference<>(true);
+//        ThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(taskNum);
+        final ExecutorService threadPool = new ThreadPoolExecutor(8, 8 + 5,
+                0L, TimeUnit.SECONDS,
+                new LinkedBlockingDeque<>(1024), new ThreadPoolExecutor.AbortPolicy());
+//        ThreadPoolExecutor executor = DefaultThreadPoolExecutor.newInstance("Ibed-RandarData-");
+        CountDownLatch countDownLatch = new CountDownLatch(taskNum);
+        for (int i = 0; i < taskNum; i++) {
+            List<String> resultList;
+            if ((i + 1) == taskNum) {
+                int startIndex = (i * perSize);
+                int endIndex = omHealthReportPoList.size();
+                resultList = omHealthReportPoList.subList(startIndex, endIndex);
+            } else {
+                int startIndex = i * perSize;
+                int endIndex = (i + 1) * perSize;
+                resultList = omHealthReportPoList.subList(startIndex, endIndex);
+            }
+            if (CollectionUtils.isEmpty(resultList)) {
+                countDownLatch.countDown();
+                continue;
+            }
+
+
+            log.info("========第[{}]组开始=========", i + 1);
+//            ImportTask task = new ImportTask(resultList, countDownLatch, userIdMap, i + 1, saveFlag);
+//            executor.execute(task);
+        }
+        //主线程等待所有线程完成任务
+        try {
+            countDownLatch.await();
+        } catch (Exception e) {
+            log.error("同步奥美报告数据到本地,CountDownLatch异常:{}", e);
+        }
+        //所有线程完成任务后的一些业务
+        //关闭线程池
+//        executor.shutdown();
+        log.info("=======同步奥美报告数据到本地结束=========");
+        return saveFlag.get();
+    }
+
+
+    /**
+     * @desc: 具体保存报告到本地逻辑
+     * @author: maxin
+     * @since: 2022/11/14
+     */
+     /*   class ImportTask implements Runnable {
+        private final AtomicReference<Boolean> saveFlag;
+        private final int num;
+        private final List<OmHealthReportPo> list;
+        private final CountDownLatch countDownLatch;
+        private final Map<String, Integer> userIdMap;
+
+        public ImportTask(List<OmHealthReportPo> list, CountDownLatch countDownLatch, Map<String, Integer> userIdMap, int num, AtomicReference<Boolean> saveFlag) {
+            this.list = list;
+            this.countDownLatch = countDownLatch;
+            this.userIdMap = userIdMap;
+            this.num = num;
+            this.saveFlag = saveFlag;
+        }
+
+    @Override
+        public void run() {
+            if (null != list) {
+                try {
+                    long start = System.currentTimeMillis();
+                    list.forEach(omHealthReportPo -> {
+                        if (StringUtils.isNotBlank(omHealthReportPo.getSdate())) {
+                            omHealthReportPo.setReportTime(omHealthReportPo.getSdate().substring(0, 10));
+                        }
+                        omHealthReportPo.setUserId(userIdMap.get(omHealthReportPo.getDeviceId()));
+                    });
+                    Boolean flag = omHealthReportDao.saveBatch(list);
+                    saveFlag.set(saveFlag.get() && flag);
+                    long end = System.currentTimeMillis();
+                    if (!flag) {
+                        List<String> sleepIdList = list.stream().map(OmHealthReportPo::getSleepId).collect(Collectors.toList());
+                        log.error("******第[{}]组同步奥美报告数据到本地失败，sleepId：【{}】", num, JSON.toJSONString(sleepIdList));
+                    } else {
+                        log.info("========第[{}]组结束=========耗时[{}]毫秒====", num, (end - start));
+                    }
+                } catch (Exception e) {
+                    List<String> sleepIdList = list.stream().map(OmHealthReportPo::getSleepId).collect(Collectors.toList());
+                    log.error("******第[{}]组同步奥美报告数据到本地异常：{},sleepId:【{}】", e, JSON.toJSONString(sleepIdList));
+                } finally {
+                    countDownLatch.countDown();
+                }
+            }
+        }
+    }*/
+
+
 }

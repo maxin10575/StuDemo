@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -22,8 +21,8 @@ public class ConcurrentHashMapTest {
 
         User zhangsan = new User(1, "zhangsan");
         User lisi = new User(2, "lisi");
-        userMap.put(zhangsan.getUserId(), zhangsan);
-        userMap.put(lisi.getUserId(), lisi);
+//        userMap.put(zhangsan.getUserId(), zhangsan);
+//        userMap.put(lisi.getUserId(), lisi);
 
         User user1 = userMap.get(1);
         System.out.println(JSONObject.toJSONString(user1));

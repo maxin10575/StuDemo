@@ -43,7 +43,7 @@ import java.util.concurrent.Semaphore;
                 try {
                     semaphore.acquire();
                     System.out.println(Thread.currentThread().getName() + ":doSomething start-" + sf.format(new Date()));
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     System.out.println(Thread.currentThread().getName() + ":doSomething end-" + sf.format(new Date()));
                     semaphore.release();
 

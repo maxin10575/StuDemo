@@ -1,9 +1,8 @@
 package com.epo.zhujie;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
-@Component("user")  //相当于<bean id ="user" class=""/>
+@Component("user")  //锟洁当锟斤拷<bean id ="user" class=""/>
 public class User {
 	
 	public void add() {

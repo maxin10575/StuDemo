@@ -11,6 +11,7 @@ import java.util.Map;
 
 @Repository("employeeDAO")
 public class EmpDAOMybatisImpl implements EmpDAO {
+
 	@Resource(name = "sst")
 	private SqlSessionTemplate sst;
 

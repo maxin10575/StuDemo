@@ -26,8 +26,8 @@
                             <addClasspath>true</addClasspath>
                         </manifest>
                         <manifestEntries>
-<!--                            <Premain-Class>mx.agent.AgentMainTest</Premain-Class>-->
-<!--                            <Agent-Class>mx.agent.AgentMainTest</Agent-Class>-->
+                            <!--                            <Premain-Class>mx.agent.AgentMainTest</Premain-Class>-->
+                            <!--                            <Agent-Class>mx.agent.AgentMainTest</Agent-Class>-->
                             <Premain-Class>mx.agent.pre.PreMainTraceAgent</Premain-Class>
                             <Agent-Class>mx.agent.pre.PreMainTraceAgent</Agent-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
@@ -37,14 +37,14 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId> maven-assembly-plugin</artifactId>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <descriptorRefs>
-                        <descriptorRef> jar-with-dependencies</descriptorRef >
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass> mx.demo.test2.App</mainClass >
+                            <mainClass>mx.demo.test2.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -66,26 +66,31 @@
             <artifactId>tools</artifactId>
             <version>1.8.0</version>
             <scope>system</scope>
-            <systemPath>/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/lib/tools.jar</systemPath>
+            <systemPath>/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/lib/tools.jar</systemPath>
         </dependency>
-
-
         <dependency>
-        <groupId>org.ow2.asm</groupId>
-        <artifactId>asm-all</artifactId>
-        <version>5.1</version>
-    </dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-all</artifactId>
+            <version>5.1</version>
+        </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
-            <version>3.27.0-GA</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>16.0.1</version>
-            <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
 
         <!--       <dependency>
                    <groupId>asm</groupId>
@@ -93,11 +98,11 @@
                    <version>3.3.1</version>
                </dependency>-->
 
-<!--        <dependency>
-            <groupId>asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>3.3</version>
-            <scope>compile</scope>
-        </dependency>-->
+        <!--        <dependency>
+                    <groupId>asm</groupId>
+                    <artifactId>asm</artifactId>
+                    <version>3.3</version>
+                    <scope>compile</scope>
+                </dependency>-->
     </dependencies>
 </project>

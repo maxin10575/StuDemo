@@ -1,3 +1,4 @@
+/*
 package utils;
 
 import com.alibaba.fastjson.JSON;
@@ -9,10 +10,12 @@ import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.*;
 
+*/
 /**
  * @mx运知
  *  2021/04/08 14:14
- */
+ *//*
+
 @Slf4j
 public class JedisUtils {
     //等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时。如果超过等待时间，则直接抛出JedisConnectionException；
@@ -32,22 +35,26 @@ public class JedisUtils {
         }
     }
 
-    /**
+    */
+/**
      * 获取jedispool连接池
      * @param host
      * @param port
      * @return
-     */
+     *//*
+
     private static JedisPool getJedisPool(String host, Integer port) throws Exception {
         JedisPoolConfig config = getJedisPoolConfig();
         jedisPool = new JedisPool(config, host, port, TIMEOUT);
         return jedisPool;
     }
 
-    /**
+    */
+/**
      * 获取连接池配置
      * @return
-     */
+     *//*
+
     private static JedisPoolConfig getJedisPoolConfig() {
         JedisPoolConfig config = new JedisPoolConfig();
         //最大连接数，如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
@@ -74,11 +81,13 @@ public class JedisUtils {
         return config;
     }
 
-    /**
+    */
+/**
      * 同步获取Jedis实例
      *
      * @return Jedis
-     */
+     *//*
+
     private static Jedis getJedis() {
         Jedis jedis = null;
         try {
@@ -93,13 +102,15 @@ public class JedisUtils {
         return jedis;
     }
 
-    /**
+    */
+/**
      * 设置值
      *
      * @param key
      * @param value
      * @return -5：Jedis实例获取失败<br/>OK：操作成功<br/>null：操作失败
-     */
+     *//*
+
     public static String set(String key, String value) {
         Jedis jedis = getJedis();
         if(jedis == null){
@@ -119,7 +130,8 @@ public class JedisUtils {
         return result;
     }
 
-    /**
+    */
+/**
      * 缓存Map赋值
      *
      * @param key
@@ -127,7 +139,8 @@ public class JedisUtils {
      * @param value
      * @return -5：Jedis实例获取失败
      * @author jqlin
-     */
+     *//*
+
     public static long hset(String key, String field, String value) {
         long result = -1L;
         Jedis jedis = getJedis();
@@ -148,12 +161,14 @@ public class JedisUtils {
     }
 
 
-    /**
+    */
+/**
      * 获取缓存的Map值
      *
      * @param key
      * @return
-     */
+     *//*
+
     public static String hget(String key, String field){
         Jedis jedis = getJedis();
         if(jedis == null){
@@ -192,13 +207,15 @@ public class JedisUtils {
         return result;
     }
 
-    /**
+    */
+/**
      * 获取map所有的字段和值
      *
      * @param key
      * @return
      * @author jqlin
-     */
+     *//*
+
     public static Map<String, String> hgetAll(String key){
         Map<String, String> map = new HashMap<String, String>();
 
@@ -220,14 +237,16 @@ public class JedisUtils {
         return map;
     }
 
-    /**
+    */
+/**
      * 查看哈希表 key 中，指定的field字段是否存在。
      *
      * @param key
      * @param field
      * @return
      * @author jqlin
-     */
+     *//*
+
     public static Boolean hexists(String key, String field){
         Jedis jedis = getJedis();
         if(jedis == null){
@@ -250,13 +269,15 @@ public class JedisUtils {
         return false;
     }
 
-    /**
+    */
+/**
      * 获取所有哈希表中的字段
      *
      * @param key
      * @return
      * @author jqlin
-     */
+     *//*
+
     public static Set<String> hkeys(String key) {
         Set<String> set = new HashSet<String>();
         Jedis jedis = getJedis();
@@ -277,13 +298,15 @@ public class JedisUtils {
         return null;
     }
 
-    /**
+    */
+/**
      * 获取所有哈希表中的值
      *
      * @param key
      * @return
      * @author jqlin
-     */
+     *//*
+
     public static List<String> hvals(String key) {
         List<String> list = new ArrayList<String>();
         Jedis jedis = getJedis();
@@ -304,7 +327,8 @@ public class JedisUtils {
         return null;
     }
 
-    /**
+    */
+/**
      * 设置值
      *
      * @param key
@@ -312,7 +336,8 @@ public class JedisUtils {
      * @param expire 过期时间，单位：秒
      * @return -5：Jedis实例获取失败<br/>OK：操作成功<br/>null：操作失败
      * @author jqlin
-     */
+     *//*
+
     public static String set(String key, String value, int expire) {
         Jedis jedis = getJedis();
         if(jedis == null){
@@ -332,14 +357,16 @@ public class JedisUtils {
         return result;
     }
 
-    /**
+    */
+/**
      * 在列表key的头部插入元素
      *
      * @param key
      * @param values -1：Jedis实例获取失败，>0：返回操作成功的条数，0：失败
      * @return
      * @author jqlin
-     */
+     *//*
+
     public static long lpush(String key, String... values) {
         long result = -1L;
         Jedis jedis = getJedis();
@@ -359,12 +386,14 @@ public class JedisUtils {
         return result;
     }
 
-    /**
+    */
+/**
      * 向channel推送message
      * @param channel
      * @param message
      * @return
-     */
+     *//*
+
     public static long publish(String channel, String message) {
         long result = -1L;
         Jedis jedis = getJedis();
@@ -383,14 +412,16 @@ public class JedisUtils {
         return result;
     }
 
-    /**
+    */
+/**
      * 在列表key的尾部插入元素
      *
      * @param key
      * @param values -5：Jedis实例获取失败，>0：返回操作成功的条数，0：失败
      * @return
      * @author jqlin
-     */
+     *//*
+
     public static long rpush(String key, String... values) {
         long result = -1L;
         Jedis jedis = getJedis();
@@ -410,7 +441,8 @@ public class JedisUtils {
         return result;
     }
 
-    /**
+    */
+/**
      * 返回存储在key列表的特定元素
      *
      *
@@ -419,7 +451,8 @@ public class JedisUtils {
      * @param end 结束索引，-1表示最后一个元素，-2表示倒数第二个元素
      * @return redis client获取失败返回null
      * @author jqlin
-     */
+     *//*
+
     public static List<String> lrange(String key, long start, long end) {
         Jedis jedis = getJedis();
         if(jedis == null){
@@ -439,7 +472,8 @@ public class JedisUtils {
         return result;
     }
 
-    /**
+    */
+/**
      * 获取List缓存对象
      *
      * @param key
@@ -447,7 +481,8 @@ public class JedisUtils {
      * @param end
      * @return List<T> 返回类型
      * @author jqlin
-     */
+     *//*
+
     public static <T> List<T> range(String key, long start, long end, Class<T> clazz){
         List<String> dataList = lrange(key, start, end);
         if(StringUtils.isEmpty(dataList)){
@@ -457,11 +492,13 @@ public class JedisUtils {
         return JSON.parseArray(dataList.toString(),clazz);
     }
 
-    /**
+    */
+/**
      * 释放jedis资源
      *
      * @param jedis
-     */
+     *//*
+
     @SuppressWarnings("deprecation")
     public static void returnResource(final Jedis jedis) {
         if (jedis != null && jedisPool != null) {
@@ -476,3 +513,4 @@ public class JedisUtils {
         }
     }
 }
+*/

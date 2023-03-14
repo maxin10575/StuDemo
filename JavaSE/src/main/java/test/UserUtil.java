@@ -7,10 +7,10 @@ package test;
  **/
 public class UserUtil {
 
-    public User getUser(){
+/*    public User getUser(){
         User user = new User();
         user.setName("test");
         return user;
-    }
+    }*/
     
 }

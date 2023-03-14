@@ -40,10 +40,10 @@ public class Hashtest {
         HashMap hashMap = new HashMap();
         hashMap.put("1",1);
 //        @RequiredArgsConstructor(staticName = "of")
-        Hashtest hashtest = Hashtest.of("name","id").setId(1).setName("ha").setSex("man");
+//        Hashtest hashtest = Hashtest.of("name","id").setId(1).setName("ha").setSex("man");
 
 //        Hashtest hashtest = Hashtest.of("Zhangsan").setId(1).setName(null);
-        System.out.println(hashtest);
+//        System.out.println(hashtest);
 
    /*     Hashtest stu1 = new Hashtest(1, "赤骥");
         Hashtest stu2 = new Hashtest(2, "赤骥");

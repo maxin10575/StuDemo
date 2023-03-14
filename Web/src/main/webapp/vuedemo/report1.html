@@ -1,0 +1,154 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=bar-large
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+    <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+<div id="container" style="height: 100%"></div>
+
+
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
+<!-- Uncomment this line if you want to dataTool extension
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/extension/dataTool.min.js"></script>
+-->
+<!-- Uncomment this line if you want to use gl extension
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+-->
+<!-- Uncomment this line if you want to echarts-stat extension
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+-->
+<!-- Uncomment this line if you want to use map
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+-->
+<!-- Uncomment these two lines if you want to use bmap extension
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/extension/bmap.min.js"></script>
+-->
+
+<script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+        renderer: 'canvas',
+        useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    const dataCount = 5e5;
+    const data = generateData(dataCount);
+    option = {
+        title: {
+            text: echarts.format.addCommas(dataCount) + ' Data',
+            left: 10
+        },
+        toolbox: {
+            feature: {
+                dataZoom: {
+                    yAxisIndex: false
+                },
+                saveAsImage: {
+                    pixelRatio: 2
+                }
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: {
+            bottom: 90
+        },
+        dataZoom: [
+            {
+                type: 'inside'
+            },
+            {
+                type: 'slider'
+            }
+        ],
+        xAxis: {
+            data: data.categoryData,
+            silent: false,
+            splitLine: {
+                show: false
+            },
+            splitArea: {
+                show: false
+            }
+        },
+        yAxis: {
+            splitArea: {
+                show: false
+            }
+        },
+        series: [
+            {
+                type: 'bar',
+                data: data.valueData,
+                // Set `large` for large data amount
+                large: true,
+           /*     textStyle:{
+                    fontSize:15,
+                    color:'#fff'
+                }*/
+                itemStyle: {
+                    normal: {
+                        color: function () {
+                            var a = data.valueData
+                            for (let aElement of a) {
+                                console.log("ele===="+aElement);
+                                if(aElement>=5000){
+                                    return '#C1232B';
+                                }else {
+                                    return '#25daba';
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        ]
+    };
+    function generateData(count) {
+        let baseValue = Math.random() * 1000;
+        let time = +new Date(2011, 0, 1);
+        let smallBaseValue;
+        function next(idx) {
+            smallBaseValue =
+                idx % 30 === 0
+                    ? Math.random() * 700
+                    : smallBaseValue + Math.random() * 500 - 250;
+            baseValue += Math.random() * 20 - 10;
+            return Math.max(0, Math.round(baseValue + smallBaseValue) + 3000);
+        }
+        const categoryData = [];
+        const valueData = [];
+        for (let i = 0; i < count; i++) {
+            categoryData.push(
+                echarts.format.formatTime('yyyy-MM-dd\nhh:mm:ss', time, false)
+            );
+            valueData.push(next(i).toFixed(2));
+            time += 1000;
+        }
+        return {
+            categoryData: categoryData,
+            valueData: valueData
+        };
+    }
+
+    if (option && typeof option === 'object') {
+        myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+</script>
+</body>
+</html>

@@ -16,7 +16,7 @@ public class CreateThread3 {
         Callable<String> callable = new MyCallable();
         FutureTask<String> futureTask = new FutureTask(callable);
 
-        new Thread(futureTask).start();
+        new Thread(futureTask). start();
 
         String result = futureTask.get();
         System.out.println("result = " + result);

@@ -1,8 +1,5 @@
 package test;
 
-import java.math.BigDecimal;
-import java.util.Objects;
-
 /**
  * @program: StuDemo
  * @description:
@@ -12,10 +9,59 @@ import java.util.Objects;
  * @Version: 1.0
  **/
 public class Test {
+
+    static final String  SP = "\\.";
+    static final String  SP1 = "_";
     public static void main(String[] args) {
-        BigDecimal bigDecimal1 = new BigDecimal(0);
+
+        String test = "SCD_1_2.1_3.13";
+
+
+
+//        System.out.println(test.replaceAll("\\.", ""));
+        System.out.println(test.replaceAll("_", ""));
+        System.out.println(test.replaceAll(SP1, ""));
+//        System.out.println(test.replaceAll(SP, ""));
+//        System.out.println(new Date());
+
+/*        int flag1 = 1;
+        int flag2 = 2;
+        if(flag1 == 1){
+            System.out.println("11111111");
+        }else if(flag2 == 2){
+            System.out.println("222222");
+        }else {
+            System.out.println("33333");
+        }*/
+
+//        User user = new User();
+//        user.setName("haha");
+//        user.setAge("18");
+//        User user1 = user;
+//        String name = user.getName();
+//        user.setName(user.getName()+"哈哈");
+//        System.out.println(user1.getName());
+//        System.out.println(true && true);
+//        System.out.println(true && false);
+//        System.out.println(false && true);
+//        System.out.println(false && false);
+//
+//        System.out.println(true || true);
+//        System.out.println(false || true);
+//        System.out.println(true || false);
+//        System.out.println(false || false);
+
+
+
+
+
+
+//    String a = "WANGLI@BED"+"0x0050C25904D6"+"9"+"8W2uShJN^Tb0fX15deSPaywB3JFH&Rv2ef^V"+"1658730036"+"WANGLI";
+//        System.out.println(MD5.encode(a));
+
+//        BigDecimal bigDecimal1 = new BigDecimal(0);
 //        System.out.println(bigDecimal1.divide(new BigDecimal(100),5,BigDecimal.ROUND_HALF_UP));
-        System.out.println(Objects.isNull(bigDecimal1));
+//        System.out.println(Objects.isNull(bigDecimal1));
 /*        List<User> userList = Lists.newArrayList();
         User user = new User();
         user.setId("1");

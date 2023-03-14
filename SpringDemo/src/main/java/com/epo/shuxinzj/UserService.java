@@ -1,25 +1,23 @@
 package com.epo.shuxinzj;
 
+import org.springframework.stereotype.Controller;
+
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-
-//@Controller("userService")  Î´¶¨ÒåvalueµÄ»°£¬context.getBean("userService"); userService Ä¬ÈÏÎªclass Ê××ÖÄ¸Ğ¡Ğ´
+//@Controller("userService")  Î´ï¿½ï¿½ï¿½ï¿½valueï¿½Ä»ï¿½ï¿½ï¿½context.getBean("userService"); userService Ä¬ï¿½ï¿½Îªclass ï¿½ï¿½ï¿½ï¿½Ä¸Ğ¡Ğ´
 @Controller
 public class UserService {
 
 
-	// µÃµ½dao¶ÔÏó
-	// 1 ¶¨ÒådaoÀàĞÍÊôĞÔ
-	// ÔÚdaoÊôĞÔÉÏÃæÊ¹ÓÃ×¢½â Íê³É¶ÔÏó×¢Èë
-//	@Autowired »ò
+	// ï¿½Ãµï¿½daoï¿½ï¿½ï¿½ï¿½
+	// 1 ï¿½ï¿½ï¿½ï¿½daoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ï¿½ï¿½daoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½×¢ï¿½ï¿½ ï¿½ï¿½É¶ï¿½ï¿½ï¿½×¢ï¿½ï¿½
+//	@Autowired ï¿½ï¿½
 	@Resource
 	private UserDao userDao;
 
-	// Ê¹ÓÃ×¢½â·½Ê½Ê±ºò²»ĞèÒªset·½·¨
-	//  @Resource(name="userDao") nameÊôĞÔÖµĞ´×¢½â´´½¨dao¶ÔÏóvalueµÄÖµ ¿ÉÊ¡ÂÔ
+	// Ê¹ï¿½ï¿½×¢ï¿½â·½Ê½Ê±ï¿½ï¿½ï¿½ï¿½Òªsetï¿½ï¿½ï¿½ï¿½
+	//  @Resource(name="userDao") nameï¿½ï¿½ï¿½ï¿½ÖµĞ´×¢ï¿½â´´ï¿½ï¿½daoï¿½ï¿½ï¿½ï¿½valueï¿½ï¿½Öµ ï¿½ï¿½Ê¡ï¿½ï¿½
 
 
 	public void add() {

@@ -17,5 +17,6 @@ public class User {
         String name;
         Integer age;
         Double index;
+        String brithday;
 }
 

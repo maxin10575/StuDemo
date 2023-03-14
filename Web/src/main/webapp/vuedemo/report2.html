@@ -1,0 +1,102 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=bar-tick-align&code=PYBwLglsB2AEC8sDeAoWszGAG0iAXMmuhgE4QDmFApqYQOQCGAHhAM70A0x6L7ACsAjQwtQqhIkwATxDUGbABaMAJsADu9HrAC-xHd3QVyK8duzUAZmAYBmAKRdt5Copux6AFkeGSAI2AwTABbOx9tAGMYMEZhABlGP2psQjBSAFdqfV9mAEFWNkIAbW0JSQxZeQ8IxlEKYFJpJ3LYFVrGYvoAWRguDwAVTL76AHVqFWH-xXThgDFyYYBlWqX06HoAXV9JPjZ-iAiAazMW3mxKaBGIMEUEpJSyTO10PUlX2C3iaXz2YtLnipyBgAN0Y2CG2nen3QbFoEGohVgJUkZUk0EYwSq9AAIhBSNQImBmuUZECPH5GKRiZIKaQriobgwAGwABnCLTaMWKAEYWZxYABWABM_KFLL5sFstk8_NsAE4JVKJUKxdDTurrtRgosZBYTuqDehoA1gmD9YaLbAotgGoRLGtCVA4AAKACUREtnpIlgasGdFjAsEYAFELJiRLBgJZWu13aivQmotA2DhqAA6G0UZ0AImS1HgBfg2YA1CGw9QRK6ANwAhMWiCWZ1lrUVsAAPngYpZrvjdbr-LA6VIcHoAGIAMLcoW2IUAIXoNb7CZ0yVhHqXfYHQ5Ho6FAraFIXtY3LXeJ9PKGPdbPfZvlpvUJQOirQA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+    <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+<div id="container" style="height: 100%"></div>
+
+
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
+<!-- Uncomment this line if you want to dataTool extension
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/extension/dataTool.min.js"></script>
+-->
+<!-- Uncomment this line if you want to use gl extension
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+-->
+<!-- Uncomment this line if you want to echarts-stat extension
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+-->
+<!-- Uncomment this line if you want to use map
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+-->
+<!-- Uncomment these two lines if you want to use bmap extension
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/extension/bmap.min.js"></script>
+-->
+
+<script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+        renderer: 'canvas',
+        useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                axisTick: {
+                    alignWithLabel: true
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: 'Direct',
+                type: 'bar',
+                barWidth: '60%',
+                data: [30, 300, 100, 500, 200, 330, 120],
+                itemStyle: {
+                    normal: {
+                        color: function(data) {
+                            console.log("value===="+data.data)
+                            if(data.data   < 300)
+                            {
+                                return 'red'
+                            }
+                            else
+                            {
+                                return 'green'
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    };
+
+    if (option && typeof option === 'object') {
+        myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+</script>
+</body>
+</html>
