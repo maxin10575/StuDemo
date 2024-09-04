@@ -1,3 +1,4 @@
+/*
 package wangli;
 
 import com.google.zxing.BarcodeFormat;
@@ -12,11 +13,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
 
+*/
 /**
  * @description:
  * @author: maxin
  * @create: 2022-08-11 19:18
- **/
+ **//*
+
 public class EncodeTest {
     public static String Encode_QR_CODE() throws IOException, WriterException {
         String contents = "王师百万拥旌旗\n" +
@@ -52,12 +55,14 @@ public class EncodeTest {
         MatrixToImageWriter.writeToFile(bitMatrix, format, outputFile);
 
         //
-       /* BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
+       */
+/* BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
         ByteArrayOutputStream os = new ByteArrayOutputStream();//新建流。
         ImageIO.write(image, format, os);//利用ImageIO类提供的write方法，将bi以png图片的数据模式写入流。
         byte b[] = os.toByteArray();//从流中获取数据数组。
         String str = new BASE64Encoder().encode(b);
-        IOUtils.closeQuietly(os);*/
+        IOUtils.closeQuietly(os);*//*
+
         return null;
     }
 
@@ -72,3 +77,4 @@ public class EncodeTest {
 
 
 }
+*/

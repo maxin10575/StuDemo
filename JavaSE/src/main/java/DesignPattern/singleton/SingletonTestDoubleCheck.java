@@ -1,5 +1,7 @@
 package DesignPattern.singleton;
 
+import lombok.Synchronized;
+
 /**
  * @Author maxin
  * @Date 2019-11-19 10:30
