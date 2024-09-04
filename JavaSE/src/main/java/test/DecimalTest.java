@@ -1,6 +1,8 @@
 package test;
 
 
+import org.junit.Test;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -18,20 +20,40 @@ import java.math.RoundingMode;
  **/
 public class DecimalTest {
 
+    @Test
+    private void test(){
+        String a = "28308,27446,28279,29602,28635,28933,28888,28546,26122";
+        String[] b = a.split(",");
+        int c = 0;
+        for (String s : b) {
+            c+= Integer.parseInt(s);
+        }
+        System.out.println(c);
+    }
+
     public static void main(String[] args) {
-  /*      float a1 = 1.0f - 0.9f;
+
+
+        String a = "28308,27446,28279,29602,28635,28933,28888,28546,26122";
+        String[] b = a.split(",");
+        int c = 0;
+        for (String s : b) {
+            c+= Integer.parseInt(s);
+        }
+        System.out.println(c);
+   /*      float a1 = 1.0f - 0.9f;
         float b1 = 0.9f - 0.8f;
         System.out.println(a1);// 0.100000024
         System.out.println(b1);// 0.099999964
         System.out.println(a1 == b1);// false*/
 
-        String a = "1123456789abcd";
-        a = a.substring(0,11);
+//        String a = "1123456789abcd";
+//        a = a.substring(0,11);
 /*   int diagnoseNum = 0;
    int nointactNum = 0;
         BigDecimal  intactNump = BigDecimal.valueOf(diagnoseNum - nointactNum).multiply(BigDecimal.valueOf(100))
                 .divide(BigDecimal.valueOf(diagnoseNum), 2, RoundingMode.HALF_UP);*/
-        System.out.println(a);
+//        System.out.println(a);
 /*        BigDecimal a = new BigDecimal("1.0");
         BigDecimal b = new BigDecimal("0.9");
         BigDecimal c = new BigDecimal("0.8");
