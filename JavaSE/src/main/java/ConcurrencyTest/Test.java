@@ -1,15 +1,15 @@
 package ConcurrencyTest;
 
+import lombok.Data;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 /**
  * @program: StuDemo
@@ -20,6 +20,50 @@ import java.util.concurrent.atomic.AtomicReference;
  * @Version: 1.0
  **/
 public class Test {
+
+    public static void main(String[] args) {
+
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(new Student("小王", 12, "1"));
+
+        studentList.add(new Student("小张", 14, "2"));
+
+        studentList.add(new Student("小李", 15, "1"));
+        studentList.add(new Student("小赵", 15, "2"));
+        studentList.add(new Student("小钱", 15, "2"));
+
+        studentList.add(new Student("小陈", 16, "1"));
+
+
+        List<Student> collect = studentList.stream().collect(
+                Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Student::getAge))), ArrayList::new));
+
+        List<Student> userDeviceLogDtoListNew =  studentList.stream().
+                collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(f -> f.getAge()+f.getPhone()))), ArrayList::new));
+
+
+        System.out.println(collect);
+
+        System.out.println(userDeviceLogDtoListNew);
+    }
+
+
+
+    @Data
+    static class Student {
+
+        Student(String name, Integer age, String phone) {
+            this.age = age;
+            this.name = name;
+            this.phone = phone;
+
+        }
+
+        private Integer age;
+        private String name;
+        private String phone;
+
+    }
 
     private static final Logger log = LoggerFactory.getLogger(Test.class);
 

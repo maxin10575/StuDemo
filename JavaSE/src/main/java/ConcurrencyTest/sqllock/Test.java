@@ -1,6 +1,5 @@
 package ConcurrencyTest.sqllock;
 
-import java.util.Random;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -93,8 +92,9 @@ public class Test {
             Runnable runnable = () -> {
                 try {
                     reentrantLock.lock();
-                    System.out.println(Thread.currentThread().getName() + " acquire lock...");
-                    Thread.sleep(new Random().nextInt(3000));
+                    System.out.println(Thread.currentThread().getName() + " acquire lock..."+System.currentTimeMillis());
+//                    Thread.sleep(new Random().nextInt(3000));
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

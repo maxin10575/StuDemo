@@ -1,24 +1,18 @@
-/*
+
 package utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.connection.RedisStringCommands;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.types.Expiration;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-*/
 /**
  * <p>
  * redisTemplate封装
@@ -26,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author：mx
  * @date: 2020-09-08
- *//*
+ */
 
 @Component
 public class RedisUtil {
@@ -42,8 +36,7 @@ public class RedisUtil {
     }
 
 
-    */
-/**
+    /**
      * @param key
      * @Description: 新增 或者 对 zset中元素 值 + 1
      * @Param: * @param hotZSet
@@ -51,15 +44,14 @@ public class RedisUtil {
      * @return: java.lang.Double
      * @Author: maxin
      * @Date: 2020/9/8
-     *//*
+     */
 
     public Double incrementScore(String hotZSet, String key) {
         return redisTemplate.opsForZSet().incrementScore(hotZSet, key, 1);
     }
 
 
-    */
-/**
+    /**
      * @param key
      * @param value
      * @Description: zset累加value值
@@ -68,14 +60,13 @@ public class RedisUtil {
      * @return: java.lang.Double
      * @Author: maxin
      * @Date: 2021/5/24
-     *//*
+     */
 
     public Double incrementScore(String hotZSet, String key, int value) {
         return redisTemplate.opsForZSet().incrementScore(hotZSet, key, value);
     }
 
-    */
-/**
+    /**
      * @param key
      * @Description: 获取zset key值
      * @Param: * @param hotZSet
@@ -83,15 +74,14 @@ public class RedisUtil {
      * @return: java.lang.Object
      * @Author: maxin
      * @Date: 2021/5/24
-     *//*
+     */
 
     public Double getKeyScore(String hotZSet, String key) {
         return redisTemplate.opsForZSet().score(hotZSet, key);
     }
 
 
-    */
-/**
+    /**
      * @param start
      * @param end
      * @Description: 获取zset范围值内数据
@@ -100,15 +90,14 @@ public class RedisUtil {
      * @return: java.util.Set
      * @Author: maxin
      * @Date: 2020/9/8
-     *//*
+     */
 
     public Set reverseRange(String key, long start, long end) {
         return redisTemplate.opsForZSet().reverseRange(key, start, end);
     }
 
 
-    */
-/**
+    /**
      * @description: 指定缓存失效时间
      * @author：mx
      * @date：2020-09-08 13:03:52
@@ -116,7 +105,7 @@ public class RedisUtil {
      * @param: time 时间(秒)
      * @return: boolean
      * @exception/throws
-     *//*
+     */
 
     public boolean expire(String key, long time) {
         try {
@@ -130,29 +119,29 @@ public class RedisUtil {
         }
     }
 
-    */
-/**
+
+    /**
      * @description: 根据key 获取过期时间
      * @author：mx
      * @date：2020-09-08 13:04:29
      * @param: key 键 不能为null
      * @return: long 时间(秒) 返回0代表为永久有效
      * @exception/throws
-     *//*
+     */
 
     public long getExpire(String key) {
         return redisTemplate.getExpire(key, TimeUnit.SECONDS);
     }
 
-    */
-/**
+
+    /**
      * @description: 判断key是否存在
      * @author：mx
      * @date：2020-09-08 13:05:07
      * @param: key 键
      * @return: boolean true 存在 false不存在
      * @exception/throws
-     *//*
+     */
 
     public boolean hasKey(String key) {
         try {
@@ -163,15 +152,15 @@ public class RedisUtil {
         }
     }
 
-    */
+
 /**
-     * @description: 删除缓存
-     * @author：mx
-     * @date：2020-09-08 13:05:46
-     * @param: key 可以传一个值 或多个
-     * @return: void
-     * @exception/throws
-     *//*
+ * @description: 删除缓存
+ * @author：mx
+ * @date：2020-09-08 13:05:46
+ * @param: key 可以传一个值 或多个
+ * @return: void
+ * @exception/throws
+ *//*
 
     @SuppressWarnings("unchecked")
     public void del(String... key) {
@@ -186,13 +175,13 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 普通缓存获取
-     * @author：mx
-     * @date：2020-09-08 13:06:30
-     * @param: key 键
-     * @return: java.lang.Object
-     * @exception/throws
-     *//*
+ * @description: 普通缓存获取
+ * @author：mx
+ * @date：2020-09-08 13:06:30
+ * @param: key 键
+ * @return: java.lang.Object
+ * @exception/throws
+ *//*
 
     public Object get(String key) {
         return key == null ? null : redisTemplate.opsForValue().get(key);
@@ -200,14 +189,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 普通缓存放入
-     * @author：mx
-     * @date：2020-09-08 13:06:55
-     * @param: key 键
-     * @param: value 值
-     * @return: boolean true成功 false失败
-     * @exception/throws
-     *//*
+ * @description: 普通缓存放入
+ * @author：mx
+ * @date：2020-09-08 13:06:55
+ * @param: key 键
+ * @param: value 值
+ * @return: boolean true成功 false失败
+ * @exception/throws
+ *//*
 
     public boolean set(String key, Object value) {
         try {
@@ -221,15 +210,15 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 普通缓存放入并设置时间
-     * @author：mx
-     * @date：2020-09-08 13:07:41
-     * @param: key 键
-     * @param: value 值
-     * @param: time 时间(秒) time要大于0 如果time小于等于0 将设置无限期
-     * @return: boolean true成功 false 失败
-     * @exception/throws
-     *//*
+ * @description: 普通缓存放入并设置时间
+ * @author：mx
+ * @date：2020-09-08 13:07:41
+ * @param: key 键
+ * @param: value 值
+ * @param: time 时间(秒) time要大于0 如果time小于等于0 将设置无限期
+ * @return: boolean true成功 false 失败
+ * @exception/throws
+ *//*
 
     public boolean set(String key, Object value, long time) {
         try {
@@ -247,14 +236,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 递增
-     * @author：mx
-     * @date：2020-09-08 13:08:20
-     * @param: key 键
-     * @param: delta 要增加几(大于0)
-     * @return: long
-     * @exception/throws
-     *//*
+ * @description: 递增
+ * @author：mx
+ * @date：2020-09-08 13:08:20
+ * @param: key 键
+ * @param: delta 要增加几(大于0)
+ * @return: long
+ * @exception/throws
+ *//*
 
     public long incr(String key, long delta) {
         if (delta < 0) {
@@ -265,14 +254,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 递减
-     * @author：mx
-     * @date：2020-09-08 13:08:49
-     * @param: key 键
-     * @param: delta 要减少几(小于0)
-     * @return: long
-     * @exception/throws
-     *//*
+ * @description: 递减
+ * @author：mx
+ * @date：2020-09-08 13:08:49
+ * @param: key 键
+ * @param: delta 要减少几(小于0)
+ * @return: long
+ * @exception/throws
+ *//*
 
     public long decr(String key, long delta) {
         if (delta < 0) {
@@ -283,14 +272,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description:
-     * @author：mx
-     * @date：2020-09-08 13:09:27
-     * @param: key 键 不能为null
-     * @param: item 项 不能为null
-     * @return: java.lang.Object
-     * @exception/throws
-     *//*
+ * @description:
+ * @author：mx
+ * @date：2020-09-08 13:09:27
+ * @param: key 键 不能为null
+ * @param: item 项 不能为null
+ * @return: java.lang.Object
+ * @exception/throws
+ *//*
 
     public Object hget(String key, String item) {
         return redisTemplate.opsForHash().get(key, item);
@@ -298,13 +287,13 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 获取hashKey对应的所有键值
-     * @author：mx
-     * @date：2020-09-08 13:10:21
-     * @param: key 键
-     * @return: 对应的多个键值
-     * @exception/throws
-     *//*
+ * @description: 获取hashKey对应的所有键值
+ * @author：mx
+ * @date：2020-09-08 13:10:21
+ * @param: key 键
+ * @return: 对应的多个键值
+ * @exception/throws
+ *//*
 
     public Map<Object, Object> hmget(String key) {
         return redisTemplate.opsForHash().entries(key);
@@ -312,14 +301,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description: HashSet
-     * @author：mx
-     * @date：2020-09-08 13:10:51
-     * @param: key 键
-     * @param: map 对应多个键值
-     * @return: boolean true 成功 false 失败
-     * @exception/throws
-     *//*
+ * @description: HashSet
+ * @author：mx
+ * @date：2020-09-08 13:10:51
+ * @param: key 键
+ * @param: map 对应多个键值
+ * @return: boolean true 成功 false 失败
+ * @exception/throws
+ *//*
 
     public boolean hmset(String key, Map<String, Object> map) {
         try {
@@ -333,15 +322,15 @@ public class RedisUtil {
 
     */
 /**
-     * @description: HashSet 并设置时间
-     * @author：mx
-     * @date：2020-09-08 13:11:23
-     * @param: key 键
-     * @param: map 对应多个键值
-     * @param: time 时间(秒)
-     * @return: boolean true成功 false失败
-     * @exception/throws
-     *//*
+ * @description: HashSet 并设置时间
+ * @author：mx
+ * @date：2020-09-08 13:11:23
+ * @param: key 键
+ * @param: map 对应多个键值
+ * @param: time 时间(秒)
+ * @return: boolean true成功 false失败
+ * @exception/throws
+ *//*
 
     public boolean hmset(String key, Map<String, Object> map, long time) {
         try {
@@ -358,15 +347,15 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 向一张hash表中放入数据, 如果不存在将创建
-     * @author：mx
-     * @date：2020-09-08 13:12:12
-     * @param: key 键
-     * @param: item 项
-     * @param: value 值
-     * @return: boolean true 成功 false失败
-     * @exception/throws
-     *//*
+ * @description: 向一张hash表中放入数据, 如果不存在将创建
+ * @author：mx
+ * @date：2020-09-08 13:12:12
+ * @param: key 键
+ * @param: item 项
+ * @param: value 值
+ * @return: boolean true 成功 false失败
+ * @exception/throws
+ *//*
 
     public boolean hset(String key, String item, Object value) {
         try {
@@ -380,16 +369,16 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 向一张hash表中放入数据, 如果不存在将创建
-     * @author：mx
-     * @date：2020-09-08 13:12:43
-     * @param: key 键
-     * @param: item 项
-     * @param: value 值
-     * @param: time 时间(秒)  注意:如果已存在的hash表有时间,这里将会替换原有的时间
-     * @return: boolean true 成功 false失败
-     * @exception/throws
-     *//*
+ * @description: 向一张hash表中放入数据, 如果不存在将创建
+ * @author：mx
+ * @date：2020-09-08 13:12:43
+ * @param: key 键
+ * @param: item 项
+ * @param: value 值
+ * @param: time 时间(秒)  注意:如果已存在的hash表有时间,这里将会替换原有的时间
+ * @return: boolean true 成功 false失败
+ * @exception/throws
+ *//*
 
     public boolean hset(String key, String item, Object value, long time) {
         try {
@@ -406,14 +395,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 删除hash表中的值
-     * @author：mx
-     * @date：2020-09-08 13:13:29
-     * @param: key 键 不能为null
-     * @param: item 项 可以使多个 不能为null
-     * @return: void
-     * @exception/throws
-     *//*
+ * @description: 删除hash表中的值
+ * @author：mx
+ * @date：2020-09-08 13:13:29
+ * @param: key 键 不能为null
+ * @param: item 项 可以使多个 不能为null
+ * @return: void
+ * @exception/throws
+ *//*
 
     public void hdel(String key, Object... item) {
         redisTemplate.opsForHash().delete(key, item);
@@ -421,14 +410,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 判断hash表中是否有该项的值
-     * @author：mx
-     * @date：2020-09-08 13:13:53
-     * @param: key 键 不能为null
-     * @param: item 项 不能为null
-     * @return: boolean true 存在 false不存在
-     * @exception/throws
-     *//*
+ * @description: 判断hash表中是否有该项的值
+ * @author：mx
+ * @date：2020-09-08 13:13:53
+ * @param: key 键 不能为null
+ * @param: item 项 不能为null
+ * @return: boolean true 存在 false不存在
+ * @exception/throws
+ *//*
 
     public boolean hHasKey(String key, String item) {
         return redisTemplate.opsForHash().hasKey(key, item);
@@ -436,15 +425,15 @@ public class RedisUtil {
 
     */
 /**
-     * @description: hash递增 如果不存在,就会创建一个 并把新增后的值返回
-     * @author：mx
-     * @date：2020-09-08 13:14:34
-     * @param: key 键
-     * @param: item 项
-     * @param: by 要增加几(大于0)
-     * @return: double
-     * @exception/throws
-     *//*
+ * @description: hash递增 如果不存在,就会创建一个 并把新增后的值返回
+ * @author：mx
+ * @date：2020-09-08 13:14:34
+ * @param: key 键
+ * @param: item 项
+ * @param: by 要增加几(大于0)
+ * @return: double
+ * @exception/throws
+ *//*
 
     public double hincr(String key, String item, double by) {
         return redisTemplate.opsForHash().increment(key, item, by);
@@ -452,15 +441,15 @@ public class RedisUtil {
 
     */
 /**
-     * @description: hash递减
-     * @author：mx
-     * @date：2020-09-08 13:15:05
-     * @param: key 键
-     * @param: item 项
-     * @param: by 要减少记(小于0)
-     * @return: double
-     * @exception/throws
-     *//*
+ * @description: hash递减
+ * @author：mx
+ * @date：2020-09-08 13:15:05
+ * @param: key 键
+ * @param: item 项
+ * @param: by 要减少记(小于0)
+ * @return: double
+ * @exception/throws
+ *//*
 
     public double hdecr(String key, String item, double by) {
         return redisTemplate.opsForHash().increment(key, item, -by);
@@ -468,13 +457,13 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 根据key获取Set中的所有值
-     * @author：mx
-     * @date：2020-09-08 13:15:34
-     * @param: key 键
-     * @return: java.util.Set<java.lang.Object>
-     * @exception/throws
-     *//*
+ * @description: 根据key获取Set中的所有值
+ * @author：mx
+ * @date：2020-09-08 13:15:34
+ * @param: key 键
+ * @return: java.util.Set<java.lang.Object>
+ * @exception/throws
+ *//*
 
     public Set<Object> sGet(String key) {
         try {
@@ -487,14 +476,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 根据value从一个set中查询, 是否存在
-     * @author：mx
-     * @date：2020-09-08 13:15:55
-     * @param: key 键
-     * @param: value 值
-     * @return: boolean true 存在 false不存在
-     * @exception/throws
-     *//*
+ * @description: 根据value从一个set中查询, 是否存在
+ * @author：mx
+ * @date：2020-09-08 13:15:55
+ * @param: key 键
+ * @param: value 值
+ * @return: boolean true 存在 false不存在
+ * @exception/throws
+ *//*
 
     public boolean sHasKey(String key, Object value) {
         try {
@@ -507,14 +496,14 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 将数据放入set缓存
-     * @author：mx
-     * @date：2020-09-08 13:16:29
-     * @param: key 键
-     * @param: values 值 可以是多个
-     * @return: long 成功个数
-     * @exception/throws
-     *//*
+ * @description: 将数据放入set缓存
+ * @author：mx
+ * @date：2020-09-08 13:16:29
+ * @param: key 键
+ * @param: values 值 可以是多个
+ * @return: long 成功个数
+ * @exception/throws
+ *//*
 
     public long sSet(String key, Object... values) {
         try {
@@ -527,15 +516,15 @@ public class RedisUtil {
 
     */
 /**
-     * @description: 将set数据放入缓存
-     * @author：mx
-     * @date：2020-09-08 13:17:13
-     * @param: key 键
-     * @param: time 值
-     * @param: values 值 可以是多个
-     * @return: long 成功个数
-     * @exception/throws
-     *//*
+ * @description: 将set数据放入缓存
+ * @author：mx
+ * @date：2020-09-08 13:17:13
+ * @param: key 键
+ * @param: time 值
+ * @param: values 值 可以是多个
+ * @return: long 成功个数
+ * @exception/throws
+ *//*
 
     public long sSetAndTime(String key, long time, Object... values) {
         try {
@@ -551,7 +540,8 @@ public class RedisUtil {
     }
 
     */
-/**
+
+    /**
      * @param list
      * @Description: 使用pipelined批量向set中添加值
      * @Param: * @param key
@@ -559,7 +549,7 @@ public class RedisUtil {
      * @return: java.lang.Object
      * @Author: maxin
      * @Date: 2021/5/8
-     *//*
+     */
 
     public Object sSet(String key, final List<String> list) {
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
@@ -576,9 +566,10 @@ public class RedisUtil {
         });
         return null;
     }
+}
 
 
-    */
+
 /**
      * 功能描述: 使用pipelined批量存储
      *

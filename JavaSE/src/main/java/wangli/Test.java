@@ -3,6 +3,8 @@ package wangli;
 import utils.DateUtils;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -21,6 +23,34 @@ public class Test {
      * 禁止 布防/撤防 结束时间
      */
     private String sleepEndDate = "07:00:00";
+
+    @org.junit.Test
+    public void testList(){
+      String a = "6c644395887bbd1693vqch6.4";
+      System.out.println(a.split("6.4")[0]);
+      System.out.println(a.substring(0,a.length()-3));
+
+    }
+
+    @org.junit.Test
+    public void testDate(){
+        Calendar calendar = Calendar.getInstance();
+        // 设置时间为昨天18点
+        calendar.add(Calendar.DATE, -1);
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        Date yesterday18 = calendar.getTime();
+        // 设置时间为今天18点
+        calendar.add(Calendar.DATE, 1);
+        Date today18 = calendar.getTime();
+        // 打印结果
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println("昨天18点的日期：" + sdf.format(yesterday18));
+        System.out.println("今天18点的日期：" + sdf.format(today18));
+    }
+
     @org.junit.Test
     public void test11(){
         int a = 10;

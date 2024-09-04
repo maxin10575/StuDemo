@@ -19,10 +19,11 @@ import java.util.Hashtable;
  **/
 public class EncodeTest {
     public static String Encode_QR_CODE() throws IOException, WriterException {
-        String contents = "王师百万拥旌旗\n" +
-                "俊彦登坛属少公\n" +
-                "帅阃分茅新建节\n" +
-                "哥舒射虎出雕弓";
+//        String contents = "王师百万拥旌旗\n" +
+//                "俊彦登坛属少公\n" +
+//                "帅阃分茅新建节\n" +
+//                "哥舒射虎出雕弓";
+        String contents = "大成是沙雕!";
         // 二维码内容
         int width = 430; // 二维码图片宽度 300
         int height = 430; // 二维码图片高度300

@@ -1,18 +1,17 @@
 package com.mx;
 
+import cn.hutool.core.date.DateUtil;
 import com.mx.uf.Base64Utils;
-import com.mx.uf.MD5;
+import com.mx.uf.Md5Utils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -76,8 +75,16 @@ public class Test {
 
     @org.junit.Test
     public void testMd5() {
-        String a = "WANGLI@BED" + "0x0050C25904D6" + "9" + "8W2uShJN^Tb0fX15deSPaywB3JFH&Rv2ef^V" + "1658730990"+ "WANGLI";
-        System.out.println(MD5.encode(a));
+//        String b ="0d59b3b41d1a3b1105 ee6539214f4bde8c9d2dbf19a03e69ff";
+        String a = "0d59b3b41d1a3b1105" + "%22update_time%22%3A+%222018-01-01+00%3A00%3A00%22%2C%0A++++%22tid%22%3A+%22E20200728132836008700133%22"+"ee6539214f4bde8c9d2dbf19a03e69ff";
+        System.out.println(Md5Utils.hash(a));
+        System.out.println(URLEncoder.encode("\"update_time\": \"2018-01-01 00:00:00,\"tid\": \"E20200728132836008700133\""));
+    }
+
+    @org.junit.Test
+    public void testDate(){
+        System.out.println(DateUtil.beginOfYear(new Date()));
+        System.out.println(DateUtil.endOfYear(new Date()));
     }
 
     /*16进制求和  适合任何16进制数*/

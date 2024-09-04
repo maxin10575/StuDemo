@@ -1,5 +1,8 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @program: StuDemo
  * @description:
@@ -10,17 +13,71 @@ package test;
  **/
 public class Test {
 
-    static final String  SP = "\\.";
-    static final String  SP1 = "_";
+    static final String SP = "\\.";
+    static final String SP1 = "_";
+
+    public static String test(List<User> list) {
+        for (User dto : list) {
+            if (dto.getName() != "张三") {
+                System.out.println("name==="+dto.getName());
+                return "停止";
+            }
+        }
+        return null;
+    }
+
+
     public static void main(String[] args) {
 
-        String test = "SCD_1_2.1_3.13";
+//        String test = "SCD_1_2.1_3.13";
 
+        List<User> userList = new ArrayList<>();
+        User user = new User();
+        User user1 = new User();
+        User user2 = new User();
+
+        user.setName("haha");
+        user.setAge("18");
+        user1.setName("张三");
+        user1.setAge("17");
+        user2.setName("haha");
+        user2.setAge("9");
+
+        userList.add(user);
+        userList.add(user1);
+        userList.add(user2);
+        String result = test(userList);
+
+//        Map<String, List<User>> snPhoneMap = userList.stream().collect(Collectors.groupingBy(User::getName));
+
+//        List<String> stageNameList = userList.stream().filter(o-> StringUtils.isNotBlank(o.getId())).map(User::getId).distinct().collect(Collectors.toList());
+
+//        System.out.println(stageNameList);
+/*        List<String> testList = new ArrayList<>();
+        testList.add("1");
+        testList.add("-1");
+        testList.add("2");
+
+        for (int i = 0; i < testList.size(); i++) {
+            System.out.println("遍历开始："+ testList.get(i));
+            if(parseInt(testList.get(i))<0){
+            continue;
+            }
+            System.out.println("遍历结束："+testList.get(i));
+        }*/
+
+//        testList.forEach(po ->{
+//            System.out.println("遍历开始："+po);
+////            if(parseInt(po)<0){
+//              continue;
+////            }
+//            System.out.println("遍历结束："+po);
+//        });
 
 
 //        System.out.println(test.replaceAll("\\.", ""));
-        System.out.println(test.replaceAll("_", ""));
-        System.out.println(test.replaceAll(SP1, ""));
+//        System.out.println(test.replaceAll("_", ""));
+//        System.out.println(test.replaceAll(SP1, ""));
 //        System.out.println(test.replaceAll(SP, ""));
 //        System.out.println(new Date());
 
@@ -50,10 +107,6 @@ public class Test {
 //        System.out.println(false || true);
 //        System.out.println(true || false);
 //        System.out.println(false || false);
-
-
-
-
 
 
 //    String a = "WANGLI@BED"+"0x0050C25904D6"+"9"+"8W2uShJN^Tb0fX15deSPaywB3JFH&Rv2ef^V"+"1658730036"+"WANGLI";

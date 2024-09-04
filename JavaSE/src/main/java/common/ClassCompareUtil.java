@@ -84,7 +84,7 @@ public class ClassCompareUtil {
                         newValue = DateUtil.format((Date) newValue);
                     }
 
-                    if(StringUtils.isEmpty(oldValue) &&  StringUtils.isEmpty(newValue)){
+                    if(StringUtils.isEmpty((CharSequence) oldValue) &&  StringUtils.isEmpty((CharSequence) newValue)){
                         continue;
                     }else if(oldValue == null && newValue != null){
                         Map<String,Object> valueMap = new HashMap<String,Object>();

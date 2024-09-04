@@ -1,15 +1,16 @@
 package com.mx.test;
 
 
-import com.mx.sort.Merge;
-
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MergeTest {
 
     public static void main(String[] args) {
-        Integer[] a = {8,4,5,7,1,3,6,2};
-        Merge.sort(a);
-        System.out.println(Arrays.toString(a));//{1,2,3,4,5,6,7,8}
+        Map<Long, String> categoryPOMap = new HashMap<>();
+        System.out.println(categoryPOMap.get(1l));
+//        Integer[] a = {8,4,5,7,1,3,6,2};
+//        Merge.sort(a);
+//        System.out.println(Arrays.toString(a));//{1,2,3,4,5,6,7,8}
     }
 }
