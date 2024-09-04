@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=".dao.TServiceGuaranteeDao">
+
+    <resultMap id="BaseResultMap" type=".entity.TServiceGuarantee">
+        <!--@Table t_service_guarantee-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="serviceContent" column="service_content" jdbcType="VARCHAR"/>
+        <result property="serviceName" column="service_name" jdbcType="VARCHAR"/>
+        <result property="serviceIcon" column="service_icon" jdbcType="OTHER"/>
+        <result property="guideDecorateId" column="guide_decorate_id" jdbcType="INTEGER"/>
+        <result property="shopDecorateId" column="shop_decorate_id" jdbcType="INTEGER"/>
+        <result property="serviceSort" column="service_sort" jdbcType="OTHER"/>
+        <result property="serviceType" column="service_type" jdbcType="OTHER"/>
+        <result property="tradeType" column="trade_type" jdbcType="OTHER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, service_content, service_name, service_icon, guide_decorate_id, shop_decorate_id, service_sort, service_type, trade_type, create_time, update_time
+        from league_dev.t_service_guarantee
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, service_content, service_name, service_icon, guide_decorate_id, shop_decorate_id, service_sort, service_type, trade_type, create_time, update_time
+        from league_dev.t_service_guarantee
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          id, service_content, service_name, service_icon, guide_decorate_id, shop_decorate_id, service_sort, service_type, trade_type, create_time, update_time
+        from league_dev.t_service_guarantee
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="serviceContent != null and serviceContent != ''">
+                and service_content = #{serviceContent}
+            </if>
+            <if test="serviceName != null and serviceName != ''">
+                and service_name = #{serviceName}
+            </if>
+            <if test="serviceIcon != null">
+                and service_icon = #{serviceIcon}
+            </if>
+            <if test="guideDecorateId != null">
+                and guide_decorate_id = #{guideDecorateId}
+            </if>
+            <if test="shopDecorateId != null">
+                and shop_decorate_id = #{shopDecorateId}
+            </if>
+            <if test="serviceSort != null">
+                and service_sort = #{serviceSort}
+            </if>
+            <if test="serviceType != null">
+                and service_type = #{serviceType}
+            </if>
+            <if test="tradeType != null">
+                and trade_type = #{tradeType}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into league_dev.t_service_guarantee(service_content, service_name, service_icon, guide_decorate_id, shop_decorate_id, service_sort, service_type, trade_type, create_time, update_time)
+        values (#{serviceContent}, #{serviceName}, #{serviceIcon}, #{guideDecorateId}, #{shopDecorateId}, #{serviceSort}, #{serviceType}, #{tradeType}, #{createTime}, #{updateTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update league_dev.t_service_guarantee
+        <set>
+            <if test="serviceContent != null and serviceContent != ''">
+                service_content = #{serviceContent},
+            </if>
+            <if test="serviceName != null and serviceName != ''">
+                service_name = #{serviceName},
+            </if>
+            <if test="serviceIcon != null">
+                service_icon = #{serviceIcon},
+            </if>
+            <if test="guideDecorateId != null">
+                guide_decorate_id = #{guideDecorateId},
+            </if>
+            <if test="shopDecorateId != null">
+                shop_decorate_id = #{shopDecorateId},
+            </if>
+            <if test="serviceSort != null">
+                service_sort = #{serviceSort},
+            </if>
+            <if test="serviceType != null">
+                service_type = #{serviceType},
+            </if>
+            <if test="tradeType != null">
+                trade_type = #{tradeType},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from league_dev.t_service_guarantee where id = #{id}
+    </delete>
+
+</mapper>
